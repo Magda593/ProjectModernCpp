@@ -13,6 +13,8 @@ public:
 	
 	void SaveUser(std::string username, int playedGames);
 	void PrintUsernames();
+	void Login(std::string username);
+	void SignUp(std::string username);
 
 private:
 	std::string m_username;
