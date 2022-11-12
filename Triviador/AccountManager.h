@@ -4,7 +4,9 @@
 class AccountManager
 {
 public:
-
+	AccountManager();
+	AccountManager(std::string username, int playedGames);
+	const std::string& GetUsername() const;
 
 private:
 	std::string m_username;
