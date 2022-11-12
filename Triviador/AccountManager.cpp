@@ -14,3 +14,8 @@ const std::string& AccountManager::GetUsername() const
 {
 	return m_username;
 }
+
+void AccountManager::SaveUser(std::string username, int playedGames)
+{
+	m_user.insert(std::make_pair(username, playedGames));
+}
