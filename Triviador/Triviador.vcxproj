@@ -141,10 +141,12 @@
   <ItemGroup>
     <ClInclude Include="AccountManager.h" />
     <ClInclude Include="Board.h" />
+    <ClInclude Include="QuestionType1.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AccountManager.cpp" />
     <ClCompile Include="Board.cpp" />
+    <ClCompile Include="QuestionType1.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
