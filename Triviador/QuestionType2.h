@@ -10,6 +10,8 @@ public:
 
 	void SaveQuestion(std::string question2, int answer);
 
+	void GetQuestion();
+
 private:
 	std::string m_question2;
 	int m_answer;

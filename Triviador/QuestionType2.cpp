@@ -14,3 +14,9 @@ void QuestionType2::SaveQuestion(std::string question2, int answer)
 {
 	m_questionType2.insert(std::make_pair(question2, answer));
 }
+
+void QuestionType2::GetQuestion()
+{
+	for (auto& x : m_questionType2)
+		std::cout << x.first << ": " << x.second << std::endl;
+}
