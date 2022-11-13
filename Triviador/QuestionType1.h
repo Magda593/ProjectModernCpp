@@ -6,7 +6,10 @@
 class QuestionType1
 {
 public:
+	QuestionType1();
+	QuestionType1(const std::string& question1, std::vector<std::string> answer1);
 
+	void saveQuestion(std::string question1, std::vector<std::string> answer1);
 
 private:
 	std::string m_question1;
