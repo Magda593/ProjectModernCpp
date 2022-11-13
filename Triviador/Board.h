@@ -2,11 +2,14 @@
 class Board
 {
 public:
+	Board();
+	Board(int kWidth, int hHeight, int kSize);
 
+	void GetSize(int numberOfPlayers);
 
 private:
-	int kWidth = 5;
-	int hHeight = 3;
-	int kSize = kWidth * hHeight;
+	int m_kWidth;
+	int m_hHeight;
+	int m_kSize;
 };
 
