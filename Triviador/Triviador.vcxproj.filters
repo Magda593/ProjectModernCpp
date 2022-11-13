@@ -24,6 +24,9 @@
     <ClInclude Include="QuestionType1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="QuestionType2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AccountManager.cpp">
@@ -36,6 +39,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="QuestionType1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="QuestionType2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
