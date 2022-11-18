@@ -18,6 +18,15 @@ int main()
 	std::string score2 = user.GetScoreForXUsername("Ash");
 	std::cout << "Ash's score is: " << score2;
 	std::cout << std::endl;
+
+	user.SetScoreForXUsername("Yan", 250);
+	score = user.GetScoreForXUsername("Yan");
+	std::cout << "Yan's score is now: " << score;
+	std::cout << std::endl;
+	user.SetScoreForXUsername("Ash", 250);
+	score2 = user.GetScoreForXUsername("Ash");
+	std::cout << "Ash's score is now: " << score2;
+	std::cout << std::endl;
 	//user.Login("Rei");
 	//user.PrintUsernames();
 	//std::cout << std::endl;

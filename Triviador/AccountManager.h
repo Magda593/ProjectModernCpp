@@ -12,7 +12,7 @@ public:
 	const std::string& GetUsername() const;
 	std::string GetScoreForXUsername(std::string username) const;
 
-	void SetScoreForXUsername(std::string username);
+	void SetScoreForXUsername(std::string username, int newScore);
 	
 	void SaveUser(std::string username, int score);
 	void PrintUsernames();

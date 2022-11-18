@@ -28,8 +28,17 @@ std::string AccountManager::GetScoreForXUsername(std::string username) const
 	}
 }
 
-void AccountManager::SetScoreForXUsername(std::string username)
+void AccountManager::SetScoreForXUsername(std::string username, int newScore)
 {
+	if (m_user.find(username) == m_user.end())
+	{
+		std::cout << "There is no " << username << " logged in";
+		std::cout << std::endl;
+	}
+	else
+	{
+		m_user.find(username)->second = newScore;
+	}
 }
 
 void AccountManager::SaveUser(std::string username, int score)
