@@ -15,9 +15,17 @@ const std::string& AccountManager::GetUsername() const
 	return m_username;
 }
 
-int& AccountManager::GetScoreForXUsername(std::string username) const
+std::string AccountManager::GetScoreForXUsername(std::string username) const
 {
-	// TODO: insert return statement here
+	if (m_user.find(username) == m_user.end())
+	{
+		return "Nonexistent";
+	}
+	else
+	{
+		int value = m_user.find(username)->second;
+		return std::to_string(value);
+	}
 }
 
 void AccountManager::SetScoreForXUsername(std::string username)

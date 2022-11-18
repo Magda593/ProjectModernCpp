@@ -10,7 +10,7 @@ public:
 	AccountManager(std::string username, int score);
 
 	const std::string& GetUsername() const;
-	int& GetScoreForXUsername(std::string username) const;
+	std::string GetScoreForXUsername(std::string username) const;
 
 	void SetScoreForXUsername(std::string username);
 	
