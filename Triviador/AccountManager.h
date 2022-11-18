@@ -7,18 +7,22 @@ class AccountManager
 {
 public:
 	AccountManager();
-	AccountManager(std::string username, int playedGames);
+	AccountManager(std::string username, int score);
 
 	const std::string& GetUsername() const;
+	int& GetScoreForXUsername(std::string username) const;
+
+	void SetScoreForXUsername(std::string username);
 	
-	void SaveUser(std::string username, int playedGames);
+	void SaveUser(std::string username, int score);
 	void PrintUsernames();
 	void Login(std::string username);
 	void SignUp(std::string username);
 
+
 private:
 	std::string m_username;
-	int m_playedGames;
+	int m_score;
 	std::unordered_map<std::string, int> m_user;
 };
 

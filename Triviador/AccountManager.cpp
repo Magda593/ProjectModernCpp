@@ -4,9 +4,9 @@ AccountManager::AccountManager()
 {
 }
 
-AccountManager::AccountManager(std::string username, int playedGames):
+AccountManager::AccountManager(std::string username, int score):
 	m_username(username),
-	m_playedGames(playedGames)
+	m_score(score)
 {
 }
 
@@ -15,9 +15,18 @@ const std::string& AccountManager::GetUsername() const
 	return m_username;
 }
 
-void AccountManager::SaveUser(std::string username, int playedGames)
+int& AccountManager::GetScoreForXUsername(std::string username) const
 {
-	m_user.insert(std::make_pair(username, playedGames));
+	// TODO: insert return statement here
+}
+
+void AccountManager::SetScoreForXUsername(std::string username)
+{
+}
+
+void AccountManager::SaveUser(std::string username, int score)
+{
+	m_user.insert(std::make_pair(username, score));
 }
 
 void AccountManager::PrintUsernames()
