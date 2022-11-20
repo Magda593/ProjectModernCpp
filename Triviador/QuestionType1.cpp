@@ -14,3 +14,13 @@ void QuestionType1::saveQuestion(std::string question1, std::vector<std::string>
 {
 	m_questionType1.insert(std::make_pair(question1, answer1));
 }
+
+QuestionType1& QuestionType1::operator=(const QuestionType1& questionType1)
+{
+	// TODO: insert return statement here
+}
+
+QuestionType1& QuestionType1::operator=(QuestionType1&& questionType1)
+{
+	// TODO: insert return statement here
+}
