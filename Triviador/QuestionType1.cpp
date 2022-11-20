@@ -17,10 +17,18 @@ void QuestionType1::saveQuestion(std::string question1, std::vector<std::string>
 
 QuestionType1& QuestionType1::operator=(const QuestionType1& questionType1)
 {
-	// TODO: insert return statement here
+	m_question1 = questionType1.m_question1;
+	m_answer1 = questionType1.m_answer1;
+	m_questionType1 = questionType1.m_questionType1;
+	return *this;
 }
 
 QuestionType1& QuestionType1::operator=(QuestionType1&& questionType1)
 {
 	// TODO: insert return statement here
+}
+
+QuestionType1 QuestionType1::GetQuestionType1() const
+{
+	return QuestionType1();
 }
