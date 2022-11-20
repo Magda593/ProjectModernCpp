@@ -12,6 +12,12 @@ public:
 
 	void GetQuestion();
 
+	QuestionType2& operator=(const QuestionType2& questionType2);
+	QuestionType2& operator=(QuestionType2&& questionType2);
+	QuestionType2 GetQuestionType2() const;
+
+	//friend std::ostream& operator<< (std::ostream os, const QuestionType2& questionType2);
+
 private:
 	std::string m_question2;
 	int m_answer;

@@ -20,3 +20,13 @@ void QuestionType2::GetQuestion()
 	for (auto& x : m_questionType2)
 		std::cout << x.first << ": " << x.second << std::endl;
 }
+
+QuestionType2& QuestionType2::operator=(const QuestionType2& questionType2)
+{
+	// TODO: insert return statement here
+}
+
+QuestionType2& QuestionType2::operator=(QuestionType2&& questionType2)
+{
+	// TODO: insert return statement here
+}
