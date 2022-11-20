@@ -23,10 +23,18 @@ void QuestionType2::GetQuestion()
 
 QuestionType2& QuestionType2::operator=(const QuestionType2& questionType2)
 {
-	// TODO: insert return statement here
+	m_question2 = questionType2.m_question2;
+	m_answer = questionType2.m_answer;
+	m_questionType2 = questionType2.m_questionType2;
+	return *this;
 }
 
 QuestionType2& QuestionType2::operator=(QuestionType2&& questionType2)
 {
 	// TODO: insert return statement here
+}
+
+QuestionType2 QuestionType2::GetQuestionType2() const
+{
+	return QuestionType2();
 }
