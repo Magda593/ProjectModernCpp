@@ -32,7 +32,7 @@ QuestionType1& QuestionType1::operator=(QuestionType1&& questionType1)
 	return *this;
 }
 
-QuestionType1 QuestionType1::GetQuestionType1() const
-{
-	return QuestionType1();
-}
+//QuestionType1 QuestionType1::GetQuestionType1() const
+//{
+//	return QuestionType1();
+//}
