@@ -34,4 +34,7 @@ int main()
 	//QuestionType2 question2;
 	//question2.SaveQuestion("2+2?", 4);
 	//question2.GetQuestion();
+
+
+
 }
