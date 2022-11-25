@@ -1,4 +1,6 @@
 #include <iostream>
+#include <fstream>
+#include <string>
 #include "AccountManager.h"
 #include "QuestionType1.h"
 #include "QuestionType2.h"
@@ -31,10 +33,14 @@ int main()
 	//user.PrintUsernames();
 	//std::cout << std::endl;
 
-	//QuestionType2 question2;
+	QuestionType2 question2;
 	//question2.SaveQuestion("2+2?", 4);
 	//question2.GetQuestion();
-
+	std::ifstream questions;
+	std::string questionTwo;
+	int answerTwo;
+	questions.open("questionType2.txt");
+	questions.close();
 
 
 }
