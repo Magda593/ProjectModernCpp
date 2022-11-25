@@ -35,12 +35,19 @@ int main()
 
 	QuestionType2 question2;
 	//question2.SaveQuestion("2+2?", 4);
-	//question2.GetQuestion();
+
 	std::ifstream questions;
 	std::string questionTwo;
 	int answerTwo;
 	questions.open("questionType2.txt");
+	while (!questions.fail())
+	{
+		getline(questions, questionTwo);
+		questions >> answerTwo;
+		question2.SaveQuestion(questionTwo, answerTwo);
+	}
 	questions.close();
+	question2.GetQuestion();
 
-
+	return 0;
 }
