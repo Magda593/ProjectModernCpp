@@ -49,13 +49,22 @@ int main()
 	questions.close();
 	question2.GetQuestion();
 
+	QuestionType1 question1;
 
 	std::ifstream question;
 	std::string questionOne;
 	std::vector<std::string> answerOne;
 	std::string option;
 	questions.open("questionType1.txt");
+	while (!question.fail())
+	{
+		getline(question, questionOne);
+		for (int i = 0; i < 4; i++)
+			answerOne.push_back(option);
+		question1.saveQuestion(questionOne, answerOne);
+	}
 	questions.close();
+	question1.GetQuestion1();
 
 	return 0;
 }
