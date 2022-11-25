@@ -47,5 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="questionType2.txt" />
+    <Text Include="questionType1.txt" />
   </ItemGroup>
 </Project>

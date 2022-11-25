@@ -49,5 +49,13 @@ int main()
 	questions.close();
 	question2.GetQuestion();
 
+
+	std::ifstream question;
+	std::string questionOne;
+	std::vector<std::string> answerOne;
+	std::string option;
+	questions.open("questionType1.txt");
+	questions.close();
+
 	return 0;
 }

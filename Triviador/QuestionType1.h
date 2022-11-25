@@ -14,7 +14,7 @@ public:
 	QuestionType1& operator=(const QuestionType1& questionType1);
 	QuestionType1& operator=(QuestionType1&& questionType1);
 
-	QuestionType1 GetQuestionType1() const;
+	void GetQuestion1();
 
 	//friend std::ostream& operator<< (std::ostream os, const QuestionType1& questionType1);
 
