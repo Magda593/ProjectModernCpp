@@ -4,6 +4,7 @@
 #include "AccountManager.h"
 #include "QuestionType1.h"
 #include "QuestionType2.h"
+#include "Board.h"
 
 int main()
 {
@@ -66,7 +67,11 @@ int main()
 	questions.close();
 	question1.GetQuestion1();
 
-
+	Board board;
+	std::cout << "What is the number of players you'd like this game to have?\n";
+	uint8_t numberOfPlayers;
+	std::cin >> numberOfPlayers;
+	board.SetNumberOfPlayers(numberOfPlayers);
 
 	return 0;
 }

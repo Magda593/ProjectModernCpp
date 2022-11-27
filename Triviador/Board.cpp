@@ -1,8 +1,8 @@
 #include "Board.h"
 
-Board::Board()
+/*Board::Board()
 {
-}
+}*/
 
 Board::Board(int kWidth, int hHeight, int kSize):
 	m_kWidth(kWidth),
