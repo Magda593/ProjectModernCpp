@@ -1,31 +1,24 @@
 #include "Board.h"
 const std::string kEmptyBoardCell = " ____ ";
 
-Board::Board(int kWidth, int hHeight, int kSize) :
-	m_kWidth(kWidth),
-	m_hHeight(hHeight),
-	m_kSize(kSize)
-{
-}
-
-void Board::SetNumberOfPlayers(uint8_t numberOfPlayers)
+void Board::SetNumberOfPlayers(int numberOfPlayers)
 {
 	this->m_numberOfPlayers = numberOfPlayers;
 }
 
-void Board::SetWidth(uint8_t width)
+void Board::SetWidth(int width)
 {
 	this->m_kWidth = width;
 }
 
-void Board::SetHeight(uint8_t height)
+void Board::SetHeight(int height)
 {
-	this->m_hHeight = height;
+	this->m_kHeight = height;
 }
 
 void Board::SetSize()
 {
-	this->m_kSize = m_kWidth * m_hHeight;
+	this->m_kSize = m_kWidth * m_kHeight;
 }
 
 void Board::SetBoard()
@@ -59,12 +52,6 @@ void Board::SetBoard()
 		break;
 	}
 	}
-}
-
-void Board::Test()
-{
-	std::cout << m_numberOfPlayers;
-	std::cout << m_kWidth;
 }
 
 void Board::MakeBoard()

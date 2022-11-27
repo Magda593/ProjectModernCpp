@@ -7,11 +7,10 @@ class Board
 {
 public:
 	Board() = default;
-	Board(int kWidth, int hHeight, int kSize);
 
-	void SetNumberOfPlayers(uint8_t numberOfPlayers);
-	void SetWidth(uint8_t width);
-	void SetHeight(uint8_t height);
+	void SetNumberOfPlayers(int numberOfPlayers);
+	void SetWidth(int width);
+	void SetHeight(int height);
 	void SetSize();
 	void SetBoard();
 	void MakeBoard();
@@ -24,10 +23,10 @@ public:
 
 
 private:
-	uint8_t m_kWidth;
-	uint8_t m_hHeight;
-	uint8_t m_kSize;
-	uint8_t m_numberOfPlayers;
+	int m_kWidth;
+	int m_kHeight;
+	int m_kSize;
+	int m_numberOfPlayers;
 
 	std::vector<std::vector<std::string>> m_board;
 };
