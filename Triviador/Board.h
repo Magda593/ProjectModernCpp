@@ -1,5 +1,7 @@
 #pragma once
 #include <iostream>
+#include <vector>
+#include <string>
 
 class Board
 {
@@ -12,6 +14,11 @@ public:
 	void SetHeight(uint8_t height);
 	void SetSize();
 	void SetBoard();
+	void MakeBoard();
+
+	int GetSize();
+
+	friend std::ostream& operator<<(std::ostream& out, const Board& board);
 
 	void Test();
 
@@ -21,5 +28,7 @@ private:
 	uint8_t m_hHeight;
 	uint8_t m_kSize;
 	uint8_t m_numberOfPlayers;
+
+	std::vector<std::vector<std::string>> m_board;
 };
 

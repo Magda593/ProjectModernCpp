@@ -73,6 +73,9 @@ int main()
 	std::cin >> numberOfPlayers;
 	board.SetNumberOfPlayers(numberOfPlayers);
 	board.SetBoard();
+	board.MakeBoard();
+	std::cout << board;
+	board.Test();
 
 	return 0;
 }
