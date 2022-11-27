@@ -69,9 +69,10 @@ int main()
 
 	Board board;
 	std::cout << "What is the number of players you'd like this game to have?\n";
-	uint8_t numberOfPlayers;
+	int numberOfPlayers;
 	std::cin >> numberOfPlayers;
 	board.SetNumberOfPlayers(numberOfPlayers);
+	board.SetBoard();
 
 	return 0;
 }

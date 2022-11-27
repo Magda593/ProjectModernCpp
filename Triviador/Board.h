@@ -10,8 +10,8 @@ public:
 	void SetNumberOfPlayers(uint8_t numberOfPlayers);
 	void SetWidth(uint8_t width);
 	void SetHeight(uint8_t height);
-
-	uint8_t GetWidth();
+	void SetSize();
+	void SetBoard();
 
 	void Test();
 

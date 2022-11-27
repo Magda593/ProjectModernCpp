@@ -23,9 +23,42 @@ void Board::SetHeight(uint8_t height)
 	this->m_hHeight = height;
 }
 
-uint8_t Board::GetWidth()
+void Board::SetSize()
 {
-	return m_kWidth;
+	this->m_kSize = m_kWidth * m_hHeight;
+}
+
+void Board::SetBoard()
+{
+	switch (m_numberOfPlayers)
+	{
+	case 2:
+	{
+		SetWidth(3);
+		SetHeight(3);
+		SetSize();
+		break;
+	}
+	case 3:
+	{
+		SetWidth(3);
+		SetHeight(5);
+		SetSize();
+		break;
+	}
+	case 4:
+	{
+		SetWidth(4);
+		SetHeight(6);
+		SetSize();
+		break;
+	}
+	default:
+	{
+		std::cout << "We can't do a game with that number of players :(";
+		break;
+	}
+	}
 }
 
 void Board::Test()
