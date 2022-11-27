@@ -11,6 +11,11 @@ Board::Board(int kWidth, int hHeight, int kSize):
 {
 }
 
+void Board::SetNumberOfPlayers(uint8_t numberOfPlayers)
+{
+	this->m_numberOfPlayers = numberOfPlayers;
+}
+
 void Board::GetSize(int numberOfPlayers)
 {
 	if (numberOfPlayers == 2)
