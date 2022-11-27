@@ -8,7 +8,13 @@ public:
 	Board(int kWidth, int hHeight, int kSize);
 
 	void SetNumberOfPlayers(uint8_t numberOfPlayers);
-	void GetSize(int numberOfPlayers);
+	void SetWidth(uint8_t width);
+	void SetHeight(uint8_t height);
+
+	uint8_t GetWidth();
+
+	void Test();
+
 
 private:
 	uint8_t m_kWidth;

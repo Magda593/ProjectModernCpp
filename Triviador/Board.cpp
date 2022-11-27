@@ -1,8 +1,5 @@
 #include "Board.h"
 
-/*Board::Board()
-{
-}*/
 
 Board::Board(int kWidth, int hHeight, int kSize):
 	m_kWidth(kWidth),
@@ -16,24 +13,23 @@ void Board::SetNumberOfPlayers(uint8_t numberOfPlayers)
 	this->m_numberOfPlayers = numberOfPlayers;
 }
 
-void Board::GetSize(int numberOfPlayers)
+void Board::SetWidth(uint8_t width)
 {
-	if (numberOfPlayers == 2)
-	{
-		m_kWidth = 3;
-		m_hHeight = 3;
-		m_kSize = m_kWidth * m_hHeight;
-	}
-	if (numberOfPlayers == 3)
-	{
-		m_kWidth = 3;
-		m_hHeight = 5;
-		m_kSize = m_kWidth * m_hHeight;
-	}
-	if (numberOfPlayers == 4)
-	{
-		m_kWidth = 4;
-		m_hHeight = 6;
-		m_kSize = m_kWidth * m_hHeight;
-	}
+	this->m_kWidth = width;
+}
+
+void Board::SetHeight(uint8_t height)
+{
+	this->m_hHeight = height;
+}
+
+uint8_t Board::GetWidth()
+{
+	return m_kWidth;
+}
+
+void Board::Test()
+{
+	std::cout << m_numberOfPlayers;
+	std::cout << m_kWidth;
 }
