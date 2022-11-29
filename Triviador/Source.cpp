@@ -45,6 +45,9 @@ int main()
 	{
 		getline(questions, questionTwo);
 		questions >> answerTwo;
+		std::string questionTwo2;
+
+		getline(questions, questionTwo2);
 		question2.SaveQuestion(questionTwo, answerTwo);
 	}
 	questions.close();

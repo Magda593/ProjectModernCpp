@@ -23,4 +23,5 @@ private:
 	std::vector<std::string> m_answer1;
 	std::unordered_map<std::string, std::vector<std::string>> m_questionType1;
 };
-
+//definita o clasa question in care sa retin textul interbarii, raspunsul corect si raspunsurile gresite iar aici sa am un vector de astfel de intrebari
+//question manager
