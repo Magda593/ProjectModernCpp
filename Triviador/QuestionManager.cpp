@@ -40,5 +40,15 @@ QuestionManager& QuestionManager::operator=(QuestionManager&& questionManager)
 	return *this;
 }
 
+int QuestionManager::Equal(std::string correctAnswer, std::string answer)
+{
+	if (std::string(correctAnswer) == std::string(answer))
+		return true;
+	return false;
+}
+
+
+
+
 
 

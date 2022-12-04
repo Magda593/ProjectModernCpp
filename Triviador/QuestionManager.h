@@ -13,7 +13,8 @@ public:
 	QuestionManager(std::string question1, std::string option1, std::string option2, std::string option3, std::string option4, std::string correctAnswer);
 	void ReadQuestion(std::string question1, std::string option1, std::string option2, std::string option3, std::string option4, std::string correctAnswer);
 	QuestionManager& operator=(QuestionManager&& questionManager);
-
+	int Equal(std::string correctAnswer, std::string answer);
+	
 private:
 	std::string m_question1;
 	std::string m_option1;
