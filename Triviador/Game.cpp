@@ -22,6 +22,15 @@ void Game::MenuForTheGame()
 			std::cout << AnythingElseQ;
 			break;
 		}
+		case 2:
+		{
+			std::cout << "Please write your username: \n";
+			std::string username;
+			std::cin >> username;
+			user.Login(username);
+			std::cout << AnythingElseQ;
+			break;
+		}
 		case 99:
 		{
 			std::cout << "You chose to exit!\n";
