@@ -80,6 +80,12 @@ int main()
 	game.MenuForTheGame();
 
 	QuestionManager questionManager;
-
+	std::string question1;
+	std::string option1;
+	std::string option2;
+	std::string option3;
+	std::string option4;
+	std::string correctAnswer;
+	questionManager.ReadQuestion(question1, option1, option2, option3, option4, correctAnswer);
 	return 0;
 }

@@ -6,12 +6,13 @@
 #include "QuestionType2.h"
 
 
-class QuestionManager :public QuestionType1, QuestionType2
+class QuestionManager
 {
 public:
 	QuestionManager();
 	QuestionManager(std::string question1, std::string option1, std::string option2, std::string option3, std::string option4, std::string correctAnswer);
 	void ReadQuestion(std::string question1, std::string option1, std::string option2, std::string option3, std::string option4, std::string correctAnswer);
+	QuestionManager& operator=(QuestionManager&& questionManager);
 
 private:
 	std::string m_question1;

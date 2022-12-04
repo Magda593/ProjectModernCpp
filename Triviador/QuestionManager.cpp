@@ -31,3 +31,14 @@ void QuestionManager::ReadQuestion(std::string question1, std::string option1, s
 	}
 	question.close();
 }
+
+QuestionManager& QuestionManager::operator=(QuestionManager&& questionManager)
+{
+	m_question1 = questionManager.m_question1;
+	m_correctAnswer = questionManager.m_correctAnswer;
+	new (&questionManager) QuestionManager;
+	return *this;
+}
+
+
+
