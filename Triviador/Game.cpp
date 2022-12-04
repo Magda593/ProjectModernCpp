@@ -9,6 +9,7 @@ void Game::MenuForTheGame()
 	std::cout << "3. Start Game.\n";
 	std::cout << "99. Exit.\n";
 	std::cin >> m_option;
+
 	while (m_option != 99)
 	{
 		switch (m_option)
@@ -31,6 +32,12 @@ void Game::MenuForTheGame()
 			std::cout << AnythingElseQ;
 			break;
 		}
+		case 3:
+		{
+			std::cout << "What is the number of players you'd like this game to have? \n";
+			SetGame();
+			break;
+		}
 		case 99:
 		{
 			std::cout << "You chose to exit!\n";
@@ -45,4 +52,17 @@ void Game::MenuForTheGame()
 		std::cin >> m_option;
 	}
 
+}
+
+void Game::SetGame()
+{
+	int numberOfPlayers;
+	std::cin >> numberOfPlayers;
+	board.SetNumberOfPlayers(numberOfPlayers);
+	board.SetBoard();
+	board.MakeBoard();
+	std::cout << "This is what the board looks like: \n";
+	std::cout << board;
+	std::cout << "Stats about the game: \n";
+	board.Test();
 }

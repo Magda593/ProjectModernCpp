@@ -8,6 +8,7 @@ class Game
 {
 public:
 	void MenuForTheGame();
+	void SetGame();
 
 private:
 	AccountManager user;
@@ -16,3 +17,4 @@ private:
 	QuestionType2 question2;
 	int m_option;
 };
+
