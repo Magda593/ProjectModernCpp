@@ -31,24 +31,6 @@ int main()
 	////user.PrintUsernames();
 	////std::cout << std::endl;
 
-	//QuestionType2 question2;
-	////question2.SaveQuestion("2+2?", 4);
-
-	//std::ifstream questions;
-	//std::string questionTwo;
-	//int answerTwo;
-	//questions.open("questionType2.txt");
-	//while (!questions.fail())
-	//{
-	//	getline(questions, questionTwo);
-	//	questions >> answerTwo;
-	//	std::string questionTwo2;
-
-	//	getline(questions, questionTwo2);
-	//	question2.SaveQuestion(questionTwo, answerTwo);
-	//}
-	//questions.close();
-	//question2.GetQuestion();
 
 	//QuestionType1 question1;
 
@@ -67,6 +49,23 @@ int main()
 	//questions.close();
 	//question1.GetQuestion1();
 
+	QuestionType2 question2;
+	std::ifstream questions;
+	std::string questionTwo;
+	int answerTwo;
+	questions.open("questionType2.txt");
+	while (!questions.fail())
+	{
+		getline(questions, questionTwo);
+		questions >> answerTwo;
+		std::string questionTwo2;
+
+		getline(questions, questionTwo2);
+		question2.SaveQuestion(questionTwo, answerTwo);
+	}
+	questions.close();
+	question2.GetQuestion();
+
 	//Board board;
 	//std::cout << "What is the number of players you'd like this game to have?\n";
 	//int numberOfPlayers;
@@ -76,9 +75,11 @@ int main()
 	//board.MakeBoard();
 	//std::cout << board;
 	//board.Test();
-	
+
 	Game game;
 	game.MenuForTheGame();
+
+	QuestionManager questionManager;
 
 	return 0;
 }

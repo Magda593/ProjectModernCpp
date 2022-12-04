@@ -6,15 +6,18 @@
 #include "QuestionType2.h"
 
 
-class QuestionManager
+class QuestionManager :public QuestionType1, QuestionType2
 {
 public:
-	void ReadQuestionType2();
+	QuestionManager();
+	QuestionManager(std::string m_question1, std::string m_option1, std::string m_option2, std::string m_option3, std::string m_option4, std::string m_correctAnswer);
+
 private:
-	std::string option1;
-	std::string option2;
-	std::string option3;
-	std::string option4;
-	std::string correctAnswer;
+	std::string m_question1;
+	std::string m_option1;
+	std::string m_option2;
+	std::string m_option3;
+	std::string m_option4;
+	std::string m_correctAnswer;
 };
 
