@@ -4,7 +4,7 @@ AccountManager::AccountManager()
 {
 }
 
-AccountManager::AccountManager(std::string username, int score):
+AccountManager::AccountManager(std::string username, int score) :
 	m_username(username),
 	m_score(score)
 {
@@ -51,7 +51,7 @@ void AccountManager::PrintUsernames()
 	for (auto user : m_user)
 	{
 		std::cout << user.first << " " << user.second;
-		std::cout<< std::endl;
+		std::cout << std::endl;
 	}
 }
 
@@ -72,6 +72,7 @@ void AccountManager::SignUp(std::string username)
 	if (m_user.find(username) == m_user.end())
 	{
 		SaveUser(username, 0);
+		std::cout << "Thank you for choosing to be with us. Enjoy your stay!";
 	}
 	else
 	{
