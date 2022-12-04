@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include "Game.h"
+#include "QuestionManager.h"
 int main()
 {
 	////Source.cpp is currently just for checking if our methods work properly
@@ -75,7 +76,7 @@ int main()
 	//board.MakeBoard();
 	//std::cout << board;
 	//board.Test();
-
+	
 	Game game;
 	game.MenuForTheGame();
 
