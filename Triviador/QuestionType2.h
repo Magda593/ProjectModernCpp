@@ -19,7 +19,7 @@ public:
 	QuestionType2& operator=(QuestionType2&& questionType2);
 	QuestionType2 GetQuestionType2() const;
 
-	void GetRandomQuestion(std::unordered_map<std::string, int> questionType2);
+	//void GetRandomQuestion(std::unordered_map<std::string, int> questionType2);
 
 	//friend std::ostream& operator<< (std::ostream os, const QuestionType2& questionType2);
 

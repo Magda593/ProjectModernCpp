@@ -3,6 +3,7 @@
 #include <string>
 #include "Game.h"
 #include "QuestionManager.h"
+#include "PowerUps.h"
 int main()
 {
 	////Source.cpp is currently just for checking if our methods work properly
@@ -87,5 +88,11 @@ int main()
 	std::string option4;
 	std::string correctAnswer;
 	questionManager.ReadQuestion(question1, option1, option2, option3, option4, correctAnswer);
+
+	//PowerUps powerUps;
+	//std::vector<int> powers;
+	//powerUps.AllPowers(powers);
+	//powerUps.UsedPowers(powers);
+
 	return 0;
 }
