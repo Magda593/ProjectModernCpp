@@ -38,6 +38,7 @@ QuestionType2& QuestionType2::operator=(QuestionType2&& questionType2)
 	return *this;
 }
 
+
 //QuestionType2 QuestionType2::GetQuestionType2() const
 //{
 //	return QuestionType2();
