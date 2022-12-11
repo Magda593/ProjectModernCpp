@@ -14,5 +14,14 @@ public:
 	{
 		UpgradedRegion
 	};
+
+public:
+	Region(Base base, SimpleRegion simpleRegion, UpgradedRegion upgradedRegion);
+
+
+private:
+	Base m_base : 3;
+	SimpleRegion m_simpleRegion : 1;
+	UpgradedRegion m_upgradedRegion : 2;
 };
 
