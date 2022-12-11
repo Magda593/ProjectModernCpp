@@ -27,6 +27,10 @@ public:
 	Region& operator = (const Region& other);
 	Region& operator = (Region&& other);
 
+	Base GetBase() const;
+	SimpleRegion GetSimpleRegion();
+	UpgradedRegion GetUpgradedRegion();
+
 private:
 	Base m_base : 3;
 	SimpleRegion m_simpleRegion : 1;

@@ -32,3 +32,18 @@ Region& Region::operator=(Region&& other)
 	new(&other) Region;
 	return*this;
 }
+
+Region::Base Region::GetBase() const
+{
+	return m_base;
+}
+
+Region::SimpleRegion Region::GetSimpleRegion()
+{
+	return m_simpleRegion;
+}
+
+Region::UpgradedRegion Region::GetUpgradedRegion()
+{
+	return m_upgradedRegion;
+}
