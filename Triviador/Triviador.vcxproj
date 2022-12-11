@@ -146,6 +146,7 @@
     <ClInclude Include="QuestionManager.h" />
     <ClInclude Include="QuestionType1.h" />
     <ClInclude Include="QuestionType2.h" />
+    <ClInclude Include="Region.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AccountManager.cpp" />
@@ -155,6 +156,7 @@
     <ClCompile Include="QuestionManager.cpp" />
     <ClCompile Include="QuestionType1.cpp" />
     <ClCompile Include="QuestionType2.cpp" />
+    <ClCompile Include="Region.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
