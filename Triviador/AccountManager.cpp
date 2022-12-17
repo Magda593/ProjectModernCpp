@@ -65,10 +65,15 @@ void AccountManager::SetScoreForXUsername(std::string username, int newScore)
 void AccountManager::SaveUser(std::string username, int score)
 {
 	m_user.insert(std::make_pair(username, score));
+	SaveRegisteredUsersInFile(username);
 }
 
 void AccountManager::SaveRegisteredUsersInFile(std::string username)
 {
+	std::ofstream out;
+	out.open("AllRegisteredUsers.txt", std::ios::app);
+	out << username << "\n";
+	out.close();
 }
 
 void AccountManager::SaveUserForCurrentRoom(std::string username)
@@ -86,22 +91,22 @@ void AccountManager::PrintUsernames()
 
 void AccountManager::Login(std::string username)
 {
-	if (m_user.find(username) == m_user.end())
+	if (!FoundUserInFile(username)/*m_user.find(username) == m_user.end()*/)
 	{
 		std::cout << "The username " << username << " doesn't exists. Exit and sign-up." << std::endl;
 	}
 	else
 	{
-		std::cout << "Welcome back " << username << "!" << std::endl;
+		std::cout << "Welcome " << username << "!" << std::endl;
 	}
 }
 
 void AccountManager::SignUp(std::string username)
 {
-	if (m_user.find(username) == m_user.end())
+	if (!FoundUserInFile(username)/*m_user.find(username) == m_user.end()*/)
 	{
 		SaveUser(username, 0);
-		std::cout << "Thank you for choosing to be with us. Enjoy your stay!";
+		std::cout << "Thank you for choosing to be with us. Enjoy your stay!\n";
 	}
 	else
 	{
