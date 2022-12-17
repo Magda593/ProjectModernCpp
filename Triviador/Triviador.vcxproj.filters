@@ -70,7 +70,17 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="questionType2.txt" />
-    <Text Include="questionType1.txt" />
+    <Text Include="questionType1.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="questionType2.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="AllRegisteredUsers.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="RoomUsers.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

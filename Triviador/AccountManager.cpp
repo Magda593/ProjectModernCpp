@@ -28,6 +28,27 @@ std::string AccountManager::GetScoreForXUsername(std::string username) const
 	}
 }
 
+bool AccountManager::FoundUserInFile(std::string username)
+{
+	std::ifstream inFile;
+	std::string line;
+	int ok = 0;
+	inFile.open("AllRegisteredUsers.txt");
+
+	if (!inFile) std::cout << "Unable to open file.";
+	while (inFile.good())
+	{
+		std::getline(inFile, line);
+		std::size_t pos = line.find(username);
+		if (pos != std::string::npos)
+			ok = 1;
+	}
+	if (ok == 1)
+		return true;
+	else
+		return false;
+}
+
 void AccountManager::SetScoreForXUsername(std::string username, int newScore)
 {
 	if (m_user.find(username) == m_user.end())
@@ -44,6 +65,14 @@ void AccountManager::SetScoreForXUsername(std::string username, int newScore)
 void AccountManager::SaveUser(std::string username, int score)
 {
 	m_user.insert(std::make_pair(username, score));
+}
+
+void AccountManager::SaveRegisteredUsersInFile(std::string username)
+{
+}
+
+void AccountManager::SaveUserForCurrentRoom(std::string username)
+{
 }
 
 void AccountManager::PrintUsernames()
