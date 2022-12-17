@@ -78,6 +78,10 @@ void AccountManager::SaveRegisteredUsersInFile(std::string username)
 
 void AccountManager::SaveUserForCurrentRoom(std::string username)
 {
+	std::ofstream out;
+	out.open("RoomUsers.txt", std::ios::app);
+	out << username << "\n";
+	out.close();
 }
 
 void AccountManager::PrintUsernames()

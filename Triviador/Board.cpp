@@ -75,12 +75,13 @@ int Board::GetSize()
 void Board::Test()
 {
 	std::cout << "Nr Players: " << m_numberOfPlayers;
-	std::cout << std::endl;
+	std::cout << "\n";
 	std::cout << "Width " << m_kWidth;
-	std::cout << std::endl;
+	std::cout << "\n";
 	std::cout << "Height " << m_kHeight;
-	std::cout << std::endl;
+	std::cout << "\n";
 	std::cout << "Board size: " << m_kSize;
+	std::cout << "\n";
 }
 
 std::ostream& operator<<(std::ostream& out, const Board& board)

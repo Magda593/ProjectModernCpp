@@ -50,7 +50,7 @@ int main()
 	//questions.close();
 	//question1.GetQuestion1();
 
-	QuestionType2 question2;
+	/*QuestionType2 question2;
 	std::ifstream questions;
 	std::string questionTwo;
 	int answerTwo;
@@ -65,7 +65,7 @@ int main()
 		question2.SaveQuestion(questionTwo, answerTwo);
 	}
 	questions.close();
-	question2.GetQuestion();
+	question2.GetQuestion();*/
 
 	//Board board;
 	//std::cout << "What is the number of players you'd like this game to have?\n";
@@ -77,22 +77,31 @@ int main()
 	//std::cout << board;
 	//board.Test();
 
-	Game game;
-	game.MenuForTheGame();
+	/*Game game;
+	game.MenuForTheGame();*/
 
-	QuestionManager questionManager;
+	/*QuestionManager questionManager;
 	std::string question1;
 	std::string option1;
 	std::string option2;
 	std::string option3;
 	std::string option4;
 	std::string correctAnswer;
-	questionManager.ReadQuestion(question1, option1, option2, option3, option4, correctAnswer);
+	questionManager.ReadQuestion(question1, option1, option2, option3, option4, correctAnswer);*/
 
 	//PowerUps powerUps;
 	//std::vector<int> powers;
 	//powerUps.AllPowers(powers);
 	//powerUps.UsedPowers(powers);
+
+	AccountManager am;
+	am.SignUp("Ash");
+	am.SignUp("Yan");
+	am.Login("Cathy");
+	std::cout << "Ash user: " << am.FoundUserInFile("Ash");
+	std::cout << "\n";
+	std::cout << "Cathy user: " << am.FoundUserInFile("Cathy");
+
 
 	return 0;
 }
