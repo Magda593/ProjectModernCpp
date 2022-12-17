@@ -20,8 +20,7 @@ void Game::MenuForTheGame()
 			std::string username;
 			std::cin >> username;
 			user.SignUp(username);
-			std::cout << "Now that you have registered, please choose the log in option.\n";
-			//std::cout << AnythingElseQ;
+			std::cout << AnythingElseQ;
 			break;
 		}
 		case 2:
@@ -58,6 +57,36 @@ void Game::MenuForALoggedInUser()
 	std::cout << "2. Start game.\n";
 	std::cout << "99. Exit.\n";
 	std::cin >> m_option;
+
+	while (m_option != 99)
+	{
+		switch (m_option)
+		{
+		case 1:
+		{
+			std::cout << "This option is yet to come.";
+			std::cout << AnythingElseQ;
+			break;
+		}
+		case 2:
+		{
+			std::cout << "What is the number of players you'd like this game to have? \n";
+			SetGame();
+			break;
+		}
+		case 99:
+		{
+			std::cout << "You chose to exit! \n";
+			break;
+		}
+		default:
+		{
+			std::cout << "Please choose a valid action. :( \n";
+			break;
+		}
+		}
+		std::cin >> m_option;
+	}
 }
 
 void Game::SetGame()

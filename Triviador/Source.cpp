@@ -77,8 +77,8 @@ int main()
 	//std::cout << board;
 	//board.Test();
 
-	/*Game game;
-	game.MenuForTheGame();*/
+	Game game;
+	game.MenuForTheGame();
 
 	/*QuestionManager questionManager;
 	std::string question1;
@@ -94,13 +94,13 @@ int main()
 	//powerUps.AllPowers(powers);
 	//powerUps.UsedPowers(powers);
 
-	AccountManager am;
+	/*AccountManager am;
 	am.SignUp("Ash");
 	am.SignUp("Yan");
 	am.Login("Cathy");
 	std::cout << "Ash user: " << am.FoundUserInFile("Ash");
 	std::cout << "\n";
-	std::cout << "Cathy user: " << am.FoundUserInFile("Cathy");
+	std::cout << "Cathy user: " << am.FoundUserInFile("Cathy");*/
 
 
 	return 0;
