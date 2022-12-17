@@ -8,6 +8,7 @@ class Game
 {
 public:
 	void MenuForTheGame();
+	void MenuForALoggedInUser();
 	void SetGame();
 
 private:

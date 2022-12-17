@@ -6,7 +6,7 @@ void Game::MenuForTheGame()
 	std::cout << "Welcome to the game! Please choose an option: \n";
 	std::cout << "1. Register\n";
 	std::cout << "2. Login\n";
-	std::cout << "3. Start Game.\n";
+	/*std::cout << "3. Start Game.\n";*/
 	std::cout << "99. Exit.\n";
 	std::cin >> m_option;
 
@@ -20,7 +20,8 @@ void Game::MenuForTheGame()
 			std::string username;
 			std::cin >> username;
 			user.SignUp(username);
-			std::cout << AnythingElseQ;
+			std::cout << "Now that you have registered, please choose the log in option.\n";
+			//std::cout << AnythingElseQ;
 			break;
 		}
 		case 2:
@@ -29,29 +30,34 @@ void Game::MenuForTheGame()
 			std::string username;
 			std::cin >> username;
 			user.Login(username);
-			std::cout << AnythingElseQ;
-			break;
-		}
-		case 3:
-		{
-			std::cout << "What is the number of players you'd like this game to have? \n";
-			SetGame();
+			std::cout << "\n";
+			//std::cout << AnythingElseQ;
+			MenuForALoggedInUser();
 			break;
 		}
 		case 99:
 		{
-			std::cout << "You chose to exit!\n";
+			std::cout << "You chose to exit! \n";
 			break;
 		}
 		default:
 		{
-			std::cout << "Please choose a valid action. :(\n";
+			std::cout << "Please choose a valid action. :( \n";
 			break;
 		}
 		}
 		std::cin >> m_option;
 	}
 
+}
+
+void Game::MenuForALoggedInUser()
+{
+	std::cout << "Now please choose an option: \n";
+	std::cout << "1. See your profile.\n";
+	std::cout << "2. Start game.\n";
+	std::cout << "99. Exit.\n";
+	std::cin >> m_option;
 }
 
 void Game::SetGame()
