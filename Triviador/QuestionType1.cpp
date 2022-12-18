@@ -1,6 +1,6 @@
 #include "QuestionType1.h"
 
-QuestionType1::QuestionType1()
+/*QuestionType1::QuestionType1()
 {
 }
 
@@ -45,5 +45,5 @@ QuestionType1& QuestionType1::operator=(QuestionType1&& questionType1)
 	m_questionType1 = questionType1.m_questionType1;
 	new (&questionType1) QuestionType1;
 	return *this;
-}
+}*/
 
