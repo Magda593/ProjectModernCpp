@@ -77,8 +77,8 @@ int main()
 	//std::cout << board;
 	//board.Test();
 
-	Game game;
-	game.MenuForTheGame();
+	//Game game;
+	//game.MenuForTheGame();
 
 	/*QuestionManager questionManager;
 	std::string question1;
@@ -102,6 +102,22 @@ int main()
 	std::cout << "\n";
 	std::cout << "Cathy user: " << am.FoundUserInFile("Cathy");*/
 
+	Board board;
+	int numberOfPlayers;
+	std::cin >> numberOfPlayers;
+	board.SetNumberOfPlayers(numberOfPlayers);
+	board.SetBoard();
+	board.MakeBoard();
+	std::cout << "This is what the board looks like: \n";
+	std::cout << board;
+	std::cout << "Stats about the game: \n";
+	board.Test();
+
+	int line, column;
+	std::cin >> line;
+	std::cin >> column;
+	board.ChangeBoard(line, column);
+	std::cout << board;
 
 	return 0;
 }

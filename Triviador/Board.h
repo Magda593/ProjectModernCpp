@@ -14,6 +14,7 @@ public:
 	void SetSize();
 	void SetBoard();
 	void MakeBoard();
+	void ChangeBoard(int line, int column);
 
 	int GetSize();
 

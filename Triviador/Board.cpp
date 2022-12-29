@@ -67,6 +67,12 @@ void Board::MakeBoard()
 	}
 }
 
+void Board::ChangeBoard(int line, int column)
+{
+	m_board[line][column] = "  100 ";
+	//m_board[line][column] = simpleRegion;
+}
+
 int Board::GetSize()
 {
 	return m_kSize;

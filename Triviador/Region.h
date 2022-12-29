@@ -36,4 +36,3 @@ private:
 	SimpleRegion m_simpleRegion : 1;
 	UpgradedRegion m_upgradedRegion : 2;
 };
-
