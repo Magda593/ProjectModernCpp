@@ -1,6 +1,6 @@
 #pragma once
 
-#include "QuestionManager.h"
+#include "Question.h"
 
 #include<vector>
 
@@ -8,7 +8,9 @@ class GrillQuestion
 {
 public:
 	GrillQuestion();
+	
+
 private:
-	std::vector<QuestionManager> m_grillQuestion;
+	std::vector<Question> m_grillQuestion;
 };
 

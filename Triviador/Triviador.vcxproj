@@ -144,6 +144,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GrillQuestion.h" />
     <ClInclude Include="PowerUps.h" />
+    <ClInclude Include="Question.h" />
     <ClInclude Include="QuestionManager.h" />
     <ClInclude Include="QuestionType1.h" />
     <ClInclude Include="QuestionType2.h" />
@@ -155,6 +156,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GrillQuestion.cpp" />
     <ClCompile Include="PowerUps.cpp" />
+    <ClCompile Include="Question.cpp" />
     <ClCompile Include="QuestionManager.cpp" />
     <ClCompile Include="QuestionType1.cpp" />
     <ClCompile Include="QuestionType2.cpp" />

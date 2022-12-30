@@ -1,6 +1,6 @@
 #pragma once
 
-#include "QuestionManager.h"
+#include "Question.h"
 
 #include<unordered_map>
 #include<vector>

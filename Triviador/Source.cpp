@@ -2,7 +2,7 @@
 #include <fstream>
 #include <string>
 #include "Game.h"
-#include "QuestionManager.h"
+#include "Question.h"
 #include "PowerUps.h"
 int main()
 {
@@ -118,6 +118,8 @@ int main()
 	std::cin >> column;
 	board.ChangeBoard(line, column);
 	std::cout << board;
+
+
 
 	return 0;
 }
