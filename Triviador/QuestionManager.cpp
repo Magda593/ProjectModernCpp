@@ -15,3 +15,10 @@ void QuestionManager::GetQuestionType(GrillQuestion grillQuestion, QuestionType2
 	//else
 		//show a numeric question
 }
+
+void QuestionManager::GetRandomGrillQuestion(QuestionManager questionManager)
+{
+	int position;
+	position=questionManager.GetRandomNumber(74);
+	//std::cout << grillQuestion.at(position);
+}
