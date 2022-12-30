@@ -1,5 +1,9 @@
 #include "QuestionManager.h"
 
+QuestionManager::QuestionManager()
+{
+}
+
 int QuestionManager::GetRandomNumber(int x)
 {
 	srand(time(NULL));
@@ -16,9 +20,16 @@ void QuestionManager::GetQuestionType(GrillQuestion grillQuestion, QuestionType2
 		//show a numeric question
 }
 
-void QuestionManager::GetRandomGrillQuestion(QuestionManager questionManager)
+void QuestionManager::GetRandomGrillQuestion(GrillQuestion grillQuestion, QuestionManager questionManager)
 {
 	int position;
-	position=questionManager.GetRandomNumber(74);
+	position = questionManager.GetRandomNumber(50);
+	//acces a member of an unordered_map
+}
+
+void QuestionManager::GetRandomNumericQuestion(QuestionType2 questionType2, QuestionManager questionManager)
+{
+	int position;
+	position = questionManager.GetRandomNumber(74);
 	//std::cout << grillQuestion.at(position);
 }

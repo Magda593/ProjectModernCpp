@@ -11,11 +11,13 @@ class QuestionManager
 {
 public:
 
+	QuestionManager();
+
 	int GetRandomNumber(int x);
 	void GetQuestionType(GrillQuestion grillQuestion, QuestionType2 questionType2, QuestionManager questionManager);
 
-	void GetRandomGrillQuestion(QuestionManager questionManager);
-	void GetRandomNumericQuestion(QuestionType2 questionType2);
+	void GetRandomGrillQuestion(GrillQuestion grillQuestion, QuestionManager questionManager);
+	void GetRandomNumericQuestion(QuestionType2 questionType2, QuestionManager questionManager);
 
 private:
 	GrillQuestion m_grillQuestion;
