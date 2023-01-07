@@ -14,6 +14,8 @@ public:
 	void ReadQuestion(std::string question1, std::string option1, std::string option2, std::string option3, std::string option4, std::string correctAnswer);
 	Question& operator=(Question&& question);
 	int Equal(std::string correctAnswer, std::string answer);
+	friend std::ostream& operator<<(std::ostream& os, const Question& question);
+	
 	
 private:
 	std::string m_question1;

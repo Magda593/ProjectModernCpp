@@ -8,7 +8,6 @@ class GrillQuestion
 {
 public:
 	GrillQuestion();
-	
 
 private:
 	std::vector<Question> m_grillQuestion;

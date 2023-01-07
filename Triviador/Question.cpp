@@ -47,8 +47,12 @@ int Question::Equal(std::string correctAnswer, std::string answer)
 	return false;
 }
 
-
-
-
-
-
+std::ostream& operator<<(std::ostream& os, const Question& question)
+{
+	os << question.m_question1 << std::endl;
+	os << question.m_option1 << std::endl;
+	os << question.m_option2 << std::endl;
+	os << question.m_option3 << std::endl;
+	os << question.m_option4 << std::endl;
+	return os;
+}

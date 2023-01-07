@@ -1,6 +1,8 @@
 #pragma once
 #include <vector>
 #include <iostream>
+#include "Question.h"
+
 class PowerUps
 {
 public:
@@ -10,17 +12,9 @@ public:
 	void AllPowers(std::vector<int> powerUps);
 	void UsedPowers(std::vector<int> powerUps);
 
-	void CloseAnswer(int answer)
-	{
-		std::cin >> answer;
-		if (answer % 2 == 0)
-			std::cout << answer + 10;
-		else
-			std::cout << answer - 10;
-	}
+	void CloseAnswer(int answer);
+	//void FiftyFifty(std::vector<Question> question);
 
-	//void FiftyFifty();
-	//void CloseAnswer();
 private:
 	std::vector<int> m_powerUps;
 };

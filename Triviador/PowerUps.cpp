@@ -28,3 +28,12 @@ void PowerUps::UsedPowers(std::vector<int> powerUps)
 		std::cout<<powerUps[i]<<" ";
 	}
 }
+
+void PowerUps::CloseAnswer(int answer)
+{
+	std::cin >> answer;
+	if (answer % 2 == 0)
+		std::cout << answer + 10;
+	else
+		std::cout << answer - 10;
+}
