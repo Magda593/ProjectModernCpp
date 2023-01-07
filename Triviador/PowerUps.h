@@ -13,7 +13,7 @@ public:
 	void UsedPowers(std::vector<int> powerUps);
 
 	void CloseAnswer(int answer);
-	//void FiftyFifty(std::vector<Question> question);
+	void FiftyFifty(Question currentQuestion, const Question& question);
 
 private:
 	std::vector<int> m_powerUps;

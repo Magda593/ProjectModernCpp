@@ -15,6 +15,7 @@ public:
 	Question& operator=(Question&& question);
 	int Equal(std::string correctAnswer, std::string answer);
 	friend std::ostream& operator<<(std::ostream& os, const Question& question);
+	void ShowTwoOptions(Question question);
 	
 	
 private:

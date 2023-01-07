@@ -47,6 +47,30 @@ int Question::Equal(std::string correctAnswer, std::string answer)
 	return false;
 }
 
+void Question::ShowTwoOptions(Question question)
+{
+	if (question.Equal(question.m_correctAnswer, "a"))
+	{
+		std::cout << question.m_option2 << std::endl;
+		std::cout << question.m_option4 << std::endl;
+	}
+	if (question.Equal(question.m_correctAnswer, "b"))
+	{
+		std::cout << question.m_option1 << std::endl;
+		std::cout << question.m_option3 << std::endl;
+	}
+	if (question.Equal(question.m_correctAnswer, "c"))
+	{
+		std::cout << question.m_option1 << std::endl;
+		std::cout << question.m_option4 << std::endl;
+	}
+	if (question.Equal(question.m_correctAnswer, "d"))
+	{
+		std::cout << question.m_option2 << std::endl;
+		std::cout << question.m_option3 << std::endl;
+	}
+}
+
 std::ostream& operator<<(std::ostream& os, const Question& question)
 {
 	os << question.m_question1 << std::endl;

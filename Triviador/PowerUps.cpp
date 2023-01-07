@@ -37,3 +37,9 @@ void PowerUps::CloseAnswer(int answer)
 	else
 		std::cout << answer - 10;
 }
+
+/*void PowerUps::FiftyFifty(Question currentQuestion, const Question& question)
+{
+	currentQuestion.ShowTwoOptions(question);
+}*/
+

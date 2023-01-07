@@ -3,4 +3,4 @@ a. Budapesta
 b. Bucuresti
 c. Sofia
 d. Viena
-b. Bucuresti
+b
