@@ -88,6 +88,26 @@ bool Board::BoardFullFromOnePlayer(std::string toCheck)
 	return equal;
 }
 
+const std::optional<Region>& Board::operator[](const Position& pos) const
+{
+	const auto& [line, column] = pos;
+
+	if (line >= m_kHeight || column >= m_kWidth)
+		throw std::out_of_range("Board index out of bound.");
+
+	return m_optBoard[line * m_kWidth + column];
+}
+
+std::optional<Region>& Board::operator[](const Position& pos)
+{
+	const auto& [line, column] = pos;
+
+	if (line >= m_kHeight || column >= m_kWidth)
+		throw "Board index out of bound.";
+
+	return m_optBoard[line * m_kWidth + column];
+}
+
 int Board::GetSize()
 {
 	return m_kSize;

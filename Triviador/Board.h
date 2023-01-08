@@ -2,11 +2,14 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include<optional>
+#include "Region.h"
 
 class Board
 {
 public:
 	Board() = default;
+	using Position = std::pair<int, int>;
 
 	void SetNumberOfPlayers(int numberOfPlayers);
 	void SetWidth(int width);
@@ -15,10 +18,12 @@ public:
 	void SetBoard();
 	void MakeBoard();
 	void ChangeBoard(int line, int column);
+	int GetSize();
 
 	bool BoardFullFromOnePlayer(std::string toCheck);
 
-	int GetSize();
+	const std::optional<Region>& operator[] (const Position& pos) const;
+	std::optional<Region>& operator[] (const Position& pos);
 
 	friend std::ostream& operator<<(std::ostream& out, const Board& board);
 
