@@ -73,6 +73,21 @@ void Board::ChangeBoard(int line, int column)
 	//m_board[line][column] = simpleRegion;
 }
 
+bool Board::BoardFullFromOnePlayer(std::string toCheck)
+{
+	bool equal = true;
+	for (int i = 0; i < m_kHeight; i++)
+	{
+		for (int j = 0; j < m_kWidth; j++)
+		{
+			if (m_board[i][j] != toCheck)
+				equal = false;
+			//std::cout << "\n Is equal? " << equal;
+		}
+	}
+	return equal;
+}
+
 int Board::GetSize()
 {
 	return m_kSize;

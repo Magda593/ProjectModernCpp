@@ -16,6 +16,8 @@ public:
 	void MakeBoard();
 	void ChangeBoard(int line, int column);
 
+	bool BoardFullFromOnePlayer(std::string toCheck);
+
 	int GetSize();
 
 	friend std::ostream& operator<<(std::ostream& out, const Board& board);
@@ -30,5 +32,6 @@ private:
 	int m_numberOfPlayers;
 
 	std::vector<std::vector<std::string>> m_board;
+	std::vector<std::optional<Region>> m_optBoard;
 };
 
