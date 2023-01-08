@@ -1,49 +1,48 @@
 #include "Region.h"
 
 Region::Region() :
-	Region(Base::None, SimpleRegion::None, UpgradedRegion::None)
+	Region(Regions::None)
+{
+	//Empty
+}
+//
+Region::Region(Regions region) :
+	m_region(region)
 {
 	//Empty
 }
 
-Region::Region(Base base, SimpleRegion simpleRegion, UpgradedRegion upgradedRegion) :
-	m_base(base),
-	m_simpleRegion(simpleRegion),
-	m_upgradedRegion(upgradedRegion)
+Region::Region(const Region& other)
 {
-	//Empty
+	*this = other;
 }
 
+Region::Region(Region&& other)
+{
+	*this = std::move(other);
+}
+
+Region::~Region()
+{
+	m_region = Regions::None;
+}
+//
 Region& Region::operator=(const Region& other)
 {
-	m_base = other.m_base;
-	m_simpleRegion = other.m_simpleRegion;
-	m_upgradedRegion = other.m_upgradedRegion;
+	m_region = other.m_region;
 
 	return *this;
 }
 
 Region& Region::operator=(Region&& other)
 {
-	m_base = other.m_base;
-	m_simpleRegion = other.m_simpleRegion;
-	m_upgradedRegion = other.m_upgradedRegion;
+	m_region = other.m_region;
 
 	new(&other) Region;
 	return*this;
 }
 
-Region::Base Region::GetBase() const
+Region::Regions Region::GetRegions() const
 {
-	return m_base;
-}
-
-Region::SimpleRegion Region::GetSimpleRegion()
-{
-	return m_simpleRegion;
-}
-
-Region::UpgradedRegion Region::GetUpgradedRegion()
-{
-	return m_upgradedRegion;
+	return m_region;
 }

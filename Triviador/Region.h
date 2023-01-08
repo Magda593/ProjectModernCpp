@@ -4,35 +4,27 @@
 class Region
 {
 public:
-	enum class Base : int
+	enum class Regions : int
 	{
-		None,
-		Base
-	};
-	enum class SimpleRegion : int
-	{
-		None,
-		SimpleRegion
-	};
-	enum class UpgradedRegion : int
-	{
-		None,
-		UpgradedRegion
+		SimpleRegion,
+		UpgradedRegion,
+		Base,
+		None
 	};
 
 public:
 	Region();
-	Region(Base base, SimpleRegion simpleRegion, UpgradedRegion upgradedRegion);
+	Region(Regions region);
+
+	Region(const Region& other);
+	Region(Region&& other);
+	~Region();
 
 	Region& operator = (const Region& other);
 	Region& operator = (Region&& other);
 
-	Base GetBase() const;
-	SimpleRegion GetSimpleRegion();
-	UpgradedRegion GetUpgradedRegion();
+	Regions GetRegions() const;
 
 private:
-	Base m_base : 3;
-	SimpleRegion m_simpleRegion : 1;
-	UpgradedRegion m_upgradedRegion : 2;
+	Regions m_region : 2;
 };
