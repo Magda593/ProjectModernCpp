@@ -119,7 +119,14 @@ int main()
 	board.ChangeBoard(line, column);
 	std::cout << board;
 
-
+	while (board.BoardFullFromOnePlayer("  100 ") == false)
+	{
+		std::cout << board.BoardFullFromOnePlayer("100");
+		std::cin >> line;
+		std::cin >> column;
+		board.ChangeBoard(line, column);
+		std::cout << board;
+	}
 
 	return 0;
 }
