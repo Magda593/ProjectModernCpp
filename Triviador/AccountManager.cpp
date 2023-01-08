@@ -4,9 +4,9 @@ AccountManager::AccountManager()
 {
 }
 
-AccountManager::AccountManager(std::string username, int score) :
+AccountManager::AccountManager(std::string username, int playedGames) :
 	m_username(username),
-	m_score(score)
+	m_playedGames(playedGames)
 {
 }
 
@@ -62,19 +62,34 @@ void AccountManager::SetScoreForXUsername(std::string username, int newScore)
 	}
 }
 
-void AccountManager::SaveUser(std::string username, int score)
+void AccountManager::SetPlayedGamesForXUsr(std::pair<std::string, int> user)
 {
-	m_user.insert(std::make_pair(username, score));
-	SaveRegisteredUsersInFile(username);
+
 }
 
-void AccountManager::SaveRegisteredUsersInFile(std::string username)
+void AccountManager::SaveUser(std::string username, int playedGames)
+{
+	//std::make_pair(username, score);
+	//m_user.insert(std::make_pair(username, playedGames));
+	SaveRegisteredUsersInFile(std::make_pair(username, playedGames));
+}
+
+void AccountManager::SaveRegisteredUsersInFile(std::pair<std::string, int> user)
 {
 	std::ofstream out;
 	out.open("AllRegisteredUsers.txt", std::ios::app);
-	out << username << "\n";
+	out << user.first << " " << user.second << "\n";
+	//m_user.insert(user);
 	out.close();
 }
+
+//void AccountManager::SaveRegisteredUsersInFile(std::string username)
+//{
+//	std::ofstream out;
+//	out.open("AllRegisteredUsers.txt", std::ios::app);
+//	out << username << "\n";
+//	out.close();
+//}
 
 void AccountManager::SaveUserForCurrentRoom(std::string username)
 {
