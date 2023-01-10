@@ -1,4 +1,6 @@
 #include "Board.h"
+#include <algorithm>
+#include <cassert>
 const std::string kEmptyBoardCell = "____";
 
 void Board::SetNumberOfPlayers(int numberOfPlayers)
@@ -78,6 +80,19 @@ std::optional<Region>& Board::operator[](const Position& pos)
 int Board::GetSize()
 {
 	return m_kSize;
+}
+
+bool Board::IsFull() const
+{
+	return std::all_of(
+		m_optBoard.begin(),
+		m_optBoard.end(),
+		[](const std::optional<Region>& optionalRegion)
+		{
+			return optionalRegion.has_value();
+		}
+	);
+	return false;
 }
 
 void Board::Test()

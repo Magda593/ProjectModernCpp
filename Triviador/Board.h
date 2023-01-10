@@ -18,6 +18,8 @@ public:
 	void SetBoard();
 	int GetSize();
 
+	bool IsFull() const;
+
 	bool BoardFullFromOnePlayer(std::string toCheck);
 
 	const std::optional<Region>& operator[] (const Position& pos) const;
