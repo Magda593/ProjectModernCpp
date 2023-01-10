@@ -16,8 +16,6 @@ public:
 	void SetHeight(int height);
 	void SetSize();
 	void SetBoard();
-	void MakeBoard();
-	void ChangeBoard(int line, int column);
 	int GetSize();
 
 	bool BoardFullFromOnePlayer(std::string toCheck);
@@ -35,8 +33,6 @@ private:
 	int m_kHeight;
 	int m_kSize;
 	int m_numberOfPlayers;
-
-	//std::vector<std::vector<std::string>> m_board;
 	
 	std::vector<std::optional<Region>> m_optBoard;
 };

@@ -5,7 +5,7 @@ Region::Region() :
 {
 	//Empty
 }
-//
+
 Region::Region(Regions region) :
 	m_region(region)
 {
@@ -49,5 +49,5 @@ Region::Regions Region::GetRegions() const
 
 std::ostream& operator<<(std::ostream& os, const Region& region)
 {
-	return os << static_cast<int>(region.m_region) - 1;
+	return os << static_cast<int>(region.m_region);
 }

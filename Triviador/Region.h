@@ -28,5 +28,5 @@ public:
 	Regions GetRegions() const;
 
 private:
-	Regions m_region:4;
+	Regions m_region;
 };

@@ -1,5 +1,5 @@
 #include "Board.h"
-const std::string kEmptyBoardCell = " ____ ";
+const std::string kEmptyBoardCell = "____";
 
 void Board::SetNumberOfPlayers(int numberOfPlayers)
 {
@@ -55,65 +55,23 @@ void Board::SetBoard()
 	}
 }
 
-//void Board::MakeBoard()
-//{
-//	for (int i = 0; i < m_kHeight; i++)
-//	{
-//		std::vector<std::string> curent;
-//		for (int j = 0; j < m_kWidth; j++)
-//		{
-//			curent.push_back(kEmptyBoardCell);
-//		}
-//		m_board.push_back(curent);
-//	}
-//}
-
-//void Board::ChangeBoard(int line, int column)
-//{
-//	Region::Regions simpleRegion = Region::Regions::SimpleRegion;
-//	int n = static_cast<int>(simpleRegion);
-//	m_board[line][column] = n;
-//
-//}
-//
-//bool Board::BoardFullFromOnePlayer(std::string toCheck)
-//{
-//	bool equal = true;
-//	for (int i = 0; i < m_kHeight; i++)
-//	{
-//		for (int j = 0; j < m_kWidth; j++)
-//		{
-//			if (m_board[i][j] != toCheck)
-//				equal = false;
-//			//std::cout << "\n Is equal? " << equal;
-//		}
-//	}
-//	return equal;
-//}
-
 const std::optional<Region>& Board::operator[](const Position& pos) const
 {
-	//const auto& [line, column] = pos;
-
-	//if (line >= m_kHeight || column >= m_kWidth)
-	//	throw std::out_of_range("Board index out of bound.");
-
-	////return m_optBoard[line * m_kWidth + column];
-	//return m_board[line][column];
 	const auto& [line, column] = pos;
+
+	if (line >= m_kHeight || column >= m_kWidth)
+		throw "Board index out of bound.";
+
 	return m_optBoard[line * m_kWidth + column];
 }
 
 std::optional<Region>& Board::operator[](const Position& pos)
 {
-	//const auto& [line, column] = pos;
-
-	//if (line >= m_kHeight || column >= m_kWidth)
-	//	throw "Board index out of bound.";
-
-	////return m_optBoard[line * m_kWidth + column];
-	//return m_board[line][column];
 	const auto& [line, column] = pos;
+
+	if (line >= m_kHeight || column >= m_kWidth)
+		throw "Board index out of bound.";
+
 	return m_optBoard[line * m_kWidth + column];
 }
 
@@ -138,7 +96,6 @@ std::ostream& operator<<(std::ostream& out, const Board& board)
 {
 	static const int height = board.m_kHeight;
 	static const int width = board.m_kWidth;
-	static const int a = board.m_optBoard.size();
 
 	Board::Position position;
 	auto& [line, column] = position;
@@ -156,14 +113,4 @@ std::ostream& operator<<(std::ostream& out, const Board& board)
 		out << std::endl;
 	}
 	return out;
-
-	/*for (int i = 0; i < board.m_kHeight; i++)
-	{
-		for (int j = 0; j < board.m_kWidth; j++)
-		{
-			out << board.m_board[i][j];
-		}
-		out << "\n";
-	}
-	return out;*/
 }
