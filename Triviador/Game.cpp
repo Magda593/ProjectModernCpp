@@ -95,7 +95,6 @@ void Game::SetGame()
 	std::cin >> numberOfPlayers;
 	board.SetNumberOfPlayers(numberOfPlayers);
 	board.SetBoard();
-	board.MakeBoard();
 	std::cout << "This is what the board looks like: \n";
 	std::cout << board;
 	std::cout << "Stats about the game: \n";

@@ -46,3 +46,8 @@ Region::Regions Region::GetRegions() const
 {
 	return m_region;
 }
+
+std::ostream& operator<<(std::ostream& os, const Region& region)
+{
+	return os << static_cast<int>(region.m_region) - 1;
+}

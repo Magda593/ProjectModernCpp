@@ -2,8 +2,10 @@
 #include <fstream>
 #include <string>
 #include "Game.h"
+#include"Board.h"
 #include "Question.h"
 #include "PowerUps.h"
+#include"Region.h"
 int main()
 {
 	////Source.cpp is currently just for checking if our methods work properly
@@ -107,6 +109,15 @@ int main()
 	std::cin >> numberOfPlayers;
 	board.SetNumberOfPlayers(numberOfPlayers);
 	board.SetBoard();
+	std::cout << "Empty board:\n" << board << std::endl;
+	board[{0, 1}] = Region::Regions::SimpleRegion;
+	std::cout << board;
+
+	/*Board board;
+	int numberOfPlayers;
+	std::cin >> numberOfPlayers;
+	board.SetNumberOfPlayers(numberOfPlayers);
+	board.SetBoard();
 	board.MakeBoard();
 	std::cout << "This is what the board looks like: \n";
 	std::cout << board;
@@ -117,16 +128,19 @@ int main()
 	std::cin >> line;
 	std::cin >> column;
 	board.ChangeBoard(line, column);
-	std::cout << board;
+	std::cout << board;*/
+	//board[0,1] = 
+	//board.ChangeBoard(line, column);
 
-	while (board.BoardFullFromOnePlayer("  100 ") == false)
+
+	/*while (board.BoardFullFromOnePlayer("  100 ") == false)
 	{
 		std::cout << board.BoardFullFromOnePlayer("100");
 		std::cin >> line;
 		std::cin >> column;
 		board.ChangeBoard(line, column);
 		std::cout << board;
-	}
+	}*/
 
 	return 0;
 }

@@ -36,7 +36,8 @@ private:
 	int m_kSize;
 	int m_numberOfPlayers;
 
-	std::vector<std::vector<std::string>> m_board;
+	//std::vector<std::vector<std::string>> m_board;
+	
 	std::vector<std::optional<Region>> m_optBoard;
 };
 
