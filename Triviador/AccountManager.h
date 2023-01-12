@@ -11,16 +11,14 @@ public:
 	AccountManager(std::string username, int playedGames);
 
 	const std::string& GetUsername() const;
-	std::string GetScoreForXUsername(std::string username) const;
 
 	bool FoundUserInFile(std::string username);
 
-	void SetScoreForXUsername(std::string username, int newScore);
-	void SetPlayedGamesForXUsr(std::pair<std::string, int> user);
+	void SetPlayedGamesForXUsr(std::string username);
 
 	void SaveUser(std::string username, int playedGames);
-	void SaveRegisteredUsersInFile(std::pair<std::string, int> user);
-	//void SaveRegisteredUsersInFile(std::string username);
+	void SaveRegisteredUsersInFile(std::vector < std::pair<std::string, int>> user);
+	void SaveRegisteredUsersInFile();
 	void SaveUserForCurrentRoom(std::string username);
 	void PrintUsernames();
 	void Login(std::string username);
@@ -28,8 +26,8 @@ public:
 
 private:
 	std::string m_username;
-	int m_score;
+	std::vector<std::pair<std::string, int>> m_user;
 	int m_playedGames;
-	std::unordered_map<std::string, int> m_user;
+	std::pair<int, int> toAdd = std::make_pair(0, 1);
 };
 

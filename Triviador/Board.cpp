@@ -82,6 +82,11 @@ int Board::GetSize()
 	return m_kSize;
 }
 
+int Board::GetNumberOfPlayers()
+{
+	return m_numberOfPlayers;
+}
+
 bool Board::IsFull() const
 {
 	return std::all_of(

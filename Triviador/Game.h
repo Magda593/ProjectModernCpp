@@ -11,6 +11,8 @@ public:
 	void MenuForALoggedInUser();
 	void SetGame();
 
+	void Run2();
+
 private:
 	AccountManager user;
 	Board board;

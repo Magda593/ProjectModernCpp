@@ -15,19 +15,6 @@ const std::string& AccountManager::GetUsername() const
 	return m_username;
 }
 
-std::string AccountManager::GetScoreForXUsername(std::string username) const
-{
-	if (m_user.find(username) == m_user.end())
-	{
-		return "Nonexistent";
-	}
-	else
-	{
-		int value = m_user.find(username)->second;
-		return std::to_string(value);
-	}
-}
-
 bool AccountManager::FoundUserInFile(std::string username)
 {
 	std::ifstream inFile;
@@ -49,47 +36,58 @@ bool AccountManager::FoundUserInFile(std::string username)
 		return false;
 }
 
-void AccountManager::SetScoreForXUsername(std::string username, int newScore)
+void AccountManager::SetPlayedGamesForXUsr(std::string username)
 {
-	if (m_user.find(username) == m_user.end())
-	{
-		std::cout << "There is no " << username << " logged in";
-		std::cout << std::endl;
-	}
-	else
-	{
-		m_user.find(username)->second = newScore;
-	}
-}
+	std::ifstream inFile;
+	std::string line;
+	int ok = 0;
+	inFile.open("AllRegisteredUsers.txt");
 
-void AccountManager::SetPlayedGamesForXUsr(std::pair<std::string, int> user)
-{
+	if (!inFile) std::cout << "Unable to open file.";
+	while (inFile.good())
+	{
+		std::getline(inFile, line);
+		std::size_t pos = line.find(username);
+		if (pos != std::string::npos)
+		{
+			std::pair<std::string, int> are;
+			std::string first = line.substr(0, line.find(" "));
+			
+			std::string second = line.substr(line.find(" "), line.find(" ")+1);
+			int secondint = std::stoi(second);
+			secondint = secondint + 10;
+			are = std::make_pair(first,secondint);
 
+			std::cout << are.first <<" " << are.second;
+		}
+			
+	}
 }
 
 void AccountManager::SaveUser(std::string username, int playedGames)
 {
-	//std::make_pair(username, score);
-	//m_user.insert(std::make_pair(username, playedGames));
-	SaveRegisteredUsersInFile(std::make_pair(username, playedGames));
+	m_user.push_back(std::make_pair(username, playedGames));
+	SaveRegisteredUsersInFile();
 }
 
-void AccountManager::SaveRegisteredUsersInFile(std::pair<std::string, int> user)
+void AccountManager::SaveRegisteredUsersInFile(std::vector<std::pair<std::string,int>> user)
 {
 	std::ofstream out;
 	out.open("AllRegisteredUsers.txt", std::ios::app);
-	out << user.first << " " << user.second << "\n";
-	//m_user.insert(user);
 	out.close();
 }
 
-//void AccountManager::SaveRegisteredUsersInFile(std::string username)
-//{
-//	std::ofstream out;
-//	out.open("AllRegisteredUsers.txt", std::ios::app);
-//	out << username << "\n";
-//	out.close();
-//}
+void AccountManager::SaveRegisteredUsersInFile()
+{
+	std::ofstream out;
+	out.open("AllRegisteredUsers.txt", std::ios::app);
+	for (auto& it : m_user) 
+	{
+		if(!FoundUserInFile(it.first))
+			out << it.first<<" " << it.second << "\n";
+	}
+	out.close();
+}
 
 void AccountManager::SaveUserForCurrentRoom(std::string username)
 {
@@ -101,16 +99,15 @@ void AccountManager::SaveUserForCurrentRoom(std::string username)
 
 void AccountManager::PrintUsernames()
 {
-	for (auto user : m_user)
+	for (auto& it : m_user) 
 	{
-		std::cout << user.first << " " << user.second;
-		std::cout << std::endl;
+		std::cout << it.first << " "<<it.second << std::endl;
 	}
 }
 
 void AccountManager::Login(std::string username)
 {
-	if (!FoundUserInFile(username)/*m_user.find(username) == m_user.end()*/)
+	if (!FoundUserInFile(username))
 	{
 		std::cout << "The username " << username << " doesn't exists. Exit and sign-up." << std::endl;
 	}
@@ -122,7 +119,7 @@ void AccountManager::Login(std::string username)
 
 void AccountManager::SignUp(std::string username)
 {
-	if (!FoundUserInFile(username)/*m_user.find(username) == m_user.end()*/)
+	if (!FoundUserInFile(username))
 	{
 		SaveUser(username, 0);
 		std::cout << "Thank you for choosing to be with us. Enjoy your stay!\n";

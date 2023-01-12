@@ -17,6 +17,7 @@ public:
 	void SetSize();
 	void SetBoard();
 	int GetSize();
+	int GetNumberOfPlayers();
 
 	bool IsFull() const;
 
