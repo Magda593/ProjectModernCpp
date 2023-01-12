@@ -85,7 +85,7 @@
     <Text Include="questionType1.txt">
       <Filter>Resource Files</Filter>
     </Text>
-    <Text Include="questionType2.txt">
+    <Text Include="grillQuestion.txt">
       <Filter>Resource Files</Filter>
     </Text>
     <Text Include="AllRegisteredUsers.txt">
