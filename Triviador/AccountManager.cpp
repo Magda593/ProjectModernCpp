@@ -52,15 +52,15 @@ void AccountManager::SetPlayedGamesForXUsr(std::string username)
 		{
 			std::pair<std::string, int> are;
 			std::string first = line.substr(0, line.find(" "));
-			
 			std::string second = line.substr(line.find(" "), line.find(" ")+1);
 			int secondint = std::stoi(second);
-			secondint = secondint + 10;
+			secondint = secondint + 1;
 			are = std::make_pair(first,secondint);
-
+			if(secondint!= std::stoi(second))
+				SaveUser(first, secondint);
+			break;
 			std::cout << are.first <<" " << are.second;
 		}
-			
 	}
 }
 

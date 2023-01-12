@@ -27,7 +27,7 @@ public:
 private:
 	std::string m_username;
 	std::vector<std::pair<std::string, int>> m_user;
+	std::vector<std::pair<std::string, int>> m_temp;
 	int m_playedGames;
-	std::pair<int, int> toAdd = std::make_pair(0, 1);
 };
 

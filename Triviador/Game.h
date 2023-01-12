@@ -11,6 +11,7 @@ public:
 	void MenuForALoggedInUser();
 	void SetGame();
 
+	void Run();
 	void Run2();
 
 private:
@@ -19,5 +20,6 @@ private:
 	QuestionType1 question1;
 	QuestionType2 question2;
 	int m_option;
+	int m_numberOfPlayers;
 };
 

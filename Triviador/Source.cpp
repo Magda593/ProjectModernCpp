@@ -35,17 +35,17 @@ int main()
 
 	system("Color 0C"); //light green
 
-	//Game game;
-	//game.MenuForTheGame();
+	Game game;
+	game.Run();
 
-	AccountManager am;
+	//AccountManager am;
 	//am.SetPlayedGamesForXUsr(std::make_pair("Ash",0));
 	//am.SignUp("Cath");
 	//am.SignUp("Ar");
 	//am.SignUp("MEk");
 	//am.SignUp("Eri");
-	am.SetPlayedGamesForXUsr("Ar");
-	am.PrintUsernames();
+	/*am.SetPlayedGamesForXUsr("Ar");
+	am.PrintUsernames();*/
 
 	
 	//Board board;

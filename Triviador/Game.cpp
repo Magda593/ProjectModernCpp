@@ -101,9 +101,8 @@ void Game::MenuForALoggedInUser()
 void Game::SetGame()
 {
 	std::cout << "What is the number of players you'd like this game to have? \n";
-	int numberOfPlayers;
-	std::cin >> numberOfPlayers;
-	board.SetNumberOfPlayers(numberOfPlayers);
+	std::cin >> m_numberOfPlayers;
+	board.SetNumberOfPlayers(m_numberOfPlayers);
 	board.SetBoard();
 	std::cout << "This is what the board looks like: \n";
 	std::cout << board;
@@ -111,8 +110,19 @@ void Game::SetGame()
 	board.Test();
 }
 
+void Game::Run()
+{
+	SetGame();
+	if (m_numberOfPlayers == 2)
+		Run2();
+}
+
 void Game::Run2()
 {
 	std::string PlayerOne;
 	std::string PlayerTwo;
+
+	std::ofstream ofs;
+	ofs.open("RoomUsers.txt", std::ofstream::out | std::ofstream::trunc);
+	ofs.close();
 }
