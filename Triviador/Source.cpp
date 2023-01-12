@@ -8,6 +8,8 @@
 #include"Region.h"
 
 #include<Windows.h>
+#include<algorithm>
+#include <random>
 
 int main()
 {
@@ -32,11 +34,26 @@ int main()
 	//	nr++;
 	//}
 
+	std::vector<const char*> colors;
+	colors.push_back("\033[94m");
+	colors.push_back("\033[91m");
+	colors.push_back("\033[95m");
 
-	system("Color 0C"); //light green
+	//const char* reset = "\033[0m";
+	//const char* color= "\033[92m";
+	//const char* color2= "\033[94m";
+	//const char* color3= "\033[91m";
+	//const char* color4 = "\033[95m";
+	//std::cout << color << "Player one. \n";
+	//std::cout << color2 << "Player two.\n";
+	//std::cout << color3 << "Player three.\n";
+	//std::cout << color4 << "Player four.\n";
+	//std::cout << reset;
 
-	Game game;
-	game.Run();
+
+	//Game game;
+	//game.Run();
+
 
 	//AccountManager am;
 	//am.SetPlayedGamesForXUsr(std::make_pair("Ash",0));
@@ -48,25 +65,30 @@ int main()
 	am.PrintUsernames();*/
 
 	
-	//Board board;
-	//int numberOfPlayers;
-	//std::cin >> numberOfPlayers;
-	//board.SetNumberOfPlayers(numberOfPlayers);
-	//board.SetBoard();
-	//std::cout << "Empty board:\n" << board << std::endl; 
-	//while (!board.IsFull())
-	//{
-	//	int line, column;
-	//	std::cin >> line >> column;
-	//	if (!board[{line, column}])
-	//		board[{line, column}] = Region::Regions::SimpleRegion;
-	//	else
-	//		std::cout << "Already there";
-	//	
-	//	std::cout << "\n";
-	//	std::cout << board;
-	//	std::cout << "\n";
-	//}
+	Board board;
+	int numberOfPlayers;
+	std::cin >> numberOfPlayers;
+	board.SetNumberOfPlayers(numberOfPlayers);
+	board.SetBoard();
+	std::cout << "Empty board:\n" << board << std::endl; 
+	while (!board.IsFull())
+	{
+		int line, column;
+		std::cin >> line >> column;
+		if (!board[{line, column}])
+		{
+			std::default_random_engine rng{ std::random_device{}() };
+			std::shuffle(colors.begin(),colors.end(), rng);
+			//numar random marime vector 
+			board[{line, column}] = Region::Regions::SimpleRegion;
+		}
+		else
+			std::cout << "Already there";
+		
+		std::cout << "\n";
+		std::cout << board;
+		std::cout << "\n";
+	}
 	///*board[{0, 1}] = Region::Regions::SimpleRegion;
 	//std::cout << board;*/
 

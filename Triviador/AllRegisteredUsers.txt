@@ -2,3 +2,6 @@ Cath 0
 Ar 0
 MEk 0
 Eri 0
+Ash 0
+Hait 0
+Gag 0

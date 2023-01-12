@@ -15,12 +15,13 @@ const std::string& AccountManager::GetUsername() const
 	return m_username;
 }
 
-bool AccountManager::FoundUserInFile(std::string username)
+bool AccountManager::FoundUserInFile(std::string file, std::string username)
 {
 	std::ifstream inFile;
 	std::string line;
 	int ok = 0;
-	inFile.open("AllRegisteredUsers.txt");
+	//inFile.open("AllRegisteredUsers.txt");
+	inFile.open(file);
 
 	if (!inFile) std::cout << "Unable to open file.";
 	while (inFile.good())
@@ -34,6 +35,23 @@ bool AccountManager::FoundUserInFile(std::string username)
 		return true;
 	else
 		return false;
+}
+
+int AccountManager::HowManyPlayersAreInRomm()
+{
+	std::ifstream inFile;
+	std::string line;
+	int contor = 0;
+	//inFile.open("AllRegisteredUsers.txt");
+	inFile.open("RoomUsers.txt");
+
+	if (!inFile) std::cout << "Unable to open file.";
+	while (!inFile.eof())
+	{
+		std::getline(inFile, line);
+		contor++;
+	}
+	return contor-1;
 }
 
 void AccountManager::SetPlayedGamesForXUsr(std::string username)
@@ -83,7 +101,7 @@ void AccountManager::SaveRegisteredUsersInFile()
 	out.open("AllRegisteredUsers.txt", std::ios::app);
 	for (auto& it : m_user) 
 	{
-		if(!FoundUserInFile(it.first))
+		if(!FoundUserInFile("AllRegisteredUsers.txt",it.first))
 			out << it.first<<" " << it.second << "\n";
 	}
 	out.close();
@@ -107,7 +125,7 @@ void AccountManager::PrintUsernames()
 
 void AccountManager::Login(std::string username)
 {
-	if (!FoundUserInFile(username))
+	if (!FoundUserInFile("AllRegisteredUsers.txt",username))
 	{
 		std::cout << "The username " << username << " doesn't exists. Exit and sign-up." << std::endl;
 	}
@@ -119,7 +137,7 @@ void AccountManager::Login(std::string username)
 
 void AccountManager::SignUp(std::string username)
 {
-	if (!FoundUserInFile(username))
+	if (!FoundUserInFile("AllRegisteredUsers.txt",username))
 	{
 		SaveUser(username, 0);
 		std::cout << "Thank you for choosing to be with us. Enjoy your stay!\n";

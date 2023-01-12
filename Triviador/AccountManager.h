@@ -12,7 +12,8 @@ public:
 
 	const std::string& GetUsername() const;
 
-	bool FoundUserInFile(std::string username);
+	bool FoundUserInFile(std::string file, std::string username);
+	int HowManyPlayersAreInRomm();
 
 	void SetPlayedGamesForXUsr(std::string username);
 
