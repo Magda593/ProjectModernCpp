@@ -37,13 +37,13 @@ bool AccountManager::FoundUserInFile(std::string file, std::string username)
 		return false;
 }
 
-int AccountManager::HowManyPlayersAreInRomm()
+int AccountManager::HowManyPlayersAreLoggedIn()
 {
 	std::ifstream inFile;
 	std::string line;
 	int contor = 0;
 	//inFile.open("AllRegisteredUsers.txt");
-	inFile.open("RoomUsers.txt");
+	inFile.open("LoggedInUsers.txt");
 
 	if (!inFile) std::cout << "Unable to open file.";
 	while (!inFile.eof())
@@ -82,6 +82,30 @@ void AccountManager::SetPlayedGamesForXUsr(std::string username)
 	}
 }
 
+void AccountManager::ShowUserStats(std::string username)
+{
+	std::ifstream inFile;
+	std::string line;
+	int ok = 0;
+	inFile.open("AllRegisteredUsers.txt");
+
+	if (!inFile) std::cout << "Unable to open file.";
+	while (inFile.good())
+	{
+		std::getline(inFile, line);
+		std::size_t pos = line.find(username);
+		if (pos != std::string::npos)
+		{
+			std::pair<std::string, int> are;
+			std::string first = line.substr(0, line.find(" "));
+			std::string second = line.substr(line.find(" "), line.find(" ") + 1);
+			int secondint = std::stoi(second);
+			secondint = secondint + 1;
+			std::cout << first << "'s number of played games is: " << second << std::endl;
+		}
+	}
+}
+
 void AccountManager::SaveUser(std::string username, int playedGames)
 {
 	m_user.push_back(std::make_pair(username, playedGames));
@@ -111,6 +135,14 @@ void AccountManager::SaveUserForCurrentRoom(std::string username)
 {
 	std::ofstream out;
 	out.open("RoomUsers.txt", std::ios::app);
+	out << username << "\n";
+	out.close();
+}
+
+void AccountManager::SaveLoggedInUsers(std::string username)
+{
+	std::ofstream out;
+	out.open("LoggedInUsers.txt", std::ios::app);
 	out << username << "\n";
 	out.close();
 }

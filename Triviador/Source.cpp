@@ -34,10 +34,10 @@ int main()
 	//	nr++;
 	//}
 
-	std::vector<const char*> colors;
-	colors.push_back("\033[94m");
-	colors.push_back("\033[91m");
-	colors.push_back("\033[95m");
+	//std::vector<const char*> colors;
+	//colors.push_back("\033[94m");
+	//colors.push_back("\033[91m");
+	//colors.push_back("\033[95m");
 
 	//const char* reset = "\033[0m";
 	//const char* color= "\033[92m";
@@ -51,8 +51,8 @@ int main()
 	//std::cout << reset;
 
 
-	//Game game;
-	//game.Run();
+	Game game;
+	game.Run();
 
 
 	//AccountManager am;
@@ -65,30 +65,30 @@ int main()
 	am.PrintUsernames();*/
 
 	
-	Board board;
-	int numberOfPlayers;
-	std::cin >> numberOfPlayers;
-	board.SetNumberOfPlayers(numberOfPlayers);
-	board.SetBoard();
-	std::cout << "Empty board:\n" << board << std::endl; 
-	while (!board.IsFull())
-	{
-		int line, column;
-		std::cin >> line >> column;
-		if (!board[{line, column}])
-		{
-			std::default_random_engine rng{ std::random_device{}() };
-			std::shuffle(colors.begin(),colors.end(), rng);
-			//numar random marime vector 
-			board[{line, column}] = Region::Regions::SimpleRegion;
-		}
-		else
-			std::cout << "Already there";
-		
-		std::cout << "\n";
-		std::cout << board;
-		std::cout << "\n";
-	}
+	//Board board;
+	//int numberOfPlayers;
+	//std::cin >> numberOfPlayers;
+	//board.SetNumberOfPlayers(numberOfPlayers);
+	//board.SetBoard();
+	//std::cout << "Empty board:\n" << board << std::endl; 
+	//while (!board.IsFull())
+	//{
+	//	int line, column;
+	//	std::cin >> line >> column;
+	//	if (!board[{line, column}])
+	//	{
+	//		std::default_random_engine rng{ std::random_device{}() };
+	//		std::shuffle(colors.begin(),colors.end(), rng);
+	//		//numar random marime vector 
+	//		board[{line, column}] = Region::Regions::SimpleRegion;
+	//	}
+	//	else
+	//		std::cout << "Already there";
+	//	
+	//	std::cout << "\n";
+	//	std::cout << board;
+	//	std::cout << "\n";
+	//}
 	///*board[{0, 1}] = Region::Regions::SimpleRegion;
 	//std::cout << board;*/
 

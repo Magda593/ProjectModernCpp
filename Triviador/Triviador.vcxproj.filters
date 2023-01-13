@@ -94,5 +94,8 @@
     <Text Include="RoomUsers.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="LoggedInUsers.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

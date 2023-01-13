@@ -169,6 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="AllRegisteredUsers.txt" />
+    <Text Include="LoggedInUsers.txt" />
     <Text Include="questionType1.txt" />
     <Text Include="grillQuestion.txt" />
     <Text Include="RoomUsers.txt" />

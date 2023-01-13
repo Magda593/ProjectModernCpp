@@ -35,9 +35,9 @@ void Game::MenuForTheGame()
 			{
 				std::cout << "You can now choose to go to the menu for logged in users by entering the number 3.";
 			}
-			if (!user.FoundUserInFile("RoomUsers.txt", username))
+			if (!user.FoundUserInFile("LoggedInUsers.txt", username))
 			{
-				user.SaveUserForCurrentRoom(username);
+				user.SaveLoggedInUsers(username);
 			}
 			std::cout << "\n";
 			std::cout << AnythingElseQ;
@@ -81,15 +81,23 @@ void Game::MenuForALoggedInUser()
 		{
 		case 1:
 		{
-			std::cout << "This option is yet to come.";
+			std::cout << "Please enter your username again.\n";
+			std::string username;
+			std::cin >> username;
+			while (!user.FoundUserInFile("LoggedInUsers.txt", username))
+			{
+				std::cout << "Please enter the username of someone who is logged in.\n";
+				std::cin >> username;
+			}
+			user.ShowUserStats(username);
 			std::cout << AnythingElseQ;
 			std::cout << "\n";
 			break;
 		}
 		case 2:
 		{
-			std::cout<< "Players: "<<user.HowManyPlayersAreInRomm()<<"\n";
-			if (user.HowManyPlayersAreInRomm() < 2)
+			std::cout<< "Players: "<<user.HowManyPlayersAreLoggedIn()<<"\n";
+			if (user.HowManyPlayersAreLoggedIn() < 2)
 			{
 				std::cout << "Wait for more players to log in.\n";
 				MenuForTheGame();
@@ -147,14 +155,14 @@ void Game::Run2()
 	std::cout << "Who wuld like to play?\n";
 	std::cout << "Player one: ";
 	std::cin >> PlayerOne;
-	if (!user.FoundUserInFile("RoomUsers.txt", PlayerOne))
+	if (!user.FoundUserInFile("LoggedInUsers.txt", PlayerOne))
 	{
 		std::cout << "Please enter the username of someone who is in the room.\n";
 		std::cin >> PlayerOne;
 	}
 	std::cout << "Player two: ";
 	std::cin >> PlayerTwo;
-	if (!user.FoundUserInFile("RoomUsers.txt", PlayerTwo))
+	if (!user.FoundUserInFile("LoggedInUsers.txt", PlayerTwo))
 	{
 		std::cout << "Please enter the username of someone who is in the room.\n";
 		std::cin >> PlayerTwo;
