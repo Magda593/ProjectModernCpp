@@ -57,7 +57,7 @@ int main()
 	//game.Run();
 
 	//QuestionManager numericQuestion;
-	QuestionType2 q;
+	NumericQuestion q;
 	std::string question;
 	int answer=0;
 	q.ReadNumericQuestions();
