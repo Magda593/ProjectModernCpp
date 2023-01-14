@@ -4,32 +4,68 @@ Question::Question()
 {
 }
 
-Question::Question(std::string question1, std::string option1, std::string option2, std::string option3, std::string option4, std::string correctAnswer) :
+Question::Question(std::string question1, std::string option1, std::string option2, std::string option3, std::string option4) :
 	m_question1(question1),
 	m_option1(option1),
 	m_option2(option2),
 	m_option3(option3),
-	m_option4(option4),
-	m_correctAnswer(correctAnswer)
+	m_option4(option4)
 {
 }
 
-void Question::ReadQuestion(std::string question1, std::string option1, std::string option2, std::string option3, std::string option4, std::string correctAnswer)
+void Question::ReadQuestion()
 {
-	std::ifstream question;
-	question.open("questionType2.txt");
-	while (!question.fail())
+	std::ifstream inFile;
+	inFile.open("questionType1.txt");
+	while (!inFile.fail())
 	{
-		getline(question, question1);
-		question >> option1;
-		question >> option2;
-		question >> option3;
-		question >> option4;
-		question >> correctAnswer;
+		getline(inFile, m_question1);
+		getline(inFile, m_option1);
+		getline(inFile, m_option2);
+		getline(inFile, m_option3);
+		getline(inFile, m_option4);
+		getline(inFile, m_correctAnswer);
 		std::string question1;
-		getline(question, question1);
+		SaveQuestion(m_question1, m_option1, m_option2, m_option3, m_option4, m_correctAnswer);
 	}
-	question.close();
+	inFile.close();
+}
+
+void Question::SaveQuestion(std::string question1, std::string option1, std::string option2, std::string option3, std::string option4, std::string correctAnswer)
+{
+	m_grillQuestion.push_back(question1);
+	m_grillQuestion.push_back(option1);
+	m_grillQuestion.push_back(option2);
+	m_grillQuestion.push_back(option3);
+	m_grillQuestion.push_back(option4);
+	m_grillQuestion.push_back(correctAnswer);
+}
+
+int Question::GetRandomNumber()
+{
+	std::random_device rd;
+	std::mt19937 eng(rd());
+	std::uniform_int_distribution<> distr(0, m_grillQuestion.size()-1);
+
+	return distr(eng);
+}
+
+void Question::GetQuestion()
+{
+	for (int i = 0; i < m_grillQuestion.size(); i++)
+		std::cout << m_grillQuestion[i]<<std::endl;
+}
+
+std::string Question::GetRandomQuestion()
+{
+	int position = GetRandomNumber();
+	while (position % 6 != 0)
+	{
+		position = GetRandomNumber();
+		std::cout << position << std::endl;
+	}
+	std::cout << m_grillQuestion[position] << '\n'<< m_grillQuestion[1 + position] << '\n' << m_grillQuestion[2 + position] << '\n' << m_grillQuestion[3 + position] << '\n' << m_grillQuestion[4 + position] << '\n';
+	return m_grillQuestion[position+5];
 }
 
 Question& Question::operator=(Question&& question)

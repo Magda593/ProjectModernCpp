@@ -5,6 +5,7 @@
 #include "Board.h"
 #include<chrono>
 #include<queue>
+#include <cmath>
 
 class Game
 {

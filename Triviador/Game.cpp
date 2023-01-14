@@ -184,6 +184,8 @@ void Game::Run2()
 	std::string nQuestion;
 	int nAnswerPlayer1;
 	int nAnswerPlayer2;
+	int score1=300;
+	int score2=300;
 	int line, column;
 	int contor = 0;
 	std::cout << std::endl << "Who wuld like to play?\n";
@@ -218,7 +220,7 @@ void Game::Run2()
 		std::chrono::duration<double> timePlayerOne = stopPlayerOne - startPlayerOne;
 		std::cout << std::endl << "(" << timePlayerOne.count() << ")\n";
 
-		std::cout << '\n' << playerTwo << " ,answer to this question! \n" << nQuestion;
+		std::cout << '\n' << playerTwo << " ,answer to this question: \n" << nQuestion;
 		auto startPlayerTwo = std::chrono::steady_clock::now();
 		std::cin >> nAnswerPlayer2;
 		auto stopPlayerTwo = std::chrono::steady_clock::now();
@@ -246,6 +248,13 @@ void Game::Run2()
 		else if (nAnswerPlayer1 == numericQuestion.GetAnswer(nQuestion) && nAnswerPlayer2 != numericQuestion.GetAnswer(nQuestion))
 		{
 			roomUsers.push(playerOne);
+		}
+		else if (nAnswerPlayer1 != numericQuestion.GetAnswer(nQuestion) && nAnswerPlayer2 != numericQuestion.GetAnswer(nQuestion))
+		{
+			if (abs(numericQuestion.GetAnswer(nQuestion) - nAnswerPlayer1) > abs(numericQuestion.GetAnswer(nQuestion) - nAnswerPlayer2))
+				roomUsers.push(playerTwo);
+			else
+				roomUsers.push(playerOne);
 		}
 
 		while (!roomUsers.empty()) 
@@ -276,9 +285,15 @@ void Game::Run2()
 				std::cout << roomUsers.front() << ", please choose the position for your region: ";
 				std::cin >> line >> column;
 				if (roomUsers.front() == playerOne)
+				{
 					board[{line, column}] = Region::Regions::SimpleRegionPlayerOne;
+					score1 += 100;
+				}
 				else
+				{
 					board[{line, column}] = Region::Regions::SimpleRegionPlayerTwo;
+					score2 += 100;
+				}
 				roomUsers.pop();
 			}
 			//roomUsers.pop();
@@ -288,16 +303,36 @@ void Game::Run2()
 	}
 
 	system("cls");
-	std::cout << "\nThe duel begins!\n";
+	std::cout << playerOne << ", your score is: " << score1<<'\n';
+	std::cout << playerTwo << ", your score is: " << score2<<'\n';
+	std::cout << "\n\nThe duel begins!\n";
 
 	while (m_numberOfRounds != 0)
 	{
+		std::cout << "Board: \n" << board << std::endl;
+		nQuestion = numericQuestion.GetRandomNumericQuestion();
 		int randomNumber = numericQuestion.GetRandomNumber(2);
+
 		if (randomNumber + 1 == 1)
 		{
-
+			/*roomUsers.push(playerOne);
+			roomUsers.push(playerTwo);*/
+			std::cout << std::endl << playerOne << ", write your answer: ";
+			auto startPlayerOne = std::chrono::steady_clock::now();
+			std::cin >> nAnswerPlayer1;
+			auto stopPlayerOne = std::chrono::steady_clock::now();
 		}
-
+		else
+		{
+			/*roomUsers.push(playerTwo);
+			roomUsers.push(playerOne);*/
+			std::cout << std::endl << playerOne << ", write your answer: ";
+			auto startPlayerOne = std::chrono::steady_clock::now();
+			std::cin >> nAnswerPlayer1;
+			auto stopPlayerOne = std::chrono::steady_clock::now();
+		}
+		std::cout << std::endl << roomUsers.front() << ", write your answer: ";
+		
 
 		m_numberOfRounds--;
 	}

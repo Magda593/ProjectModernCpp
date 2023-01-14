@@ -2,6 +2,8 @@
 #include <string>
 #include <fstream>
 #include <iostream>
+#include <tuple>
+#include <random>
 #include "QuestionType1.h"
 #include "NumericQuestion.h"
 
@@ -10,10 +12,14 @@ class Question
 {
 public:
 	Question();
-	Question(std::string question1, std::string option1, std::string option2, std::string option3, std::string option4, std::string correctAnswer);
-	void ReadQuestion(std::string question1, std::string option1, std::string option2, std::string option3, std::string option4, std::string correctAnswer);
+	Question(std::string question1, std::string option1, std::string option2, std::string option3, std::string option4);
+	void ReadQuestion();
+	void SaveQuestion(std::string question1, std::string option1, std::string option2, std::string option3, std::string option4, std::string correctAnswer);
+	int GetRandomNumber();
+	void GetQuestion();
 	Question& operator=(Question&& question);
 	int Equal(std::string correctAnswer, std::string answer);
+	std::string GetRandomQuestion();
 	friend std::ostream& operator<<(std::ostream& os, const Question& question);
 	void ShowTwoOptions(Question question);
 	
@@ -25,5 +31,6 @@ private:
 	std::string m_option3;
 	std::string m_option4;
 	std::string m_correctAnswer;
+	std::vector<std::string> m_grillQuestion;
 };
 

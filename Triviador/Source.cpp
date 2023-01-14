@@ -53,8 +53,20 @@ int main()
 	//std::cout << reset;
 
 
-	Game game;
-	game.Run();
+	//Game game;
+	//game.Run();
+
+	Question grillquestion;
+	grillquestion.ReadQuestion();
+	//grillquestion.GetQuestion();
+	std::cout << std::endl;
+	std::string answerr;
+	//grillquestion.GetRandomQuestion();
+	answerr = grillquestion.GetRandomQuestion();
+	if ("c" == answerr)
+		std::cout << "DA";
+	else
+		std::cout << "Fraierelor";
 
 	////QuestionManager numericQuestion;
 	//NumericQuestion q;
