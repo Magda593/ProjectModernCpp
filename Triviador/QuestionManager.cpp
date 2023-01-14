@@ -4,21 +4,30 @@ QuestionManager::QuestionManager()
 {
 }
 
-void ReadNumericQuestions(std::ifstream& infile, std::string question2, int answer)
-{
-	QuestionType2 question;
-	infile.open("questionType2.txt");
-	while (!infile.fail())
-	{
-		getline(infile, question2);
-		infile >> answer;
-		std::string questionTwo2;
+//void QuestionManager::ReadNumericQuestions()
+//{
+//	QuestionType2 question;
+//	std::ifstream inFile;
+//	std::string line;
+//	int line2;
+//	inFile.open("grillQuestion.txt");
+//
+//	if (!inFile) std::cout << "Unable to open file.";
+//	while (inFile.good())
+//	{
+//		std::getline(inFile, line);
+//		inFile >> line2;
+//		question.SaveQuestion(line, line2);
+//	}
+//	question.GetQuestion();
+//}
 
-		getline(infile, questionTwo2);
-		question.SaveQuestion(questionTwo2, answer);
-	}
-	infile.close();
-}
+//void QuestionManager::GetQuestion()
+//{
+//	for (auto& x : m_questionType2)
+		//std::cout << x.first << ": " << x.second << std::endl;
+//}
+
 
 int QuestionManager::GetRandomNumber(int x)
 {
@@ -35,9 +44,22 @@ void QuestionManager::GetRandomGrillQuestion(GrillQuestion grillQuestion, Questi
 	//acces a member of an unordered_map
 }
 
-void QuestionManager::GetRandomNumericQuestion(QuestionType2 questionType2, QuestionManager questionManager)
-{
-	int position;
-	position = questionManager.GetRandomNumber(74);
-	//std::cout << grillQuestion.at(position);
-}
+//std::string QuestionManager::GetRandomNumericQuestion(QuestionType2 questionType2, QuestionManager questionManager)
+//{
+//	int position;
+//	int nr = 0;
+//	std::pair<std::string, int> p;
+//	auto x = questionType2.begin();
+//	auto y = questionType2.end();
+//	position = questionManager.GetRandomNumber(74);
+//	for (auto el : questionType2)
+//	{
+//		if (nr == position)
+//		{
+//			p = el;
+//			break;
+//		}
+//		nr++;
+//	}
+//	return p.first;
+//}

@@ -15,6 +15,27 @@ void QuestionType2::SaveQuestion(std::string question2, int answer)
 	m_questionType2.insert(std::make_pair(question2, answer));
 }
 
+void QuestionType2::ReadNumericQuestions()
+{
+	std::ifstream inFile;
+	std::string line;
+	std::string line2;
+	int answer1;
+	inFile.open("grillQuestion.txt");
+
+	if (!inFile) std::cout << "Unable to open file.";
+	while (std::getline(inFile, line))
+	{
+		//std::getline(inFile, line);
+		inFile >> answer1;
+		//std::string line2;
+
+		SaveQuestion(line, answer1);
+		std::getline(inFile, line2);
+	}
+	inFile.close();
+}
+
 void QuestionType2::GetQuestion()
 {
 	for (auto& x : m_questionType2)

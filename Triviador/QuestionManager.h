@@ -14,12 +14,12 @@ class QuestionManager
 public:
 
 	QuestionManager();
-	void ReadNumericQuestions(std::ifstream& infile, std::string question2, int answer);
+	void ReadNumericQuestions();
 
 	int GetRandomNumber(int x);
 
 	void GetRandomGrillQuestion(GrillQuestion grillQuestion, QuestionManager questionManager);
-	void GetRandomNumericQuestion(QuestionType2 questionType2, QuestionManager questionManager);
+	std::string GetRandomNumericQuestion(QuestionType2 questionType2, QuestionManager questionManager);
 
 private:
 	GrillQuestion m_grillQuestion;

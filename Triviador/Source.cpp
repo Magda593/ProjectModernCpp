@@ -6,6 +6,8 @@
 #include "Question.h"
 #include "PowerUps.h"
 #include"Region.h"
+#include "QuestionManager.h"
+#include "QuestionType2.h"
 
 #include<Windows.h>
 #include<algorithm>
@@ -51,9 +53,15 @@ int main()
 	//std::cout << reset;
 
 
-	Game game;
-	game.Run();
+	//Game game;
+	//game.Run();
 
+	//QuestionManager numericQuestion;
+	QuestionType2 q;
+	std::string question;
+	int answer=0;
+	q.ReadNumericQuestions();
+	q.GetQuestion();
 
 	//AccountManager am;
 	//am.SetPlayedGamesForXUsr(std::make_pair("Ash",0));
