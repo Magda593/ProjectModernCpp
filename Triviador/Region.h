@@ -8,9 +8,9 @@ public:
 	{
 		None = 0,
 		SimpleRegionPlayerOne = 101,
-		SimpleRegioPlayerTwo = 102,
-		SimpleRegioPlayerThree = 103,
-		SimpleRegioPlayerFour = 104,
+		SimpleRegionPlayerTwo = 102,
+		SimpleRegionPlayerThree = 103,
+		SimpleRegionPlayerFour = 104,
 		UpgradedRegionPlayerOne = 201,
 		UpgradedRegionPlayerTwo = 202,
 		UpgradedRegionPlayerThree = 203,

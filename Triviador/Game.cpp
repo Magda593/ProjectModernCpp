@@ -82,7 +82,7 @@ void Game::MenuForTheGame()
 			break;
 		}
 		}
-		
+
 	}
 
 }
@@ -116,7 +116,7 @@ void Game::MenuForALoggedInUser()
 		}
 		case 2:
 		{
-			std::cout<< "Players: "<<user.HowManyPlayersAreLoggedIn()<<"\n";
+			std::cout << "Players: " << user.HowManyPlayersAreLoggedIn() << "\n";
 			if (user.HowManyPlayersAreLoggedIn() < 2)
 			{
 				std::cout << "Wait for more players to log in.\n";
@@ -184,9 +184,11 @@ void Game::Run2()
 	std::string nQuestion;
 	int nAnswerPlayer1;
 	int nAnswerPlayer2;
-	std::cout <<std::endl << "Who wuld like to play?\n";
+	int line, column;
+	int contor = 0;
+	std::cout << std::endl << "Who wuld like to play?\n";
 
-	std::cout << "Player one: ";
+	std::cout << "Player one (with id 1): ";
 	std::cin >> playerOne;
 	if (!user.FoundUserInFile("LoggedInUsers.txt", playerOne))
 	{
@@ -194,38 +196,37 @@ void Game::Run2()
 		std::cin >> playerOne;
 	}
 
-	std::cout << "Player two: ";
+	std::cout << "Player two (with id 2): ";
 	std::cin >> playerTwo;
 	if (!user.FoundUserInFile("LoggedInUsers.txt", playerTwo))
 	{
 		std::cout << "Please enter the username of someone who is logged in.\n";
 		std::cin >> playerTwo;
 	}
-	
+
 	while (!board.IsFull())
 	{
 		//system("cls");
 		std::cout << "Board: \n" << board << std::endl;
 
-		nQuestion=numericQuestion.GetRandomNumericQuestion();
-		std::cout << '\n' <<playerOne<< " ,answer to this question!\n"<<nQuestion;
+		nQuestion = numericQuestion.GetRandomNumericQuestion();
+		std::cout << '\n' << playerOne << " ,answer to this question! \n" << nQuestion;
 		auto startPlayerOne = std::chrono::steady_clock::now();
 		std::cin >> nAnswerPlayer1;
 		auto stopPlayerOne = std::chrono::steady_clock::now();
 
-		std::chrono::duration<double> timePlayerOne= stopPlayerOne - startPlayerOne;
-		std::cout << std::endl<<timePlayerOne.count();
+		std::chrono::duration<double> timePlayerOne = stopPlayerOne - startPlayerOne;
+		std::cout << std::endl << "(" << timePlayerOne.count() << ")\n";
 
-		std::cout << '\n' << playerTwo << " ,answer to this question!\n" << nQuestion;
+		std::cout << '\n' << playerTwo << " ,answer to this question! \n" << nQuestion;
 		auto startPlayerTwo = std::chrono::steady_clock::now();
 		std::cin >> nAnswerPlayer2;
 		auto stopPlayerTwo = std::chrono::steady_clock::now();
 
 		std::chrono::duration<double> timePlayerTwo = stopPlayerTwo - startPlayerTwo;
-		std::cout << std::endl << timePlayerTwo.count();
+		std::cout << std::endl <<"(" << timePlayerTwo.count() <<")\n";
 
-		//daca raspunsul este cel corect
-		if (nAnswerPlayer1 == numericQuestion.GetAnswer(nQuestion) && nAnswerPlayer2==numericQuestion.GetAnswer(nQuestion))
+		if (nAnswerPlayer1 == numericQuestion.GetAnswer(nQuestion) && nAnswerPlayer2 == numericQuestion.GetAnswer(nQuestion))
 		{
 			if (timePlayerOne < timePlayerTwo)
 			{
@@ -246,8 +247,86 @@ void Game::Run2()
 		{
 			roomUsers.push(playerOne);
 		}
+
+		while (!roomUsers.empty()) 
+		{
+			if (contor == 0)
+			{
+				std::cout << roomUsers.front() << ", please choose the position for your base: ";
+				std::cin >> line >> column;
+				if (roomUsers.front() == playerOne)
+				{
+					board[{line, column}] = Region::Regions::BasePlayerOne;
+					std::cout << playerTwo<< ", please choose the position for your base: ";
+					std::cin >> line >> column;
+					board[{line, column}] = Region::Regions::BasePlayerTwo;
+					roomUsers.pop();
+				}
+				else
+				{
+					board[{line, column}] = Region::Regions::BasePlayerTwo;
+					std::cout << playerOne << ", please choose the position for your base: ";
+					std::cin >> line >> column;
+					board[{line, column}] = Region::Regions::BasePlayerOne;
+					roomUsers.pop();
+				}
+			}
+			else
+			{
+				std::cout << roomUsers.front() << ", please choose the position for your region: ";
+				std::cin >> line >> column;
+				if (roomUsers.front() == playerOne)
+					board[{line, column}] = Region::Regions::SimpleRegionPlayerOne;
+				else
+					board[{line, column}] = Region::Regions::SimpleRegionPlayerTwo;
+				roomUsers.pop();
+			}
+			//roomUsers.pop();
+			contor++;
+		}
+		roomUsers.empty();
 	}
 
+	system("cls");
+	std::cout << "\nThe duel begins!\n";
+
+	while (m_numberOfRounds != 0)
+	{
+		int randomNumber = numericQuestion.GetRandomNumber(2);
+		if (randomNumber + 1 == 1)
+		{
+
+		}
+
+
+		m_numberOfRounds--;
+	}
+
+	//int line, column;
+	////int line2, column2;
+	//std::cin >> line >> column;
+	////std::cin >> line2 >> column2;
+	//std::cout << "Empty board:\n" << board << std::endl;
+	//board[{line, column}] = Region::Regions::SimpleRegionPlayerOne;
+	//std::cout << board;
+	//while (!board.IsFull())
+	//{
+	//	int line, column;
+	//	std::cin >> line >> column;
+	//	board[{line, column}] = Region::Regions::SimpleRegionPlayerOne;
+	//	std::cout << "\n";
+	//	std::cout << board;
+	//	/*if (line == 0 && column == 0)
+	//	{
+	//		std::cout << "\033[94m" << board;
+	//	}
+	//	else
+	//	{
+	//		std::cout << "\033[92m" << board;
+	//	}
+	//	*/
+	//	std::cout << "\n";
+	//}
 
 	//std>>
 	/*std::ofstream ofs;
