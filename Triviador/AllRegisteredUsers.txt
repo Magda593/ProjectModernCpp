@@ -6,3 +6,5 @@ Ash 5
 Hait 0
 Gag 0
 Ioana 1
+Moni 0
+Aldo1_ 0

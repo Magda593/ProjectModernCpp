@@ -51,7 +51,7 @@ int AccountManager::HowManyPlayersAreLoggedIn()
 		std::getline(inFile, line);
 		contor++;
 	}
-	return contor-1;
+	return contor - 1;
 }
 
 void AccountManager::SetPlayedGamesForXUsr(std::string username)
@@ -70,14 +70,14 @@ void AccountManager::SetPlayedGamesForXUsr(std::string username)
 		{
 			std::pair<std::string, int> are;
 			std::string first = line.substr(0, line.find(" "));
-			std::string second = line.substr(line.find(" "), line.find(" ")+1);
+			std::string second = line.substr(line.find(" "), line.find(" ") + 1);
 			int secondint = std::stoi(second);
 			secondint = secondint + 1;
-			are = std::make_pair(first,secondint);
-			if(secondint!= std::stoi(second))
+			are = std::make_pair(first, secondint);
+			if (secondint != std::stoi(second))
 				SaveUser(first, secondint);
 			break;
-			std::cout << are.first <<" " << are.second;
+			std::cout << are.first << " " << are.second;
 		}
 	}
 }
@@ -112,7 +112,7 @@ void AccountManager::SaveUser(std::string username, int playedGames)
 	SaveRegisteredUsersInFile();
 }
 
-void AccountManager::SaveRegisteredUsersInFile(std::vector<std::pair<std::string,int>> user)
+void AccountManager::SaveRegisteredUsersInFile(std::vector<std::pair<std::string, int>> user)
 {
 	std::ofstream out;
 	out.open("AllRegisteredUsers.txt", std::ios::app);
@@ -123,10 +123,10 @@ void AccountManager::SaveRegisteredUsersInFile()
 {
 	std::ofstream out;
 	out.open("AllRegisteredUsers.txt", std::ios::app);
-	for (auto& it : m_user) 
+	for (auto& it : m_user)
 	{
-		if(!FoundUserInFile("AllRegisteredUsers.txt",it.first))
-			out << it.first<<" " << it.second << "\n";
+		if (!FoundUserInFile("AllRegisteredUsers.txt", it.first))
+			out << it.first << " " << it.second << "\n";
 	}
 	out.close();
 }
@@ -149,30 +149,45 @@ void AccountManager::SaveLoggedInUsers(std::string username)
 
 void AccountManager::PrintUsernames()
 {
-	for (auto& it : m_user) 
+	for (auto& it : m_user)
 	{
-		std::cout << it.first << " "<<it.second << std::endl;
+		std::cout << it.first << " " << it.second << std::endl;
 	}
 }
 
 void AccountManager::Login(std::string username)
 {
-	if (!FoundUserInFile("AllRegisteredUsers.txt",username))
+	if (!std::regex_search(username, std::regex("[A - Za-z0-9_]+")))
 	{
-		std::cout << "The username " << username << " doesn't exists. Exit and sign-up." << std::endl;
+		throw "Please enter a valid username format.\n";
 	}
 	else
 	{
-		std::cout << "Welcome " << username << "!" << std::endl;
+		if (!FoundUserInFile("AllRegisteredUsers.txt", username))
+		{
+			std::cout << "The username " << username << " doesn't exists. Exit and sign-up." << std::endl;
+		}
+		else
+		{
+			std::cout << "Welcome " << username << "!" << std::endl;
+		}
 	}
 }
 
 void AccountManager::SignUp(std::string username)
 {
-	if (!FoundUserInFile("AllRegisteredUsers.txt",username))
+	if (!FoundUserInFile("AllRegisteredUsers.txt", username))
 	{
-		SaveUser(username, 0);
-		std::cout << "Thank you for choosing to be with us. Enjoy your stay!\n";
+		if (std::regex_search(username, std::regex("[A - Za-z0-9_]+")))
+		{
+			SaveUser(username, 0);
+			std::cout << "Thank you for choosing to be with us. Enjoy your stay!\n";
+		}
+		else
+		{
+			throw "Please enter a valid username format.\n";
+		}
+
 	}
 	else
 	{

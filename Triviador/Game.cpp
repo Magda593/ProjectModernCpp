@@ -16,18 +16,51 @@ void Game::MenuForTheGame()
 		{
 		case 1:
 		{
-			std::cout << "Please choose an username: \n";
-			std::string username;
-			std::cin >> username;
-			user.SignUp(username);
-			std::cout << "You can now choose to go to the menu for logged in users by entering the number 3. \n";
-			std::cout << AnythingElseQ;
-			std::cout << "\n";
+			try
+			{
+				std::cout << "Please choose an username: \n";
+				std::string username;
+				std::cin >> username;
+				user.SignUp(username);
+				std::cout << "You can now choose to go to the menu for logged in users by entering the number 3. \n";
+				std::cout << AnythingElseQ;
+				std::cin >> m_option;
+				std::cout << "\n";
+			}
+			catch (const char* errorMessage)
+			{
+				std::cout << errorMessage;
+				m_option = 1;
+			}
 			break;
 		}
 		case 2:
 		{
-			std::cout << "Please write your username: \n";
+			try
+			{
+				std::cout << "Please write your username: ";
+				std::string username;
+				std::cin >> username;
+				user.Login(username);
+				if (user.FoundUserInFile("AllRegisteredUsers.txt", username))
+				{
+					std::cout << "You can now choose to go to the menu for logged in users by entering the number 3.";
+				}
+				if (!user.FoundUserInFile("LoggedInUsers.txt", username))
+				{
+					user.SaveLoggedInUsers(username);
+				}
+				std::cout << "\n";
+				std::cout << AnythingElseQ;
+				std::cin >> m_option;
+				std::cout << "\n";
+			}
+			catch (const char* errorMessage)
+			{
+				std::cout << errorMessage;
+				m_option = 2;
+			}
+			/*std::cout << "Please write your username: \n";
 			std::string username;
 			std::cin >> username;
 			user.Login(username);
@@ -41,7 +74,8 @@ void Game::MenuForTheGame()
 			}
 			std::cout << "\n";
 			std::cout << AnythingElseQ;
-			std::cout << "\n";
+			std::cin >> m_option;
+			std::cout << "\n";*/
 			//MenuForALoggedInUser();
 			break;
 		}
@@ -62,7 +96,7 @@ void Game::MenuForTheGame()
 			break;
 		}
 		}
-		std::cin >> m_option;
+		
 	}
 
 }

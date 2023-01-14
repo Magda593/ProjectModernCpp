@@ -51,8 +51,8 @@ int main()
 	//std::cout << reset;
 
 
-	//Game game;
-	//game.Run();
+	Game game;
+	game.Run();
 
 
 	//AccountManager am;
@@ -65,17 +65,17 @@ int main()
 	am.PrintUsernames();*/
 
 	
-	Board board;
-	//Board board2;
-	int numberOfPlayers;
-	std::cin >> numberOfPlayers;
-	board.SetNumberOfPlayers(numberOfPlayers);
-	board.SetBoard();
-	int line, column;
-	//int line2, column2;
-	std::cin >> line >> column;
-	//std::cin >> line2 >> column2;
-	std::cout << "Empty board:\n" << board << std::endl; 
+	//Board board;
+	////Board board2;
+	//int numberOfPlayers;
+	//std::cin >> numberOfPlayers;
+	//board.SetNumberOfPlayers(numberOfPlayers);
+	//board.SetBoard();
+	//int line, column;
+	////int line2, column2;
+	//std::cin >> line >> column;
+	////std::cin >> line2 >> column2;
+	//std::cout << "Empty board:\n" << board << std::endl; 
 	//std::cout << "Empty board2:\n" << board2 << std::endl; 
 	//board[{line, column}] = Region::Regions::SimpleRegion;
 	//board2[{line, column2}] = Region::Regions::SimpleRegion;
