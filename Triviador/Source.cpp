@@ -51,8 +51,8 @@ int main()
 	//std::cout << reset;
 
 
-	Game game;
-	game.Run();
+	//Game game;
+	//game.Run();
 
 
 	//AccountManager am;
@@ -65,20 +65,30 @@ int main()
 	am.PrintUsernames();*/
 
 	
-	//Board board;
-	//int numberOfPlayers;
-	//std::cin >> numberOfPlayers;
-	//board.SetNumberOfPlayers(numberOfPlayers);
-	//board.SetBoard();
-	//std::cout << "Empty board:\n" << board << std::endl; 
+	Board board;
+	//Board board2;
+	int numberOfPlayers;
+	std::cin >> numberOfPlayers;
+	board.SetNumberOfPlayers(numberOfPlayers);
+	board.SetBoard();
+	int line, column;
+	//int line2, column2;
+	std::cin >> line >> column;
+	//std::cin >> line2 >> column2;
+	std::cout << "Empty board:\n" << board << std::endl; 
+	//std::cout << "Empty board2:\n" << board2 << std::endl; 
+	//board[{line, column}] = Region::Regions::SimpleRegion;
+	//board2[{line, column2}] = Region::Regions::SimpleRegion;
+	//std::cout << board;
+	//std::cout << board2;
 	//while (!board.IsFull())
 	//{
 	//	int line, column;
 	//	std::cin >> line >> column;
 	//	if (!board[{line, column}])
 	//	{
-	//		std::default_random_engine rng{ std::random_device{}() };
-	//		std::shuffle(colors.begin(),colors.end(), rng);
+	//		/*std::default_random_engine rng{ std::random_device{}() };
+	//		std::shuffle(colors.begin(),colors.end(), rng);*/
 	//		//numar random marime vector 
 	//		board[{line, column}] = Region::Regions::SimpleRegion;
 	//	}
@@ -86,7 +96,16 @@ int main()
 	//		std::cout << "Already there";
 	//	
 	//	std::cout << "\n";
-	//	std::cout << board;
+	//	if (line == 0 && column == 0)
+	//	{
+	//		std::cout << "\033[94m" << board;
+	//	}
+	//	else
+	//	{
+	//		board[{line, column}] = "\033[92m";
+	//		std::cout << "\033[92m" << board;
+	//	}
+	//	
 	//	std::cout << "\n";
 	//}
 	///*board[{0, 1}] = Region::Regions::SimpleRegion;
