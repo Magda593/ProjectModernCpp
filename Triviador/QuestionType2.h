@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <ctime>
 #include<unordered_map>
+#include <fstream>
 
 class QuestionType2
 {
@@ -11,6 +12,7 @@ public:
 	QuestionType2();
 	QuestionType2(const std::string& question2, int answer);
 
+	void ReadQuestions(std::ifstream& infile, std::string question2, int answer);
 	void SaveQuestion(std::string question2, int answer);
 
 	void GetQuestion();

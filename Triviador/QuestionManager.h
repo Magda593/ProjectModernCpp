@@ -5,16 +5,18 @@
 #include "GrillQuestion.h"
 #include "Question.h"
 
-//#include <QuestionType2.h>
+#include "QuestionType2.h"
+#include <fstream>
+
 
 class QuestionManager
 {
 public:
 
 	QuestionManager();
+	void ReadNumericQuestions(std::ifstream& infile, std::string question2, int answer);
 
 	int GetRandomNumber(int x);
-	void GetQuestionType(GrillQuestion grillQuestion, QuestionType2 questionType2, QuestionManager questionManager);
 
 	void GetRandomGrillQuestion(GrillQuestion grillQuestion, QuestionManager questionManager);
 	void GetRandomNumericQuestion(QuestionType2 questionType2, QuestionManager questionManager);
