@@ -8,21 +8,25 @@
 #include <iostream>
 #include <string>
 
-class QuestionType2
+class NumericQuestion
 {
 public:
-	QuestionType2();
-	QuestionType2(const std::string& question2, int answer);
+	NumericQuestion();
+	NumericQuestion(const std::string& question2, int answer);
 	void ReadNumericQuestions();
 
 	void ReadQuestions(std::ifstream& infile, std::string question2, int answer);
 	void SaveQuestion(std::string question2, int answer);
 
+	std::string GetRandomNumericQuestion();
+	int GetRandomNumber(int x);
+	int GetAnswer(std::string question);
+
 	void GetQuestion();
 
-	QuestionType2& operator=(const QuestionType2& questionType2);
-	QuestionType2& operator=(QuestionType2&& questionType2);
-	QuestionType2 GetQuestionType2() const;
+	NumericQuestion& operator=(const NumericQuestion& questionType2);
+	NumericQuestion& operator=(NumericQuestion&& questionType2);
+	NumericQuestion GetQuestionType2() const;
 
 	//void GetRandomQuestion(std::unordered_map<std::string, int> questionType2);
 

@@ -4,24 +4,6 @@ QuestionManager::QuestionManager()
 {
 }
 
-//void QuestionManager::ReadNumericQuestions()
-//{
-//	QuestionType2 question;
-//	std::ifstream inFile;
-//	std::string line;
-//	int line2;
-//	inFile.open("grillQuestion.txt");
-//
-//	if (!inFile) std::cout << "Unable to open file.";
-//	while (inFile.good())
-//	{
-//		std::getline(inFile, line);
-//		inFile >> line2;
-//		question.SaveQuestion(line, line2);
-//	}
-//	question.GetQuestion();
-//}
-
 //void QuestionManager::GetQuestion()
 //{
 //	for (auto& x : m_questionType2)

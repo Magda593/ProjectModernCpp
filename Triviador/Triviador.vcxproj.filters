@@ -24,7 +24,7 @@
     <ClInclude Include="QuestionType1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="QuestionType2.h">
+    <ClInclude Include="NumericQuestion.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
@@ -59,7 +59,7 @@
     <ClCompile Include="QuestionType1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="QuestionType2.cpp">
+    <ClCompile Include="NumericQuestion.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
@@ -85,7 +85,7 @@
     <Text Include="questionType1.txt">
       <Filter>Resource Files</Filter>
     </Text>
-    <Text Include="grillQuestion.txt">
+    <Text Include="NumericQuestion.txt">
       <Filter>Resource Files</Filter>
     </Text>
     <Text Include="AllRegisteredUsers.txt">

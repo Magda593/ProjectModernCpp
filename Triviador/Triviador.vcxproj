@@ -151,7 +151,7 @@
     <ClInclude Include="Question.h" />
     <ClInclude Include="QuestionManager.h" />
     <ClInclude Include="QuestionType1.h" />
-    <ClInclude Include="QuestionType2.h" />
+    <ClInclude Include="NumericQuestion.h" />
     <ClInclude Include="Region.h" />
   </ItemGroup>
   <ItemGroup>
@@ -163,7 +163,7 @@
     <ClCompile Include="Question.cpp" />
     <ClCompile Include="QuestionManager.cpp" />
     <ClCompile Include="QuestionType1.cpp" />
-    <ClCompile Include="QuestionType2.cpp" />
+    <ClCompile Include="NumericQuestion.cpp" />
     <ClCompile Include="Region.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
@@ -171,7 +171,7 @@
     <Text Include="AllRegisteredUsers.txt" />
     <Text Include="LoggedInUsers.txt" />
     <Text Include="questionType1.txt" />
-    <Text Include="grillQuestion.txt" />
+    <Text Include="NumericQuestion.txt" />
     <Text Include="RoomUsers.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

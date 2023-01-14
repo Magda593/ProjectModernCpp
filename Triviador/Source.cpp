@@ -62,6 +62,9 @@ int main()
 	int answer=0;
 	q.ReadNumericQuestions();
 	q.GetQuestion();
+	question=q.GetRandomNumericQuestion();
+	std::cout << std::endl << question;
+	std::cout<<std::endl<<q.GetAnswer(question);
 
 	//AccountManager am;
 	//am.SetPlayedGamesForXUsr(std::make_pair("Ash",0));

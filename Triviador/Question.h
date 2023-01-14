@@ -3,7 +3,7 @@
 #include <fstream>
 #include <iostream>
 #include "QuestionType1.h"
-#include "QuestionType2.h"
+#include "NumericQuestion.h"
 
 
 class Question
