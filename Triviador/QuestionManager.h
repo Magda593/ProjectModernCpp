@@ -5,7 +5,7 @@
 #include "GrillQuestion.h"
 #include "Question.h"
 
-#include "QuestionType2.h"
+#include "NumericQuestion.h"
 #include <fstream>
 
 
@@ -19,10 +19,10 @@ public:
 	int GetRandomNumber(int x);
 
 	void GetRandomGrillQuestion(GrillQuestion grillQuestion, QuestionManager questionManager);
-	std::string GetRandomNumericQuestion(QuestionType2 questionType2, QuestionManager questionManager);
+	std::string GetRandomNumericQuestion(NumericQuestion questionType2, QuestionManager questionManager);
 
 private:
 	GrillQuestion m_grillQuestion;
-	QuestionType2 m_questionType2;
+	NumericQuestion m_questionType2;
 };
 

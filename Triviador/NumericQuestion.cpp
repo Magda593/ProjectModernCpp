@@ -10,7 +10,7 @@ NumericQuestion::NumericQuestion(const std::string& question2, int answer):
 {
 }
 
-void NumericQuestion::NumericQuestion(std::string question2, int answer)
+void NumericQuestion::SaveQuestion(std::string question2, int answer)
 {
 	m_questionType2.insert(std::make_pair(question2, answer));
 }
@@ -53,11 +53,11 @@ NumericQuestion& NumericQuestion::operator=(NumericQuestion&& questionType2)
 	m_question2 = questionType2.m_question2;
 	m_answer = questionType2.m_answer;
 	m_questionType2 = questionType2.m_questionType2;
-	new (&questionType2) QuestionType2;
+	new (&questionType2) NumericQuestion;
 	return *this;
 }
 
-int QuestionType2::GetRandomNumber(int x)
+int NumericQuestion::GetRandomNumber(int x)
 {
 	srand(time(NULL));
 	int res;
@@ -65,12 +65,12 @@ int QuestionType2::GetRandomNumber(int x)
 	return res;
 }
 
-QuestionType2 QuestionType2::GetQuestionType2() const
+NumericQuestion NumericQuestion::GetQuestionType2() const
 {
-	return QuestionType2();
+	return NumericQuestion();
 }
 
-int QuestionType2::GetAnswer(std::string question)
+int NumericQuestion::GetAnswer(std::string question)
 {
 	if (auto search = m_questionType2.find(question); search != m_questionType2.end())
 		return search->second;
@@ -78,7 +78,7 @@ int QuestionType2::GetAnswer(std::string question)
 		return 999999;
 }
 
-std::string QuestionType2::GetRandomNumericQuestion()
+std::string NumericQuestion::GetRandomNumericQuestion()
 {
 	int position;
 	int nr = 0;

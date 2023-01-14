@@ -7,7 +7,7 @@
 #include "PowerUps.h"
 #include"Region.h"
 #include "QuestionManager.h"
-#include "QuestionType2.h"
+#include "NumericQuestion.h"
 
 #include<Windows.h>
 #include<algorithm>
