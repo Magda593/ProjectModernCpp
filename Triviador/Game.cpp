@@ -60,23 +60,6 @@ void Game::MenuForTheGame()
 				std::cout << errorMessage;
 				m_option = 2;
 			}
-			/*std::cout << "Please write your username: \n";
-			std::string username;
-			std::cin >> username;
-			user.Login(username);
-			if (user.FoundUserInFile("AllRegisteredUsers.txt",username))
-			{
-				std::cout << "You can now choose to go to the menu for logged in users by entering the number 3.";
-			}
-			if (!user.FoundUserInFile("LoggedInUsers.txt", username))
-			{
-				user.SaveLoggedInUsers(username);
-			}
-			std::cout << "\n";
-			std::cout << AnythingElseQ;
-			std::cin >> m_option;
-			std::cout << "\n";*/
-			//MenuForALoggedInUser();
 			break;
 		}
 		case 3:

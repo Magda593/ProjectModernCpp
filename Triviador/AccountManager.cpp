@@ -20,7 +20,6 @@ bool AccountManager::FoundUserInFile(std::string file, std::string username)
 	std::ifstream inFile;
 	std::string line;
 	int ok = 0;
-	//inFile.open("AllRegisteredUsers.txt");
 	inFile.open(file);
 
 	if (!inFile) std::cout << "Unable to open file.";
@@ -42,7 +41,6 @@ int AccountManager::HowManyPlayersAreLoggedIn()
 	std::ifstream inFile;
 	std::string line;
 	int contor = 0;
-	//inFile.open("AllRegisteredUsers.txt");
 	inFile.open("LoggedInUsers.txt");
 
 	if (!inFile) std::cout << "Unable to open file.";
