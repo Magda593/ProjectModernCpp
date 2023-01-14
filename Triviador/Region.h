@@ -7,9 +7,18 @@ public:
 	enum class Regions : int
 	{
 		None = 0,
-		SimpleRegion = 100,
-		UpgradedRegion = 200,
-		Base = 300
+		SimpleRegionPlayerOne = 101,
+		SimpleRegioPlayerTwo = 102,
+		SimpleRegioPlayerThree = 103,
+		SimpleRegioPlayerFour = 104,
+		UpgradedRegionPlayerOne = 201,
+		UpgradedRegionPlayerTwo = 202,
+		UpgradedRegionPlayerThree = 203,
+		UpgradedRegionPlayerFour = 204,
+		BasePlayerOne = 301,
+		BasePlayerTwo = 302,
+		BasePlayerThree = 303,
+		BasePlayerFour = 304
 	};
 
 public:

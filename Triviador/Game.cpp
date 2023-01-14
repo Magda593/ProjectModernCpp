@@ -70,6 +70,9 @@ void Game::MenuForTheGame()
 		}
 		case 99:
 		{
+			std::ofstream ofs;
+			ofs.open("LoggedInUsers.txt", std::ofstream::out | std::ofstream::trunc);
+			ofs.close();
 			std::cout << "You chose to exit! \n";
 			break;
 		}
@@ -130,6 +133,9 @@ void Game::MenuForALoggedInUser()
 		}
 		case 99:
 		{
+			std::ofstream ofs;
+			ofs.open("LoggedInUsers.txt", std::ofstream::out | std::ofstream::trunc);
+			ofs.close();
 			std::cout << "You chose to exit! \n";
 			std::cout << "\n";
 			break;
@@ -146,14 +152,18 @@ void Game::MenuForALoggedInUser()
 
 void Game::SetGame()
 {
+	system("cls");
 	std::cout << "What is the number of players you'd like this game to have? \n";
 	std::cin >> m_numberOfPlayers;
 	board.SetNumberOfPlayers(m_numberOfPlayers);
+	if (m_numberOfPlayers == 2) m_numberOfRounds = 5;
+	else m_numberOfRounds = 4;
 	board.SetBoard();
 	std::cout << "This is what the board looks like: \n";
 	std::cout << board;
 	std::cout << "Stats about the game: \n";
 	board.Test();
+	std::cout << "Number of rounds: " << m_numberOfRounds;
 	std::cout << "\n";
 }
 
@@ -167,26 +177,58 @@ void Game::Run()
 
 void Game::Run2()
 {
-	std::string PlayerOne;
-	std::string PlayerTwo;
-	std::cout << "Who wuld like to play?\n";
+	std::queue<std::string> roomUsers;
+	std::string playerOne;
+	std::string playerTwo;
+	std::cout <<std::endl << "Who wuld like to play?\n";
+
 	std::cout << "Player one: ";
-	std::cin >> PlayerOne;
-	if (!user.FoundUserInFile("LoggedInUsers.txt", PlayerOne))
+	std::cin >> playerOne;
+	if (!user.FoundUserInFile("LoggedInUsers.txt", playerOne))
 	{
-		std::cout << "Please enter the username of someone who is in the room.\n";
-		std::cin >> PlayerOne;
+		std::cout << "Please enter the username of someone who is logged in.\n";
+		std::cin >> playerOne;
 	}
+
 	std::cout << "Player two: ";
-	std::cin >> PlayerTwo;
-	if (!user.FoundUserInFile("LoggedInUsers.txt", PlayerTwo))
+	std::cin >> playerTwo;
+	if (!user.FoundUserInFile("LoggedInUsers.txt", playerTwo))
 	{
-		std::cout << "Please enter the username of someone who is in the room.\n";
-		std::cin >> PlayerTwo;
+		std::cout << "Please enter the username of someone who is logged in.\n";
+		std::cin >> playerTwo;
 	}
-	const char* reset = "\033[0m";
-	const char* colorPlayerOne= "\033[92m";
-	const char* colorPlayerTwo= "\033[94m";
+	
+	while (!board.IsFull())
+	{
+		system("cls");
+		std::cout << "Board: \n" << board << std::endl;
+
+
+		//Intrebare
+		auto startPlayerOne = std::chrono::steady_clock::now();
+		//raspuns playerOne
+		auto stopPlayerOne = std::chrono::steady_clock::now();
+		auto timePlayerOne = stopPlayerOne - startPlayerOne;
+
+		//intrebare
+		auto startPlayerTwo = std::chrono::steady_clock::now();
+		//raspuns playerTwo
+		auto stopPlayerTwo = std::chrono::steady_clock::now();
+		auto timePlayerTwo = stopPlayerOne - startPlayerOne;
+
+		//daca raspunsul este cel corect
+		if (timePlayerOne < timePlayerTwo)
+		{
+			roomUsers.push(playerOne);
+			roomUsers.push(playerTwo);
+		}
+		else
+		{
+			roomUsers.push(playerTwo);
+			roomUsers.push(playerOne);
+		}
+
+	}
 
 
 	//std>>

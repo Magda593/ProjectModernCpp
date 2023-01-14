@@ -3,6 +3,8 @@
 #include "QuestionType1.h"
 #include "QuestionType2.h"
 #include "Board.h"
+#include<chrono>
+#include<queue>
 
 class Game
 {
@@ -21,5 +23,6 @@ private:
 	QuestionType2 question2;
 	int m_option;
 	int m_numberOfPlayers;
+	int m_numberOfRounds;
 };
 

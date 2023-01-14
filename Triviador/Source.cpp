@@ -64,9 +64,8 @@ int main()
 	/*am.SetPlayedGamesForXUsr("Ar");
 	am.PrintUsernames();*/
 
-	
+
 	//Board board;
-	////Board board2;
 	//int numberOfPlayers;
 	//std::cin >> numberOfPlayers;
 	//board.SetNumberOfPlayers(numberOfPlayers);
@@ -75,37 +74,25 @@ int main()
 	////int line2, column2;
 	//std::cin >> line >> column;
 	////std::cin >> line2 >> column2;
-	//std::cout << "Empty board:\n" << board << std::endl; 
-	//std::cout << "Empty board2:\n" << board2 << std::endl; 
-	//board[{line, column}] = Region::Regions::SimpleRegion;
-	//board2[{line, column2}] = Region::Regions::SimpleRegion;
+	//std::cout << "Empty board:\n" << board << std::endl;
+	//board[{line, column}] = Region::Regions::SimpleRegionPlayerOne;
 	//std::cout << board;
-	//std::cout << board2;
 	//while (!board.IsFull())
 	//{
 	//	int line, column;
 	//	std::cin >> line >> column;
-	//	if (!board[{line, column}])
-	//	{
-	//		/*std::default_random_engine rng{ std::random_device{}() };
-	//		std::shuffle(colors.begin(),colors.end(), rng);*/
-	//		//numar random marime vector 
-	//		board[{line, column}] = Region::Regions::SimpleRegion;
-	//	}
-	//	else
-	//		std::cout << "Already there";
-	//	
+	//	board[{line, column}] = Region::Regions::SimpleRegionPlayerOne;
 	//	std::cout << "\n";
-	//	if (line == 0 && column == 0)
+	//	std::cout << board;
+	//	/*if (line == 0 && column == 0)
 	//	{
 	//		std::cout << "\033[94m" << board;
 	//	}
 	//	else
 	//	{
-	//		board[{line, column}] = "\033[92m";
 	//		std::cout << "\033[92m" << board;
 	//	}
-	//	
+	//	*/
 	//	std::cout << "\n";
 	//}
 	///*board[{0, 1}] = Region::Regions::SimpleRegion;
@@ -115,17 +102,17 @@ int main()
 }
 
 /*
-1. fie scriu colorat in consola 
+1. fie scriu colorat in consola
 2. ori initiala user si scor
 
-Raspund la aceiasi intrebare, 
-daca raspund la fel se mai pune o intrebare pana raspund diferit 
+Raspund la aceiasi intrebare,
+daca raspund la fel se mai pune o intrebare pana raspund diferit
 
 map+20
 sau?
-for auto iterator de la map.begin; diferit de iterator +20 
+for auto iterator de la map.begin; diferit de iterator +20
 
-sa ne interesam de chrono pentru timp 
+sa ne interesam de chrono pentru timp
 
 regex login
 regex register
