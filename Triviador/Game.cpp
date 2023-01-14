@@ -152,6 +152,7 @@ void Game::MenuForALoggedInUser()
 
 void Game::SetGame()
 {
+	numericQuestion.ReadNumericQuestions();
 	system("cls");
 	std::cout << "What is the number of players you'd like this game to have? \n";
 	std::cin >> m_numberOfPlayers;
@@ -180,6 +181,9 @@ void Game::Run2()
 	std::queue<std::string> roomUsers;
 	std::string playerOne;
 	std::string playerTwo;
+	std::string nQuestion;
+	int nAnswerPlayer1;
+	int nAnswerPlayer2;
 	std::cout <<std::endl << "Who wuld like to play?\n";
 
 	std::cout << "Player one: ";
@@ -200,34 +204,48 @@ void Game::Run2()
 	
 	while (!board.IsFull())
 	{
-		system("cls");
+		//system("cls");
 		std::cout << "Board: \n" << board << std::endl;
 
-
-		//Intrebare
+		nQuestion=numericQuestion.GetRandomNumericQuestion();
+		std::cout << '\n' <<playerOne<< " ,answer to this question!\n"<<nQuestion;
 		auto startPlayerOne = std::chrono::steady_clock::now();
-		//raspuns playerOne
+		std::cin >> nAnswerPlayer1;
 		auto stopPlayerOne = std::chrono::steady_clock::now();
-		auto timePlayerOne = stopPlayerOne - startPlayerOne;
 
-		//intrebare
+		std::chrono::duration<double> timePlayerOne= stopPlayerOne - startPlayerOne;
+		std::cout << std::endl<<timePlayerOne.count();
+
+		std::cout << '\n' << playerTwo << " ,answer to this question!\n" << nQuestion;
 		auto startPlayerTwo = std::chrono::steady_clock::now();
-		//raspuns playerTwo
+		std::cin >> nAnswerPlayer2;
 		auto stopPlayerTwo = std::chrono::steady_clock::now();
-		auto timePlayerTwo = stopPlayerOne - startPlayerOne;
+
+		std::chrono::duration<double> timePlayerTwo = stopPlayerTwo - startPlayerTwo;
+		std::cout << std::endl << timePlayerTwo.count();
 
 		//daca raspunsul este cel corect
-		if (timePlayerOne < timePlayerTwo)
+		if (nAnswerPlayer1 == numericQuestion.GetAnswer(nQuestion) && nAnswerPlayer2==numericQuestion.GetAnswer(nQuestion))
 		{
-			roomUsers.push(playerOne);
+			if (timePlayerOne < timePlayerTwo)
+			{
+				roomUsers.push(playerOne);
+				roomUsers.push(playerTwo);
+			}
+			else
+			{
+				roomUsers.push(playerTwo);
+				roomUsers.push(playerOne);
+			}
+		}
+		else if (nAnswerPlayer1 != numericQuestion.GetAnswer(nQuestion) && nAnswerPlayer2 == numericQuestion.GetAnswer(nQuestion))
+		{
 			roomUsers.push(playerTwo);
 		}
-		else
+		else if (nAnswerPlayer1 == numericQuestion.GetAnswer(nQuestion) && nAnswerPlayer2 != numericQuestion.GetAnswer(nQuestion))
 		{
-			roomUsers.push(playerTwo);
 			roomUsers.push(playerOne);
 		}
-
 	}
 
 

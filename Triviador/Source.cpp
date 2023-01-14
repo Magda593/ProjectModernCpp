@@ -53,18 +53,18 @@ int main()
 	//std::cout << reset;
 
 
-	//Game game;
-	//game.Run();
+	Game game;
+	game.Run();
 
-	//QuestionManager numericQuestion;
-	NumericQuestion q;
-	std::string question;
-	int answer=0;
-	q.ReadNumericQuestions();
-	q.GetQuestion();
-	question=q.GetRandomNumericQuestion();
-	std::cout << std::endl << question;
-	std::cout<<std::endl<<q.GetAnswer(question);
+	////QuestionManager numericQuestion;
+	//NumericQuestion q;
+	//std::string question;
+	//int answer=0;
+	//q.ReadNumericQuestions();
+	//q.GetQuestion();
+	//question=q.GetRandomNumericQuestion();
+	//std::cout << std::endl << question;
+	//std::cout<<std::endl<<q.GetAnswer(question);
 
 	//AccountManager am;
 	//am.SetPlayedGamesForXUsr(std::make_pair("Ash",0));
