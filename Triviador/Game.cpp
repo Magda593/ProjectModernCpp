@@ -153,6 +153,7 @@ void Game::MenuForALoggedInUser()
 void Game::SetGame()
 {
 	numericQuestion.ReadNumericQuestions();
+	grillQuestion.ReadQuestion();
 	system("cls");
 	std::cout << "What is the number of players you'd like this game to have? \n";
 	std::cin >> m_numberOfPlayers;

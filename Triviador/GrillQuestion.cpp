@@ -16,7 +16,7 @@ GrillQuestion::GrillQuestion(std::string question1, std::string option1, std::st
 void GrillQuestion::ReadQuestion()
 {
 	std::ifstream inFile;
-	inFile.open("questionType1.txt");
+	inFile.open("GrillQuestion.txt");
 	while (!inFile.fail())
 	{
 		getline(inFile, m_question1);
