@@ -31,15 +31,48 @@ void PowerUps::UsedPowers(std::vector<int> powerUps)
 
 void PowerUps::CloseAnswer(int answer)
 {
-	std::cin >> answer;
 	if (answer % 2 == 0)
-		std::cout << answer + 10;
+	{
+		std::cout << answer - 10 << '\n';
+		std::cout << answer + 12 << '\n';
+		std::cout << answer - 25 << '\n';
+		std::cout << answer << '\n';
+	}
 	else
-		std::cout << answer - 10;
+	{
+		std::cout << answer << '\n';
+		std::cout << answer - 2 << '\n';
+		std::cout << answer + 5 << '\n';
+		std::cout << answer - 31 << '\n';
+	}
 }
 
-/*void PowerUps::FiftyFifty(Question currentQuestion, const Question& question)
+void PowerUps::Suggestion(int answer)
 {
-	currentQuestion.ShowTwoOptions(question);
-}*/
+	if (answer % 2 == 0)
+		std::cout << answer + 10<<'\n';
+	else
+		std::cout << answer - 10<<'\n';
+}
+
+void PowerUps::FiftyFifty(std::string answer)
+{
+	//m_question.ShowTwoOptions();
+	if (answer=="a")
+	{
+		std::cout << "Please choose between a and c" << '\n';
+	}
+	if (answer=="b")
+	{
+		std::cout << "Please choose between b and d" << '\n';
+	}
+	if (answer=="c")
+	{
+		std::cout << "Please choose between a and c" << '\n';
+	}
+	if (answer=="d")
+	{
+		std::cout << "Please choose between a and d" << '\n';
+	}
+}
 

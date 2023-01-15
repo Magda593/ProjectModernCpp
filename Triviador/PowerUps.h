@@ -13,9 +13,11 @@ public:
 	void UsedPowers(std::vector<int> powerUps);
 
 	void CloseAnswer(int answer);
-	void FiftyFifty(GrillQuestion currentQuestion, const GrillQuestion& question);
+	void FiftyFifty(std::string answer);
+	void Suggestion(int answer);
 
 private:
+	GrillQuestion m_question;
 	std::vector<int> m_powerUps;
 };
 

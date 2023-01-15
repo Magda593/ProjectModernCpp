@@ -85,7 +85,7 @@ std::string NumericQuestion::GetRandomNumericQuestion()
 	std::pair<std::string, int> p;
 	auto x = m_questionType2.begin();
 	auto y = m_questionType2.end();
-	position = GetRandomNumber(25);
+	position = GetRandomNumber(24);
 	for (auto el : m_questionType2)
 	{
 		if (nr == position)

@@ -191,6 +191,7 @@ void Game::Run2()
 	int contor = 0;
 	int contorPlayer1=0;
 	int contorPlayer2 = 0;
+	int numberOfRounds = m_numberOfRounds;
 	std::cout << std::endl << "Who wuld like to play?\n";
 
 	std::cout << "Player one (with id 1): ";
@@ -315,8 +316,9 @@ void Game::Run2()
 	std::cout << playerTwo << ", your score is: " << score2<<'\n';
 	std::cout << "\n\nThe duel begins!\n";
 
-	while (m_numberOfRounds != 0)
+	while (numberOfRounds != 0)
 	{
+		std::cout << std::endl << numberOfRounds << std::endl;
 		std::cout << "Board: \n" << board << std::endl;
 		gCorrectAnswer = grillQuestion.GetRandomQuestion();
 		int randomNumber = numericQuestion.GetRandomNumber(2);
@@ -334,20 +336,22 @@ void Game::Run2()
 
 			if (gAnswerPlayer1 == gCorrectAnswer && gAnswerPlayer2 == gCorrectAnswer)
 			{
-				if(playerOne==NumericQuestionPart())
+				if(playerOne==NumericQuestionPart(playerOne, playerTwo))
 				{
 						board[{line, column}] = Region::Regions::UpgradedRegionPlayerOne;
 						contorPlayer1++;
 						contorPlayer2--; score2 -= 100;
 						score1 += 100;
 				}
-				else if (playerTwo == NumericQuestionPart())
+				else if (playerTwo == NumericQuestionPart(playerOne, playerTwo))
 				{
+					numberOfRounds--;
 					continue;
 				}
 			}
 			if (gAnswerPlayer1 != gCorrectAnswer && gAnswerPlayer2 == gCorrectAnswer)
 			{
+				numberOfRounds--;
 				continue;
 			}
 			else if (gAnswerPlayer1 == gCorrectAnswer && gAnswerPlayer2 != gCorrectAnswer)
@@ -371,20 +375,22 @@ void Game::Run2()
 
 			if (gAnswerPlayer2 == gCorrectAnswer && gAnswerPlayer1 == gCorrectAnswer)
 			{
-				if (playerTwo == NumericQuestionPart())
+				if (playerTwo == NumericQuestionPart(playerOne, playerTwo))
 				{
 					board[{line, column}] = Region::Regions::UpgradedRegionPlayerTwo;
 					contorPlayer2++;
 					contorPlayer1--; score1 -= 100;
 					score2 += 100;
 				}
-				else if (playerOne == NumericQuestionPart())
+				else if (playerOne == NumericQuestionPart(playerOne, playerTwo))
 				{
+					numberOfRounds--;
 					continue;
 				}
 			}
 			if (gAnswerPlayer2 != gCorrectAnswer && gAnswerPlayer1 == gCorrectAnswer)
 			{
+				numberOfRounds--;
 				continue;
 			}
 			else if (gAnswerPlayer2 == gCorrectAnswer && gAnswerPlayer1 != gCorrectAnswer)
@@ -398,18 +404,16 @@ void Game::Run2()
 		if (contorPlayer1 == 9)
 		{
 			//std::cout << "\033[92m" << "Congratulations! The winner is: " << playerOne;
-			m_numberOfRounds = 0;
+			numberOfRounds = 0;
 			break;
 		}
 		else if (contorPlayer2 == 9)
 		{
 			//std::cout << "\033[92m" << "Congratulations! The winner is: " << playerTwo;
-			m_numberOfRounds = 0;
+			numberOfRounds = 0;
 			break;
 		}
-		else
-			continue;
-		m_numberOfRounds--;
+		numberOfRounds--;
 	}
 	if(contorPlayer1==9)
 		std::cout << "\033[92m" << "Congratulations! The winner is: " << playerOne;
@@ -418,17 +422,15 @@ void Game::Run2()
 	else
 	{
 		if (score1 > score2)
-			std::cout << "\033[92m" << "Congratulations! The winner is: " << playerOne;
+			std::cout << "\033[92m" << "Congratulations! The winner is: " << playerOne << ' ' << ". Your score is: " << score1;
 		else
-			std::cout << "\033[92m" << "Congratulations! The winner is: " << playerTwo;
+			std::cout << "\033[92m" << "Congratulations! The winner is: " << playerTwo << ' ' << ". Your score is: " << score2;
 	}
 }
 
-std::string Game::NumericQuestionPart()
+std::string Game::NumericQuestionPart(std::string playerOne, std::string playerTwo)
 {
 	std::queue<std::string> roomUsers;
-	std::string playerOne;
-	std::string playerTwo;
 	std::string nQuestion;
 	int nAnswerPlayer1;
 	int nAnswerPlayer2;

@@ -18,7 +18,7 @@ public:
 	void Run();
 	void Run2();
 
-	std::string NumericQuestionPart();
+	std::string NumericQuestionPart(std::string playerOne, std::string playerTwo);
 
 private:
 	AccountManager user;

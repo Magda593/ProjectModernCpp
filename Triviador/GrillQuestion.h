@@ -21,7 +21,7 @@ public:
 	int Equal(std::string correctAnswer, std::string answer);
 	std::string GetRandomQuestion();
 	friend std::ostream& operator<<(std::ostream& os, const GrillQuestion& question);
-	void ShowTwoOptions(GrillQuestion question);
+	void ShowTwoOptions();
 	
 	
 private:

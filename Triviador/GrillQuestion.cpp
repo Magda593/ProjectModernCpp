@@ -82,27 +82,27 @@ int GrillQuestion::Equal(std::string correctAnswer, std::string answer)
 	return false;
 }
 
-void GrillQuestion::ShowTwoOptions(GrillQuestion question)
+void GrillQuestion::ShowTwoOptions( )
 {
-	if (question.Equal(question.m_correctAnswer, "a"))
+	if (Equal(m_correctAnswer, "a"))
 	{
-		std::cout << question.m_option2 << std::endl;
-		std::cout << question.m_option4 << std::endl;
+		std::cout << m_option1 << std::endl;
+		std::cout << m_option4 << std::endl;
 	}
-	if (question.Equal(question.m_correctAnswer, "b"))
+	if (Equal(m_correctAnswer, "b"))
 	{
-		std::cout << question.m_option1 << std::endl;
-		std::cout << question.m_option3 << std::endl;
+		std::cout << m_option2 << std::endl;
+		std::cout << m_option3 << std::endl;
 	}
-	if (question.Equal(question.m_correctAnswer, "c"))
+	if (Equal(m_correctAnswer, "c"))
 	{
-		std::cout << question.m_option1 << std::endl;
-		std::cout << question.m_option4 << std::endl;
+		std::cout << m_option3 << std::endl;
+		std::cout << m_option4 << std::endl;
 	}
-	if (question.Equal(question.m_correctAnswer, "d"))
+	if (Equal(m_correctAnswer, "d"))
 	{
-		std::cout << question.m_option2 << std::endl;
-		std::cout << question.m_option3 << std::endl;
+		std::cout << m_option2 << std::endl;
+		std::cout << m_option4 << std::endl;
 	}
 }
 
