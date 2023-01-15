@@ -6,7 +6,6 @@ void Game::MenuForTheGame()
 	std::cout << "Welcome to the game! Please choose an option: \n";
 	std::cout << "1. Register\n";
 	std::cout << "2. Login\n";
-	//std::cout << "3. Go to menu for logged in users.\n";
 	std::cout << "99. Exit.\n";
 	std::cin >> m_option;
 
@@ -92,6 +91,7 @@ void Game::MenuForALoggedInUser()
 	std::cout << "Now please choose an option: \n";
 	std::cout << "1. See your profile.\n";
 	std::cout << "2. Start game.\n";
+	std::cout << "3. Go back to the first menu.\n";
 	std::cout << "99. Exit.\n";
 	std::cin >> m_option;
 
@@ -128,7 +128,14 @@ void Game::MenuForALoggedInUser()
 				Run2();
 			else if (board.GetNumberOfPlayers() == 3)
 				std::cout << "Soon to be made.";
+			else if(board.GetNumberOfPlayers() == 4)
+				std::cout << "Soon to be made.";
 			std::cout << "\n";
+			break;
+		}
+		case 3:
+		{
+			MenuForTheGame();
 			break;
 		}
 		case 99:
@@ -399,7 +406,6 @@ void Game::Run2()
 
 	while (numberOfRounds != 0)
 	{
-		std::cout << std::endl << numberOfRounds << std::endl;
 		std::cout << "Board: \n" << board << std::endl;
 		gCorrectAnswer = grillQuestion.GetRandomQuestion();
 		
@@ -409,7 +415,7 @@ void Game::Run2()
 		{
 			std::cout << playerOne << ", Choose which region you want to attack; PLEASE do not attack your own region :)" << '\n';
 			std::cin >> line >> column;
-			std::cout << '\n' << "Do you want to use powerups? Choose 1 for YES and 0 for NO.\n";
+			std::cout << '\n' << playerOne << ", do you want to use powerups? Choose 1 for YES and 0 for NO.\n";
 			std::cin >> answerPowerUps;
 			if (answerPowerUps == 1)
 			{
@@ -433,14 +439,10 @@ void Game::Run2()
 					std::cout << error;
 				}
 			}
-			else
-			{
-				std::cout << "Choose your answer: " << '\n';
-			}
 			std::cout << std::endl << playerOne << ", write your answer, just the correct letter: ";
 			std::cin >> gAnswerPlayer1;
 
-			std::cout << '\n' << "Do you want to use powerups? Choose 1 for YES and 0 for NO.\n";
+			std::cout << '\n' << playerTwo << ", do you want to use powerups? Choose 1 for YES and 0 for NO.\n";
 			std::cin >> answerPowerUps;
 			if (answerPowerUps == 1)
 			{
@@ -451,7 +453,7 @@ void Game::Run2()
 					{
 						try
 						{
-							powerUpsPlayer1.FiftyFifty(gCorrectAnswer);
+							powerUpsPlayer2.FiftyFifty(gCorrectAnswer);
 						}
 						catch (const char* err)
 						{
@@ -463,10 +465,6 @@ void Game::Run2()
 				{
 					std::cout << error;
 				}
-			}
-			else
-			{
-				std::cout << "Choose your answer: " << '\n';
 			}
 			std::cout << std::endl << playerTwo << ", write your answer, just the correct letter: ";
 			std::cin >> gAnswerPlayer2;
@@ -504,8 +502,7 @@ void Game::Run2()
 			std::cout << playerTwo << ", Choose which region you want to attack; PLEASE do not attack your own region :)" << '\n';
 			std::cin >> line >> column;
 
-			std::cout << std::endl << playerTwo << ", write your answer, just the correct letter: ";
-			std::cout << '\n' << "Do you want to use powerups? Choose 1 for YES and 0 for NO.\n";
+			std::cout << '\n' <<playerTwo <<  ", do you want to use powerups? Choose 1 for YES and 0 for NO.\n";
 			std::cin >> answerPowerUps;
 			if (answerPowerUps == 1)
 			{
@@ -529,14 +526,10 @@ void Game::Run2()
 					std::cout << error;
 				}
 			}
-			else
-			{
-				std::cout << "Choose your answer: " << '\n';
-			}
 			std::cout << std::endl << playerTwo << ", write your answer, just the correct letter: ";
 			std::cin >> gAnswerPlayer2;
 
-			std::cout << '\n' << "Do you want to use powerups? Choose 1 for YES and 0 for NO.\n";
+			std::cout << '\n' << playerOne <<", do you want to use powerups? Choose 1 for YES and 0 for NO.\n";
 			std::cin >> answerPowerUps;
 			if (answerPowerUps == 1)
 			{
@@ -559,10 +552,6 @@ void Game::Run2()
 				{
 					std::cout << error;
 				}
-			}
-			else
-			{
-				std::cout << "Choose your answer: " << '\n';
 			}
 			std::cout << std::endl << playerOne << ", write your answer, just the correct letter: ";
 			std::cin >> gAnswerPlayer1;
@@ -597,13 +586,11 @@ void Game::Run2()
 		}
 		if (contorPlayer1 == 9)
 		{
-			//std::cout << "\033[92m" << "Congratulations! The winner is: " << playerOne;
 			numberOfRounds = 0;
 			break;
 		}
 		else if (contorPlayer2 == 9)
 		{
-			//std::cout << "\033[92m" << "Congratulations! The winner is: " << playerTwo;
 			numberOfRounds = 0;
 			break;
 		}
@@ -616,27 +603,12 @@ void Game::Run2()
 	else
 	{
 		if (score1 > score2)
-			std::cout << "\033[92m" << "Congratulations! The winner is: " << playerOne << ' ' << ". Your score is: " << score1;
+			std::cout << "\033[92m" << "Congratulations! The winner is: " << playerOne << ". Your score is: " << score1;
 		else
-			std::cout << "\033[92m" << "Congratulations! The winner is: " << playerTwo << ' ' << ". Your score is: " << score2;
+			std::cout << "\033[92m" << "Congratulations! The winner is: " << playerTwo << ". Your score is: " << score2;
 	}
+	std::cout << "\033[0m";
 }
-
-//void Game::UsingPowerUps(std::string player, std::string question)
-//{
-//	int answerPowerUps;
-//	std::cout << '\n' << "Do you want to use powerups?" << '\n' << "Choose 1 for YES and 0 for NO.";
-//	std::cin >> answerPowerUps;
-//	if (answerPowerUps == 1)
-//	{
-//		if(player==player)
-//		powerUpsPlayer1.UsedPowers(option1);
-//		if (option1 == 2)
-//			powerUpsPlayer1.CloseAnswer(numericQuestion.GetAnswer(question));
-//		if (option1 == 3)
-//			powerUpsPlayer1.Suggestion(numericQuestion.GetAnswer(question));
-//	}
-//}
 
 std::string Game::NumericQuestionPart(std::string playerOne, std::string playerTwo)
 {
