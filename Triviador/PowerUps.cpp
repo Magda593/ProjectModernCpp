@@ -9,23 +9,33 @@ PowerUps::PowerUps(const std::vector<int> powerUps):
 {
 }
 
-void PowerUps::AllPowers(std::vector<int> powerUps)
+void PowerUps::AllPowers()
 {
-	for (int i = 0; i < powerUps.size(); i++) 
+	for (int i = 0; i < 3; i++) 
 	{
-		powerUps[i] = 1;
+		m_powerUps.push_back(1);
 	}
 }
 
-void PowerUps::UsedPowers(std::vector<int> powerUps)
+int PowerUps::UsedPowers(int& nr)
 {
-	int nr;
-	std::cout << "Use a power:" << std::endl << "1. 50/50" << std::endl << "2. Close answer" << std::endl << "3.";
-	std::cin >> nr;
-	powerUps[nr] = 0;
-	for (int i = 0; i < powerUps.size(); i++) 
+	if (m_powerUps[0] == 0 && m_powerUps[1] == 0 && m_powerUps[2] == 0)
 	{
-		std::cout<<powerUps[i]<<" ";
+		std::cout << "Sorry! You have no more powerups :(" << '\n';
+		return 0;
+	}
+	else
+	{
+		std::cout << "Use a power:" << std::endl << "1. 50/50" << std::endl << "2. Close answer" << std::endl << "3. Suggestion";
+		std::cin >> nr;
+		while (m_powerUps[nr - 1] == 0)
+		{
+			std::cout << '\n' << "You already used this power. Please choose another one" << std::endl;
+			std::cout << "Use a power:" << std::endl << "1. 50/50" << std::endl << "2. Close answer" << std::endl << "3. Suggestion";
+			std::cin >> nr;
+		}
+		m_powerUps[nr - 1] = 0;
+		return nr;
 	}
 }
 
@@ -57,7 +67,6 @@ void PowerUps::Suggestion(int answer)
 
 void PowerUps::FiftyFifty(std::string answer)
 {
-	//m_question.ShowTwoOptions();
 	if (answer=="a")
 	{
 		std::cout << "Please choose between a and c" << '\n';

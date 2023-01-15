@@ -3,6 +3,7 @@
 #include "QuestionType1.h"
 #include "GrillQuestion.h"
 #include "NumericQuestion.h"
+#include "PowerUps.h"
 #include "Board.h"
 #include<chrono>
 #include<queue>
@@ -18,6 +19,8 @@ public:
 	void Run();
 	void Run2();
 
+	//void UsingPowerUps(std::string player, std::string question);
+
 	std::string NumericQuestionPart(std::string playerOne, std::string playerTwo);
 
 private:
@@ -25,6 +28,8 @@ private:
 	Board board;
 	GrillQuestion grillQuestion;
 	NumericQuestion numericQuestion;
+	PowerUps powerUpsPlayer1;
+	PowerUps powerUpsPlayer2;
 	int m_option;
 	int m_numberOfPlayers;
 	int m_numberOfRounds;

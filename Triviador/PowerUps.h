@@ -9,8 +9,8 @@ public:
 	PowerUps();
 	PowerUps(const std::vector<int> powerUps);
 
-	void AllPowers(std::vector<int> powerUps);
-	void UsedPowers(std::vector<int> powerUps);
+	void AllPowers();
+	int UsedPowers(int& nr);
 
 	void CloseAnswer(int answer);
 	void FiftyFifty(std::string answer);

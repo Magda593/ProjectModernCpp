@@ -53,10 +53,10 @@ int main()
 	//std::cout << reset;
 
 
-	//Game game;
-	//game.Run();
+	Game game;
+	game.Run();
 
-	PowerUps power;
+	/*PowerUps power;
 	GrillQuestion question1;
 	NumericQuestion question2;
 	std::string questionn2;
@@ -71,6 +71,10 @@ int main()
 	question1.ReadQuestion();
 	std::string answer=question1.GetRandomQuestion();
 	power.FiftyFifty(answer);
+
+	std::cout << std::endl;
+	power.AllPowers();
+	power.UsedPowers();*/
 
 	//Question grillquestion;
 	//grillquestion.ReadQuestion();

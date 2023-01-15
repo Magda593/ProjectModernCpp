@@ -154,6 +154,8 @@ void Game::SetGame()
 {
 	numericQuestion.ReadNumericQuestions();
 	grillQuestion.ReadQuestion();
+	powerUpsPlayer1.AllPowers();
+	powerUpsPlayer2.AllPowers();
 	system("cls");
 	std::cout << "What is the number of players you'd like this game to have? \n";
 	std::cin >> m_numberOfPlayers;
@@ -192,6 +194,7 @@ void Game::Run2()
 	int contorPlayer1=0;
 	int contorPlayer2 = 0;
 	int numberOfRounds = m_numberOfRounds;
+	int option1, option2, answerPowerUps;
 	std::cout << std::endl << "Who wuld like to play?\n";
 
 	std::cout << "Player one (with id 1): ";
@@ -217,6 +220,20 @@ void Game::Run2()
 
 		nQuestion = numericQuestion.GetRandomNumericQuestion();
 		std::cout << '\n' << playerOne << " ,answer to this question! \n" << nQuestion;
+		std::cout << '\n' << "Do you want to use powerups?"<<'\n'<<"Choose 1 for YES and 0 for NO.";
+		std::cin >> answerPowerUps;
+		if (answerPowerUps == 1)
+		{
+			powerUpsPlayer1.UsedPowers(option1);
+			if (option1 == 2)
+				powerUpsPlayer1.CloseAnswer(numericQuestion.GetAnswer(nQuestion));
+			else if (option1 == 3)
+					powerUpsPlayer1.Suggestion(numericQuestion.GetAnswer(nQuestion));
+		}
+		else
+		{
+			std::cout << "Choose your answer: " << '\n';
+		}
 		auto startPlayerOne = std::chrono::steady_clock::now();
 		std::cin >> nAnswerPlayer1;
 		auto stopPlayerOne = std::chrono::steady_clock::now();
@@ -225,6 +242,20 @@ void Game::Run2()
 		std::cout << std::endl << "(" << timePlayerOne.count() << ")\n";
 
 		std::cout << '\n' << playerTwo << " ,answer to this question: \n" << nQuestion;
+		std::cout << '\n' << "Do you want to use powerups?" << '\n' << "Choose 1 for YES and 0 for NO.";
+		std::cin >> answerPowerUps;
+		if (answerPowerUps == 1)
+		{
+			powerUpsPlayer2.UsedPowers(option2);
+			if (option2 == 2)
+				powerUpsPlayer2.CloseAnswer(numericQuestion.GetAnswer(nQuestion));
+			else if (option2 == 3)
+					powerUpsPlayer2.Suggestion(numericQuestion.GetAnswer(nQuestion));
+		}
+		else
+		{
+			std::cout << "Choose your answer: " << '\n';
+		}
 		auto startPlayerTwo = std::chrono::steady_clock::now();
 		std::cin >> nAnswerPlayer2;
 		auto stopPlayerTwo = std::chrono::steady_clock::now();
@@ -427,6 +458,22 @@ void Game::Run2()
 			std::cout << "\033[92m" << "Congratulations! The winner is: " << playerTwo << ' ' << ". Your score is: " << score2;
 	}
 }
+
+//void Game::UsingPowerUps(std::string player, std::string question)
+//{
+//	int answerPowerUps;
+//	std::cout << '\n' << "Do you want to use powerups?" << '\n' << "Choose 1 for YES and 0 for NO.";
+//	std::cin >> answerPowerUps;
+//	if (answerPowerUps == 1)
+//	{
+//		if(player==player)
+//		powerUpsPlayer1.UsedPowers(option1);
+//		if (option1 == 2)
+//			powerUpsPlayer1.CloseAnswer(numericQuestion.GetAnswer(question));
+//		if (option1 == 3)
+//			powerUpsPlayer1.Suggestion(numericQuestion.GetAnswer(question));
+//	}
+//}
 
 std::string Game::NumericQuestionPart(std::string playerOne, std::string playerTwo)
 {
