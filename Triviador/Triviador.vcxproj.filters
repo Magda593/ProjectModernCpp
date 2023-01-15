@@ -30,16 +30,13 @@
     <ClInclude Include="Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Question.h">
+    <ClInclude Include="GrillQuestion.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PowerUps.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Region.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GrillQuestion.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="QuestionManager.h">
@@ -65,7 +62,7 @@
     <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Question.cpp">
+    <ClCompile Include="GrillQuestion.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PowerUps.cpp">
@@ -74,15 +71,12 @@
     <ClCompile Include="Region.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GrillQuestion.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="QuestionManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="questionType1.txt">
+    <Text Include="GrillQuestion.txt">
       <Filter>Resource Files</Filter>
     </Text>
     <Text Include="NumericQuestion.txt">

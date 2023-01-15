@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include <iostream>
-#include "Question.h"
+#include "GrillQuestion.h"
 
 class PowerUps
 {
@@ -13,7 +13,7 @@ public:
 	void UsedPowers(std::vector<int> powerUps);
 
 	void CloseAnswer(int answer);
-	void FiftyFifty(Question currentQuestion, const Question& question);
+	void FiftyFifty(GrillQuestion currentQuestion, const GrillQuestion& question);
 
 private:
 	std::vector<int> m_powerUps;

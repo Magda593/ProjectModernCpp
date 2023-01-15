@@ -3,7 +3,7 @@
 #include <string>
 #include "Game.h"
 #include"Board.h"
-#include "Question.h"
+#include "GrillQuestion.h"
 #include "PowerUps.h"
 #include"Region.h"
 #include "QuestionManager.h"
@@ -53,20 +53,20 @@ int main()
 	//std::cout << reset;
 
 
-	//Game game;
-	//game.Run();
+	Game game;
+	game.Run();
 
-	Question grillquestion;
-	grillquestion.ReadQuestion();
-	//grillquestion.GetQuestion();
-	std::cout << std::endl;
-	std::string answerr;
-	//grillquestion.GetRandomQuestion();
-	answerr = grillquestion.GetRandomQuestion();
-	if ("c" == answerr)
-		std::cout << "DA";
-	else
-		std::cout << "Fraierelor";
+	//Question grillquestion;
+	//grillquestion.ReadQuestion();
+	////grillquestion.GetQuestion();
+	//std::cout << std::endl;
+	//std::string answerr;
+	////grillquestion.GetRandomQuestion();
+	//answerr = grillquestion.GetRandomQuestion();
+	//if ("c" == answerr)
+	//	std::cout << "DA";
+	//else
+	//	std::cout << "Fraierelor";
 
 	////QuestionManager numericQuestion;
 	//NumericQuestion q;

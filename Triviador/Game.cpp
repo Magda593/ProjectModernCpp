@@ -184,6 +184,9 @@ void Game::Run2()
 	std::string nQuestion;
 	int nAnswerPlayer1;
 	int nAnswerPlayer2;
+	std::string gCorrectAnswer;
+	std::string gAnswerPlayer1;
+	std::string gAnswerPlayer2;
 	int score1=300;
 	int score2=300;
 	int line, column;
@@ -310,61 +313,165 @@ void Game::Run2()
 	while (m_numberOfRounds != 0)
 	{
 		std::cout << "Board: \n" << board << std::endl;
-		nQuestion = numericQuestion.GetRandomNumericQuestion();
+		gCorrectAnswer = grillQuestion.GetRandomQuestion();
 		int randomNumber = numericQuestion.GetRandomNumber(2);
+		/*int randomNumber = rand() % (2 - 1 + 1) + 1;*/
 
 		if (randomNumber + 1 == 1)
 		{
 			/*roomUsers.push(playerOne);
 			roomUsers.push(playerTwo);*/
-			std::cout << std::endl << playerOne << ", write your answer: ";
-			auto startPlayerOne = std::chrono::steady_clock::now();
-			std::cin >> nAnswerPlayer1;
-			auto stopPlayerOne = std::chrono::steady_clock::now();
+			std::cout << playerOne << ", Choose which region you want to attack; PLEASE do not attack your own region :)" << '\n';
+			std::cin >> line >> column;
+
+			std::cout << std::endl << playerOne << ", write your answer, just the correct letter: ";
+			std::cin >> gAnswerPlayer1;
+
+			std::cout << std::endl << playerTwo << ", write your answer, just the correct letter: ";
+			std::cin >> gAnswerPlayer2;
+
+			if (gAnswerPlayer1 == gCorrectAnswer && gAnswerPlayer2 == gCorrectAnswer)
+			{
+				if(playerOne==NumericQuestionPart())
+				{
+						board[{line, column}] = Region::Regions::UpgradedRegionPlayerOne;
+						score1 += 100;
+				}
+				else if (playerOne == NumericQuestionPart())
+				{
+					continue;
+				}
+			}
+			if (gAnswerPlayer1 != gCorrectAnswer && gAnswerPlayer2 == gCorrectAnswer)
+			{
+				continue;
+			}
+			else if (gAnswerPlayer1 == gCorrectAnswer && gAnswerPlayer2 != gCorrectAnswer)
+			{
+				board[{line, column}] = Region::Regions::UpgradedRegionPlayerOne;
+				score1 += 100;
+			}
 		}
-		else
+		else if(randomNumber+1==2)
 		{
 			/*roomUsers.push(playerTwo);
 			roomUsers.push(playerOne);*/
-			std::cout << std::endl << playerOne << ", write your answer: ";
-			auto startPlayerOne = std::chrono::steady_clock::now();
-			std::cin >> nAnswerPlayer1;
-			auto stopPlayerOne = std::chrono::steady_clock::now();
-		}
-		std::cout << std::endl << roomUsers.front() << ", write your answer: ";
-		
+			std::cout << playerTwo << ", Choose which region you want to attack; PLEASE do not attack your own region :)" << '\n';
+			std::cin >> line >> column;
 
+			std::cout << std::endl << playerTwo << ", write your answer, just the correct letter: ";
+			std::cin >> gAnswerPlayer2;
+
+			std::cout << std::endl << playerOne << ", write your answer, just the correct letter: ";
+			std::cin >> gAnswerPlayer1;
+
+			if (gAnswerPlayer2 == gCorrectAnswer && gAnswerPlayer1 == gCorrectAnswer)
+			{
+				if (playerTwo == NumericQuestionPart())
+				{
+					board[{line, column}] = Region::Regions::UpgradedRegionPlayerTwo;
+					score2 += 100;
+				}
+				else if (playerOne == NumericQuestionPart())
+				{
+					continue;
+				}
+			}
+			if (gAnswerPlayer2 != gCorrectAnswer && gAnswerPlayer1 == gCorrectAnswer)
+			{
+				continue;
+			}
+			else if (gAnswerPlayer2 == gCorrectAnswer && gAnswerPlayer1 != gCorrectAnswer)
+			{
+				board[{line, column}] = Region::Regions::UpgradedRegionPlayerTwo;
+				score2 += 100;
+			}
+		}
 		m_numberOfRounds--;
 	}
-
-	//int line, column;
-	////int line2, column2;
-	//std::cin >> line >> column;
-	////std::cin >> line2 >> column2;
-	//std::cout << "Empty board:\n" << board << std::endl;
-	//board[{line, column}] = Region::Regions::SimpleRegionPlayerOne;
-	//std::cout << board;
-	//while (!board.IsFull())
-	//{
-	//	int line, column;
-	//	std::cin >> line >> column;
-	//	board[{line, column}] = Region::Regions::SimpleRegionPlayerOne;
-	//	std::cout << "\n";
-	//	std::cout << board;
-	//	/*if (line == 0 && column == 0)
-	//	{
-	//		std::cout << "\033[94m" << board;
-	//	}
-	//	else
-	//	{
-	//		std::cout << "\033[92m" << board;
-	//	}
-	//	*/
-	//	std::cout << "\n";
-	//}
 
 	//std>>
 	/*std::ofstream ofs;
 	ofs.open("RoomUsers.txt", std::ofstream::out | std::ofstream::trunc);
 	ofs.close();*/
+}
+
+std::string Game::NumericQuestionPart()
+{
+	std::queue<std::string> roomUsers;
+	std::string playerOne;
+	std::string playerTwo;
+	std::string nQuestion;
+	int nAnswerPlayer1;
+	int nAnswerPlayer2;
+	std::string gCorrectAnswer;
+	std::string gAnswerPlayer1;
+	std::string gAnswerPlayer2;
+	int score1;
+	int score2;
+	int line, column;
+	int contor = 0;
+	nQuestion = numericQuestion.GetRandomNumericQuestion();
+	std::cout << '\n' << playerOne << " ,answer to this question! \n" << nQuestion;
+	auto startPlayerOne = std::chrono::steady_clock::now();
+	std::cin >> nAnswerPlayer1;
+	auto stopPlayerOne = std::chrono::steady_clock::now();
+
+	std::chrono::duration<double> timePlayerOne = stopPlayerOne - startPlayerOne;
+
+	std::cout << '\n' << playerTwo << " ,answer to this question: \n" << nQuestion;
+	auto startPlayerTwo = std::chrono::steady_clock::now();
+	std::cin >> nAnswerPlayer2;
+	auto stopPlayerTwo = std::chrono::steady_clock::now();
+
+	std::chrono::duration<double> timePlayerTwo = stopPlayerTwo - startPlayerTwo;
+
+	if (nAnswerPlayer1 == numericQuestion.GetAnswer(nQuestion) && nAnswerPlayer2 == numericQuestion.GetAnswer(nQuestion))
+	{
+		if (timePlayerOne < timePlayerTwo)
+		{
+			roomUsers.push(playerOne);
+			roomUsers.push(playerTwo);
+		}
+		else
+		{
+			roomUsers.push(playerTwo);
+			roomUsers.push(playerOne);
+		}
+	}
+	else if (nAnswerPlayer1 != numericQuestion.GetAnswer(nQuestion) && nAnswerPlayer2 == numericQuestion.GetAnswer(nQuestion))
+	{
+		roomUsers.push(playerTwo);
+	}
+	else if (nAnswerPlayer1 == numericQuestion.GetAnswer(nQuestion) && nAnswerPlayer2 != numericQuestion.GetAnswer(nQuestion))
+	{
+		roomUsers.push(playerOne);
+	}
+	else if (nAnswerPlayer1 != numericQuestion.GetAnswer(nQuestion) && nAnswerPlayer2 != numericQuestion.GetAnswer(nQuestion))
+	{
+		if (abs(numericQuestion.GetAnswer(nQuestion) - nAnswerPlayer1) > abs(numericQuestion.GetAnswer(nQuestion) - nAnswerPlayer2))
+			roomUsers.push(playerTwo);
+		else
+			roomUsers.push(playerOne);
+	}
+	return roomUsers.front();
+
+	//while (!roomUsers.empty())
+	//{
+	//		std::cout << roomUsers.front() << ", please choose the position for your region: ";
+	//		std::cin >> line >> column;
+	//		if (roomUsers.front() == playerOne)
+	//		{
+	//			board[{line, column}] = Region::Regions::SimpleRegionPlayerOne;
+	//			score1 += 100;
+	//		}
+	//		else
+	//		{
+	//			board[{line, column}] = Region::Regions::SimpleRegionPlayerTwo;
+	//			score2 += 100;
+	//		}
+	//		roomUsers.pop();
+	//	//roomUsers.pop();
+	//}
+	roomUsers.empty();
 }

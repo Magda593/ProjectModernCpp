@@ -1,6 +1,7 @@
 #pragma once
 #include "AccountManager.h"
 #include "QuestionType1.h"
+#include "GrillQuestion.h"
 #include "NumericQuestion.h"
 #include "Board.h"
 #include<chrono>
@@ -17,10 +18,12 @@ public:
 	void Run();
 	void Run2();
 
+	std::string NumericQuestionPart();
+
 private:
 	AccountManager user;
 	Board board;
-	QuestionType1 question1;
+	GrillQuestion grillQuestion;
 	NumericQuestion numericQuestion;
 	int m_option;
 	int m_numberOfPlayers;

@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include <time.h>
 #include "GrillQuestion.h"
-#include "Question.h"
 
 #include "NumericQuestion.h"
 #include <fstream>
