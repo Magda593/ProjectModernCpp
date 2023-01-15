@@ -21,9 +21,6 @@
     <ClInclude Include="Board.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="QuestionType1.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="NumericQuestion.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -39,9 +36,6 @@
     <ClInclude Include="Region.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="QuestionManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AccountManager.cpp">
@@ -51,9 +45,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Board.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QuestionType1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="NumericQuestion.cpp">
@@ -71,9 +62,6 @@
     <ClCompile Include="Region.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="QuestionManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="GrillQuestion.txt">
@@ -83,9 +71,6 @@
       <Filter>Resource Files</Filter>
     </Text>
     <Text Include="AllRegisteredUsers.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="RoomUsers.txt">
       <Filter>Resource Files</Filter>
     </Text>
     <Text Include="LoggedInUsers.txt">

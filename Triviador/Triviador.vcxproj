@@ -148,8 +148,6 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="PowerUps.h" />
     <ClInclude Include="GrillQuestion.h" />
-    <ClInclude Include="QuestionManager.h" />
-    <ClInclude Include="QuestionType1.h" />
     <ClInclude Include="NumericQuestion.h" />
     <ClInclude Include="Region.h" />
   </ItemGroup>
@@ -159,8 +157,6 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="PowerUps.cpp" />
     <ClCompile Include="GrillQuestion.cpp" />
-    <ClCompile Include="QuestionManager.cpp" />
-    <ClCompile Include="QuestionType1.cpp" />
     <ClCompile Include="NumericQuestion.cpp" />
     <ClCompile Include="Region.cpp" />
     <ClCompile Include="Source.cpp" />
@@ -170,7 +166,6 @@
     <Text Include="LoggedInUsers.txt" />
     <Text Include="GrillQuestion.txt" />
     <Text Include="NumericQuestion.txt" />
-    <Text Include="RoomUsers.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

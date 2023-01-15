@@ -21,19 +21,15 @@ int PowerUps::UsedPowers(int& nr)
 {
 	if (m_powerUps[0] == 0 && m_powerUps[1] == 0 && m_powerUps[2] == 0)
 	{
-		//std::cout << "Sorry! You have no more powerups :(" << '\n';
-		throw "Sorry! You have no more powerups :( \n";
-		/*return 0;*/
+		throw "\033[91m Sorry! You have no more powerups :( \n \033[0m";
 	}
 	else
 	{
-		std::cout << "Use a power:" << std::endl << "1. 50/50 (works only with grill questions)" << std::endl << "2. Close answer" << std::endl << "3. Suggestion (only for numeric question)\n";
+		std::cout << "\033[97m" << "Use a power:" << std::endl << "1. 50/50 (works only with grill questions)" << std::endl << "2. Close answer" << std::endl << "3. Suggestion (only for numeric question)\n"<< "\033[0m" ;
 		std::cin >> nr;
 		if (m_powerUps[nr - 1] == 0)
 		{
 			throw "\nYou already used this power.\n" ;
-			//std::cout << "Use a power:" << std::endl << "1. 50/50 (works only with grill questions)" << std::endl << "2. Close answer" << std::endl << "3. Suggestion (only for numeric question)\n";
-			//std::cin >> nr;
 		}
 		m_powerUps[nr - 1] = 0;
 		return nr;
@@ -44,45 +40,45 @@ void PowerUps::CloseAnswer(int answer)
 {
 	if (answer % 2 == 0)
 	{
-		std::cout << answer - 10 << '\n';
+		std::cout <<"\033[91m"<< answer - 10 << '\n';
 		std::cout << answer + 12 << '\n';
 		std::cout << answer - 25 << '\n';
-		std::cout << answer << '\n';
+		std::cout << answer << '\n' << "\033[0m";
 	}
 	else
 	{
-		std::cout << answer << '\n';
+		std::cout << "\033[91m" << answer << '\n';
 		std::cout << answer - 2 << '\n';
 		std::cout << answer + 5 << '\n';
-		std::cout << answer - 31 << '\n';
+		std::cout << answer - 31 << '\n' << "\033[0m";
 	}
 }
 
 void PowerUps::Suggestion(int answer)
 {
 	if (answer % 2 == 0)
-		std::cout << answer + 10<<'\n';
+		std::cout <<"\033[91m"<< answer + 10<<'\n' << "\033[0m";
 	else
-		std::cout << answer - 10<<'\n';
+		std::cout << "\033[91m" << answer - 10<<'\n' << "\033[0m";
 }
 
 void PowerUps::FiftyFifty(std::string answer)
 {
 	if (answer=="a")
 	{
-		std::cout << "Please choose between a and c" << '\n';
+		std::cout <<"\033[91m"<< "Please choose between a and c" << '\n'<< "\033[0m";
 	}
 	if (answer=="b")
 	{
-		std::cout << "Please choose between b and d" << '\n';
+		std::cout <<"\033[91m"<< "Please choose between b and d" << '\n' << "\033[0m";
 	}
 	if (answer=="c")
 	{
-		std::cout << "Please choose between a and c" << '\n';
+		std::cout <<"\033[91m" << "Please choose between a and c" << '\n' <<"\033[0m";
 	}
 	if (answer=="d")
 	{
-		std::cout << "Please choose between a and d" << '\n';
+		std::cout <<"\033[91m"<<  "Please choose between a and d" << '\n' <<"\033[0m";
 	}
 }
 

@@ -16,10 +16,7 @@ public:
 	void MenuForALoggedInUser();
 	void SetGame();
 
-	void Run();
 	void Run2();
-
-	//void UsingPowerUps(std::string player, std::string question);
 
 	std::string NumericQuestionPart(std::string playerOne, std::string playerTwo);
 

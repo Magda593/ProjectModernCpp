@@ -163,13 +163,13 @@ void Game::SetGame()
 	grillQuestion.ReadQuestion();
 	powerUpsPlayer1.AllPowers();
 	powerUpsPlayer2.AllPowers();
-	system("cls");
 	std::cout << "What is the number of players you'd like this game to have? \n";
 	std::cin >> m_numberOfPlayers;
 	board.SetNumberOfPlayers(m_numberOfPlayers);
 	if (m_numberOfPlayers == 2) m_numberOfRounds = 5;
 	else m_numberOfRounds = 4;
 	board.SetBoard();
+	system("cls");
 	std::cout << "This is what the board looks like: \n";
 	std::cout << board;
 	std::cout << "Stats about the game: \n";
@@ -177,11 +177,11 @@ void Game::SetGame()
 	std::cout << "Number of rounds: " << m_numberOfRounds;
 	std::cout << "\n";
 }
-
-void Game::Run()
-{
-	MenuForTheGame();
-}
+//
+//void Game::Run()
+//{
+//	MenuForTheGame();
+//}
 
 void Game::Run2()
 {
@@ -202,7 +202,7 @@ void Game::Run2()
 	int contorPlayer2 = 0;
 	int numberOfRounds = m_numberOfRounds;
 	int option1, option2, answerPowerUps;
-	std::cout << std::endl << "Who wuld like to play?\n";
+	std::cout << std::endl << "Who would like to play?\n";
 
 	std::cout << "Player one (with id 1): ";
 	std::cin >> playerOne;
@@ -220,14 +220,15 @@ void Game::Run2()
 		std::cin >> playerTwo;
 	}
 
+	system("cls");
+
 	while (!board.IsFull())
 	{
-		//system("cls");
-		std::cout << "Board: \n" << board << std::endl;
+		std::cout << "\nBoard: \n" << board << std::endl;
 
 		nQuestion = numericQuestion.GetRandomNumericQuestion();
-		std::cout << '\n' << playerOne << " ,answer to this question! \n" << nQuestion;
-		std::cout << '\n' << "Do you want to use powerups? Choose 1 for YES and 0 for NO.\n";
+		std::cout << '\n' << playerOne << " ,answer to this question! \n" << std::endl <<"\033[96m"<< nQuestion << "\033[0m";
+		std::cout << '\n' << "(Do you want to use powerups? Choose 1 for YES and 0 for NO.)\n";
 		std::cin >> answerPowerUps;
 		if (answerPowerUps == 1)
 		{
@@ -262,20 +263,16 @@ void Game::Run2()
 				std::cout << error;
 			}
 		}
-		else
-		{
-			std::cout << "Choose your answer: " << '\n';
-		}
 		auto startPlayerOne = std::chrono::steady_clock::now();
+		std::wcout << "Your answer: ";
 		std::cin >> nAnswerPlayer1;
 		auto stopPlayerOne = std::chrono::steady_clock::now();
-
 		std::chrono::duration<double> timePlayerOne = stopPlayerOne - startPlayerOne;
-		std::cout << std::endl << "(" << timePlayerOne.count() << ")\n";
 
-		std::cout << '\n' << playerTwo << " ,answer to this question: \n" << nQuestion;
-		std::cout << '\n' << "Do you want to use powerups? Choose 1 for YES and 0 for NO.\n";
+		std::cout << '\n' << playerTwo << " ,answer to this question: \n" <<std::endl<< "\033[96m" << nQuestion << "\033[0m";
+		std::cout << '\n' << "(Do you want to use powerups? Choose 1 for YES and 0 for NO.) ";
 		std::cin >> answerPowerUps;
+		std::wcout << "\n";
 		if (answerPowerUps == 1)
 		{
 			try
@@ -309,16 +306,11 @@ void Game::Run2()
 				std::cout << error;
 			}
 		}
-		else
-		{
-			std::cout << "Choose your answer: " << '\n';
-		}
 		auto startPlayerTwo = std::chrono::steady_clock::now();
+		std::wcout << "Your answer: ";
 		std::cin >> nAnswerPlayer2;
 		auto stopPlayerTwo = std::chrono::steady_clock::now();
-
 		std::chrono::duration<double> timePlayerTwo = stopPlayerTwo - startPlayerTwo;
-		std::cout << std::endl <<"(" << timePlayerTwo.count() <<")\n";
 
 		if (nAnswerPlayer1 == numericQuestion.GetAnswer(nQuestion) && nAnswerPlayer2 == numericQuestion.GetAnswer(nQuestion))
 		{
@@ -397,16 +389,18 @@ void Game::Run2()
 			contor++;
 		}
 		roomUsers.empty();
+		system("cls");
 	}
 
 	system("cls");
 	std::cout << playerOne << ", your score is: " << score1<<'\n';
 	std::cout << playerTwo << ", your score is: " << score2<<'\n';
-	std::cout << "\n\nThe duel begins!\n";
+	std::cout << "\nThe duel begins!\n";
 
 	while (numberOfRounds != 0)
 	{
-		std::cout << "Board: \n" << board << std::endl;
+		system("cls");
+		std::cout << "\nBoard: \n" << board << std::endl;
 		gCorrectAnswer = grillQuestion.GetRandomQuestion();
 		
 		int randomNumber = numericQuestion.GetRandomNumber(2);
@@ -626,7 +620,7 @@ std::string Game::NumericQuestionPart(std::string playerOne, std::string playerT
 	int line, column;
 	int contor = 0;
 	nQuestion = numericQuestion.GetRandomNumericQuestion();
-	std::cout << '\n' << playerOne << " ,answer to this question! \n" << nQuestion;
+	std::cout << '\n' << playerOne << " ,answer to this question! \n" <<"\033[96m" << nQuestion << "\033[0m";
 	std::cout << '\n' << "Do you want to use powerups? Choose 1 for YES and 0 for NO.\n";
 	std::cin >> answerPowerUps;
 	if (answerPowerUps == 1)
@@ -672,7 +666,7 @@ std::string Game::NumericQuestionPart(std::string playerOne, std::string playerT
 
 	std::chrono::duration<double> timePlayerOne = stopPlayerOne - startPlayerOne;
 
-	std::cout << '\n' << playerTwo << " ,answer to this question: \n" << nQuestion;
+	std::cout << '\n' << playerTwo << " ,answer to this question: \n" << "\033[96m" <<nQuestion << "\033[0m";
 	std::cout << '\n' << "Do you want to use powerups? Choose 1 for YES and 0 for NO.\n";
 	std::cin >> answerPowerUps;
 	if (answerPowerUps == 1)

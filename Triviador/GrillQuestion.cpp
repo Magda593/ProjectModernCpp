@@ -63,55 +63,6 @@ std::string GrillQuestion::GetRandomQuestion()
 	{
 		position = GetRandomNumber();
 	}
-	std::cout << m_grillQuestion[position] << '\n'<< m_grillQuestion[1 + position] << '\n' << m_grillQuestion[2 + position] << '\n' << m_grillQuestion[3 + position] << '\n' << m_grillQuestion[4 + position] << '\n';
+	std::cout <<"\033[96m" << m_grillQuestion[position] << '\n'<< m_grillQuestion[1 + position] << '\n' << m_grillQuestion[2 + position] << '\n' << m_grillQuestion[3 + position] << '\n' << m_grillQuestion[4 + position] << '\n' << "\033[0m";
 	return m_grillQuestion[position+5];
-}
-
-GrillQuestion& GrillQuestion::operator=(GrillQuestion&& question)
-{
-	m_question1 = question.m_question1;
-	m_correctAnswer = question.m_correctAnswer;
-	new (&question) GrillQuestion;
-	return *this;
-}
-
-int GrillQuestion::Equal(std::string correctAnswer, std::string answer)
-{
-	if (std::string(correctAnswer) == std::string(answer))
-		return true;
-	return false;
-}
-
-void GrillQuestion::ShowTwoOptions( )
-{
-	if (Equal(m_correctAnswer, "a"))
-	{
-		std::cout << m_option1 << std::endl;
-		std::cout << m_option4 << std::endl;
-	}
-	if (Equal(m_correctAnswer, "b"))
-	{
-		std::cout << m_option2 << std::endl;
-		std::cout << m_option3 << std::endl;
-	}
-	if (Equal(m_correctAnswer, "c"))
-	{
-		std::cout << m_option3 << std::endl;
-		std::cout << m_option4 << std::endl;
-	}
-	if (Equal(m_correctAnswer, "d"))
-	{
-		std::cout << m_option2 << std::endl;
-		std::cout << m_option4 << std::endl;
-	}
-}
-
-std::ostream& operator<<(std::ostream& os, const GrillQuestion& question)
-{
-	os << question.m_question1 << std::endl;
-	os << question.m_option1 << std::endl;
-	os << question.m_option2 << std::endl;
-	os << question.m_option3 << std::endl;
-	os << question.m_option4 << std::endl;
-	return os;
 }

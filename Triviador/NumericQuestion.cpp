@@ -40,34 +40,12 @@ void NumericQuestion::GetQuestion()
 		std::cout << x.first << ": " << x.second << std::endl;
 }
 
-NumericQuestion& NumericQuestion::operator=(const NumericQuestion& questionType2)
-{
-	m_question2 = questionType2.m_question2;
-	m_answer = questionType2.m_answer;
-	m_questionType2 = questionType2.m_questionType2;
-	return *this;
-}
-
-NumericQuestion& NumericQuestion::operator=(NumericQuestion&& questionType2)
-{
-	m_question2 = questionType2.m_question2;
-	m_answer = questionType2.m_answer;
-	m_questionType2 = questionType2.m_questionType2;
-	new (&questionType2) NumericQuestion;
-	return *this;
-}
-
 int NumericQuestion::GetRandomNumber(int x)
 {
 	srand(time(NULL));
 	int res;
 	res = rand() % x + 0;
 	return res;
-}
-
-NumericQuestion NumericQuestion::GetQuestionType2() const
-{
-	return NumericQuestion();
 }
 
 int NumericQuestion::GetAnswer(std::string question)
@@ -97,8 +75,3 @@ std::string NumericQuestion::GetRandomNumericQuestion()
 	}
 	return p.first;
 }
-
-//QuestionType2 QuestionType2::GetQuestionType2() const
-//{
-//	return QuestionType2();
-//}

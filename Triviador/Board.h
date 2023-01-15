@@ -21,15 +21,12 @@ public:
 
 	bool IsFull() const;
 
-	bool BoardFullFromOnePlayer(std::string toCheck);
-
 	const std::optional<Region>& operator[] (const Position& pos) const;
 	std::optional<Region>& operator[] (const Position& pos);
 
 	friend std::ostream& operator<<(std::ostream& out, const Board& board);
 
 	void Test();
-
 
 private:
 	int m_kWidth;
