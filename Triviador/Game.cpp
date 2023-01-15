@@ -220,15 +220,40 @@ void Game::Run2()
 
 		nQuestion = numericQuestion.GetRandomNumericQuestion();
 		std::cout << '\n' << playerOne << " ,answer to this question! \n" << nQuestion;
-		std::cout << '\n' << "Do you want to use powerups?"<<'\n'<<"Choose 1 for YES and 0 for NO.";
+		std::cout << '\n' << "Do you want to use powerups? Choose 1 for YES and 0 for NO.\n";
 		std::cin >> answerPowerUps;
 		if (answerPowerUps == 1)
 		{
-			powerUpsPlayer1.UsedPowers(option1);
-			if (option1 == 2)
-				powerUpsPlayer1.CloseAnswer(numericQuestion.GetAnswer(nQuestion));
-			else if (option1 == 3)
-					powerUpsPlayer1.Suggestion(numericQuestion.GetAnswer(nQuestion));
+			try
+			{
+				powerUpsPlayer1.UsedPowers(option1);
+				if (option1 == 2)
+				{
+					try
+					{
+						powerUpsPlayer1.CloseAnswer(numericQuestion.GetAnswer(nQuestion));
+					}
+					catch (const char* err)
+					{
+						std::cout << err;
+					}
+				}
+				else if (option1 == 3)
+				{
+					try
+					{
+						powerUpsPlayer1.Suggestion(numericQuestion.GetAnswer(nQuestion));
+					}
+					catch (const char* err)
+					{
+						std::cout << err;
+					}
+				}	
+			}
+			catch (const char* error)
+			{
+				std::cout << error;
+			}
 		}
 		else
 		{
@@ -242,15 +267,40 @@ void Game::Run2()
 		std::cout << std::endl << "(" << timePlayerOne.count() << ")\n";
 
 		std::cout << '\n' << playerTwo << " ,answer to this question: \n" << nQuestion;
-		std::cout << '\n' << "Do you want to use powerups?" << '\n' << "Choose 1 for YES and 0 for NO.";
+		std::cout << '\n' << "Do you want to use powerups? Choose 1 for YES and 0 for NO.\n";
 		std::cin >> answerPowerUps;
 		if (answerPowerUps == 1)
 		{
-			powerUpsPlayer2.UsedPowers(option2);
-			if (option2 == 2)
-				powerUpsPlayer2.CloseAnswer(numericQuestion.GetAnswer(nQuestion));
-			else if (option2 == 3)
-					powerUpsPlayer2.Suggestion(numericQuestion.GetAnswer(nQuestion));
+			try
+			{
+				powerUpsPlayer2.UsedPowers(option2);
+				if (option2 == 2)
+				{
+					try
+					{
+						powerUpsPlayer2.CloseAnswer(numericQuestion.GetAnswer(nQuestion));
+					}
+					catch (const char* err)
+					{
+						std::cout << err;
+					}
+				}
+				else if (option2 == 3)
+				{
+					try
+					{
+						powerUpsPlayer2.Suggestion(numericQuestion.GetAnswer(nQuestion));
+					}
+					catch (const char* err)
+					{
+						std::cout << err;
+					}
+				}
+			}
+			catch (const char* error)
+			{
+				std::cout << error;
+			}
 		}
 		else
 		{
@@ -352,16 +402,72 @@ void Game::Run2()
 		std::cout << std::endl << numberOfRounds << std::endl;
 		std::cout << "Board: \n" << board << std::endl;
 		gCorrectAnswer = grillQuestion.GetRandomQuestion();
+		
 		int randomNumber = numericQuestion.GetRandomNumber(2);
 
 		if (randomNumber + 1 == 1)
 		{
 			std::cout << playerOne << ", Choose which region you want to attack; PLEASE do not attack your own region :)" << '\n';
 			std::cin >> line >> column;
-
+			std::cout << '\n' << "Do you want to use powerups? Choose 1 for YES and 0 for NO.\n";
+			std::cin >> answerPowerUps;
+			if (answerPowerUps == 1)
+			{
+				try
+				{
+					powerUpsPlayer1.UsedPowers(option1);
+					if (option1 == 1)
+					{
+						try
+						{
+							powerUpsPlayer1.FiftyFifty(gCorrectAnswer);
+						}
+						catch (const char* err)
+						{
+							std::cout << err;
+						}
+					}
+				}
+				catch (const char* error)
+				{
+					std::cout << error;
+				}
+			}
+			else
+			{
+				std::cout << "Choose your answer: " << '\n';
+			}
 			std::cout << std::endl << playerOne << ", write your answer, just the correct letter: ";
 			std::cin >> gAnswerPlayer1;
 
+			std::cout << '\n' << "Do you want to use powerups? Choose 1 for YES and 0 for NO.\n";
+			std::cin >> answerPowerUps;
+			if (answerPowerUps == 1)
+			{
+				try
+				{
+					powerUpsPlayer2.UsedPowers(option2);
+					if (option2 == 1)
+					{
+						try
+						{
+							powerUpsPlayer1.FiftyFifty(gCorrectAnswer);
+						}
+						catch (const char* err)
+						{
+							std::cout << err;
+						}
+					}
+				}
+				catch (const char* error)
+				{
+					std::cout << error;
+				}
+			}
+			else
+			{
+				std::cout << "Choose your answer: " << '\n';
+			}
 			std::cout << std::endl << playerTwo << ", write your answer, just the correct letter: ";
 			std::cin >> gAnswerPlayer2;
 
@@ -399,8 +505,65 @@ void Game::Run2()
 			std::cin >> line >> column;
 
 			std::cout << std::endl << playerTwo << ", write your answer, just the correct letter: ";
+			std::cout << '\n' << "Do you want to use powerups? Choose 1 for YES and 0 for NO.\n";
+			std::cin >> answerPowerUps;
+			if (answerPowerUps == 1)
+			{
+				try
+				{
+					powerUpsPlayer2.UsedPowers(option2);
+					if (option2 == 1)
+					{
+						try
+						{
+							powerUpsPlayer2.FiftyFifty(gCorrectAnswer);
+						}
+						catch (const char* err)
+						{
+							std::cout << err;
+						}
+					}
+				}
+				catch (const char* error)
+				{
+					std::cout << error;
+				}
+			}
+			else
+			{
+				std::cout << "Choose your answer: " << '\n';
+			}
+			std::cout << std::endl << playerTwo << ", write your answer, just the correct letter: ";
 			std::cin >> gAnswerPlayer2;
 
+			std::cout << '\n' << "Do you want to use powerups? Choose 1 for YES and 0 for NO.\n";
+			std::cin >> answerPowerUps;
+			if (answerPowerUps == 1)
+			{
+				try
+				{
+					powerUpsPlayer1.UsedPowers(option1);
+					if (option1 == 1)
+					{
+						try
+						{
+							powerUpsPlayer1.FiftyFifty(gCorrectAnswer);
+						}
+						catch (const char* err)
+						{
+							std::cout << err;
+						}
+					}
+				}
+				catch (const char* error)
+				{
+					std::cout << error;
+				}
+			}
+			else
+			{
+				std::cout << "Choose your answer: " << '\n';
+			}
 			std::cout << std::endl << playerOne << ", write your answer, just the correct letter: ";
 			std::cin >> gAnswerPlayer1;
 
@@ -484,12 +647,53 @@ std::string Game::NumericQuestionPart(std::string playerOne, std::string playerT
 	std::string gCorrectAnswer;
 	std::string gAnswerPlayer1;
 	std::string gAnswerPlayer2;
+	int answerPowerUps;
+	int option1, option2;
 	int score1;
 	int score2;
 	int line, column;
 	int contor = 0;
 	nQuestion = numericQuestion.GetRandomNumericQuestion();
 	std::cout << '\n' << playerOne << " ,answer to this question! \n" << nQuestion;
+	std::cout << '\n' << "Do you want to use powerups? Choose 1 for YES and 0 for NO.\n";
+	std::cin >> answerPowerUps;
+	if (answerPowerUps == 1)
+	{
+		try
+		{
+			powerUpsPlayer1.UsedPowers(option1);
+			if (option1 == 2)
+			{
+				try
+				{
+					powerUpsPlayer1.CloseAnswer(numericQuestion.GetAnswer(nQuestion));
+				}
+				catch (const char* err)
+				{
+					std::cout << err;
+				}
+			}
+			else if (option1 == 3)
+			{
+				try
+				{
+					powerUpsPlayer1.Suggestion(numericQuestion.GetAnswer(nQuestion));
+				}
+				catch (const char* err)
+				{
+					std::cout << err;
+				}
+			}
+		}
+		catch (const char* error)
+		{
+			std::cout << error;
+		}
+	}
+	else
+	{
+		std::cout << "Choose your answer: " << '\n';
+	}
 	auto startPlayerOne = std::chrono::steady_clock::now();
 	std::cin >> nAnswerPlayer1;
 	auto stopPlayerOne = std::chrono::steady_clock::now();
@@ -497,6 +701,45 @@ std::string Game::NumericQuestionPart(std::string playerOne, std::string playerT
 	std::chrono::duration<double> timePlayerOne = stopPlayerOne - startPlayerOne;
 
 	std::cout << '\n' << playerTwo << " ,answer to this question: \n" << nQuestion;
+	std::cout << '\n' << "Do you want to use powerups? Choose 1 for YES and 0 for NO.\n";
+	std::cin >> answerPowerUps;
+	if (answerPowerUps == 1)
+	{
+		try
+		{
+			powerUpsPlayer2.UsedPowers(option2);
+			if (option2 == 2)
+			{
+				try
+				{
+					powerUpsPlayer2.CloseAnswer(numericQuestion.GetAnswer(nQuestion));
+				}
+				catch (const char* err)
+				{
+					std::cout << err;
+				}
+			}
+			else if (option2 == 3)
+			{
+				try
+				{
+					powerUpsPlayer2.Suggestion(numericQuestion.GetAnswer(nQuestion));
+				}
+				catch (const char* err)
+				{
+					std::cout << err;
+				}
+			}
+		}
+		catch (const char* error)
+		{
+			std::cout << error;
+		}
+	}
+	else
+	{
+		std::cout << "Choose your answer: " << '\n';
+	}
 	auto startPlayerTwo = std::chrono::steady_clock::now();
 	std::cin >> nAnswerPlayer2;
 	auto stopPlayerTwo = std::chrono::steady_clock::now();

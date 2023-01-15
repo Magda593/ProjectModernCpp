@@ -21,18 +21,19 @@ int PowerUps::UsedPowers(int& nr)
 {
 	if (m_powerUps[0] == 0 && m_powerUps[1] == 0 && m_powerUps[2] == 0)
 	{
-		std::cout << "Sorry! You have no more powerups :(" << '\n';
-		return 0;
+		//std::cout << "Sorry! You have no more powerups :(" << '\n';
+		throw "Sorry! You have no more powerups :( \n";
+		/*return 0;*/
 	}
 	else
 	{
-		std::cout << "Use a power:" << std::endl << "1. 50/50" << std::endl << "2. Close answer" << std::endl << "3. Suggestion";
+		std::cout << "Use a power:" << std::endl << "1. 50/50 (works only with grill questions)" << std::endl << "2. Close answer" << std::endl << "3. Suggestion (only for numeric question)\n";
 		std::cin >> nr;
-		while (m_powerUps[nr - 1] == 0)
+		if (m_powerUps[nr - 1] == 0)
 		{
-			std::cout << '\n' << "You already used this power. Please choose another one" << std::endl;
-			std::cout << "Use a power:" << std::endl << "1. 50/50" << std::endl << "2. Close answer" << std::endl << "3. Suggestion";
-			std::cin >> nr;
+			throw "\nYou already used this power.\n" ;
+			//std::cout << "Use a power:" << std::endl << "1. 50/50 (works only with grill questions)" << std::endl << "2. Close answer" << std::endl << "3. Suggestion (only for numeric question)\n";
+			//std::cin >> nr;
 		}
 		m_powerUps[nr - 1] = 0;
 		return nr;
