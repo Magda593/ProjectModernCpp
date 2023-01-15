@@ -1,6 +1,5 @@
 #pragma once
 #include "AccountManager.h"
-#include "QuestionType1.h"
 #include "GrillQuestion.h"
 #include "NumericQuestion.h"
 #include "PowerUps.h"

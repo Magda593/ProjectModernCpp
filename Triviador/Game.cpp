@@ -177,11 +177,6 @@ void Game::SetGame()
 	std::cout << "Number of rounds: " << m_numberOfRounds;
 	std::cout << "\n";
 }
-//
-//void Game::Run()
-//{
-//	MenuForTheGame();
-//}
 
 void Game::Run2()
 {
