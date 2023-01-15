@@ -171,10 +171,7 @@ void Game::SetGame()
 
 void Game::Run()
 {
-	/*SetGame();*/
 	MenuForTheGame();
-	/*if (m_numberOfPlayers == 2)
-		Run2();*/
 }
 
 void Game::Run2()
@@ -192,6 +189,8 @@ void Game::Run2()
 	int score2=300;
 	int line, column;
 	int contor = 0;
+	int contorPlayer1=0;
+	int contorPlayer2 = 0;
 	std::cout << std::endl << "Who wuld like to play?\n";
 
 	std::cout << "Player one (with id 1): ";
@@ -270,17 +269,21 @@ void Game::Run2()
 				if (roomUsers.front() == playerOne)
 				{
 					board[{line, column}] = Region::Regions::BasePlayerOne;
+					contorPlayer1++;
 					std::cout << playerTwo<< ", please choose the position for your base: ";
 					std::cin >> line >> column;
 					board[{line, column}] = Region::Regions::BasePlayerTwo;
+					contorPlayer2++;
 					roomUsers.pop();
 				}
 				else
 				{
 					board[{line, column}] = Region::Regions::BasePlayerTwo;
+					contorPlayer2++;
 					std::cout << playerOne << ", please choose the position for your base: ";
 					std::cin >> line >> column;
 					board[{line, column}] = Region::Regions::BasePlayerOne;
+					contorPlayer1++;
 					roomUsers.pop();
 				}
 			}
@@ -291,16 +294,17 @@ void Game::Run2()
 				if (roomUsers.front() == playerOne)
 				{
 					board[{line, column}] = Region::Regions::SimpleRegionPlayerOne;
+					contorPlayer1++;
 					score1 += 100;
 				}
 				else
 				{
 					board[{line, column}] = Region::Regions::SimpleRegionPlayerTwo;
+					contorPlayer2++;
 					score2 += 100;
 				}
 				roomUsers.pop();
 			}
-			//roomUsers.pop();
 			contor++;
 		}
 		roomUsers.empty();
@@ -316,12 +320,9 @@ void Game::Run2()
 		std::cout << "Board: \n" << board << std::endl;
 		gCorrectAnswer = grillQuestion.GetRandomQuestion();
 		int randomNumber = numericQuestion.GetRandomNumber(2);
-		/*int randomNumber = rand() % (2 - 1 + 1) + 1;*/
 
 		if (randomNumber + 1 == 1)
 		{
-			/*roomUsers.push(playerOne);
-			roomUsers.push(playerTwo);*/
 			std::cout << playerOne << ", Choose which region you want to attack; PLEASE do not attack your own region :)" << '\n';
 			std::cin >> line >> column;
 
@@ -336,9 +337,11 @@ void Game::Run2()
 				if(playerOne==NumericQuestionPart())
 				{
 						board[{line, column}] = Region::Regions::UpgradedRegionPlayerOne;
+						contorPlayer1++;
+						contorPlayer2--; score2 -= 100;
 						score1 += 100;
 				}
-				else if (playerOne == NumericQuestionPart())
+				else if (playerTwo == NumericQuestionPart())
 				{
 					continue;
 				}
@@ -350,13 +353,13 @@ void Game::Run2()
 			else if (gAnswerPlayer1 == gCorrectAnswer && gAnswerPlayer2 != gCorrectAnswer)
 			{
 				board[{line, column}] = Region::Regions::UpgradedRegionPlayerOne;
+				contorPlayer1++;
+				contorPlayer2--; score2 -= 100;
 				score1 += 100;
 			}
 		}
 		else if(randomNumber+1==2)
 		{
-			/*roomUsers.push(playerTwo);
-			roomUsers.push(playerOne);*/
 			std::cout << playerTwo << ", Choose which region you want to attack; PLEASE do not attack your own region :)" << '\n';
 			std::cin >> line >> column;
 
@@ -371,6 +374,8 @@ void Game::Run2()
 				if (playerTwo == NumericQuestionPart())
 				{
 					board[{line, column}] = Region::Regions::UpgradedRegionPlayerTwo;
+					contorPlayer2++;
+					contorPlayer1--; score1 -= 100;
 					score2 += 100;
 				}
 				else if (playerOne == NumericQuestionPart())
@@ -385,16 +390,38 @@ void Game::Run2()
 			else if (gAnswerPlayer2 == gCorrectAnswer && gAnswerPlayer1 != gCorrectAnswer)
 			{
 				board[{line, column}] = Region::Regions::UpgradedRegionPlayerTwo;
+				contorPlayer2++;
+				contorPlayer1--; score1-=100;
 				score2 += 100;
 			}
 		}
+		if (contorPlayer1 == 9)
+		{
+			//std::cout << "\033[92m" << "Congratulations! The winner is: " << playerOne;
+			m_numberOfRounds = 0;
+			break;
+		}
+		else if (contorPlayer2 == 9)
+		{
+			//std::cout << "\033[92m" << "Congratulations! The winner is: " << playerTwo;
+			m_numberOfRounds = 0;
+			break;
+		}
+		else
+			continue;
 		m_numberOfRounds--;
 	}
-
-	//std>>
-	/*std::ofstream ofs;
-	ofs.open("RoomUsers.txt", std::ofstream::out | std::ofstream::trunc);
-	ofs.close();*/
+	if(contorPlayer1==9)
+		std::cout << "\033[92m" << "Congratulations! The winner is: " << playerOne;
+	else if(contorPlayer2==9)
+		std::cout << "\033[92m" << "Congratulations! The winner is: " << playerTwo;
+	else
+	{
+		if (score1 > score2)
+			std::cout << "\033[92m" << "Congratulations! The winner is: " << playerOne;
+		else
+			std::cout << "\033[92m" << "Congratulations! The winner is: " << playerTwo;
+	}
 }
 
 std::string Game::NumericQuestionPart()
@@ -456,23 +483,5 @@ std::string Game::NumericQuestionPart()
 			roomUsers.push(playerOne);
 	}
 	return roomUsers.front();
-
-	//while (!roomUsers.empty())
-	//{
-	//		std::cout << roomUsers.front() << ", please choose the position for your region: ";
-	//		std::cin >> line >> column;
-	//		if (roomUsers.front() == playerOne)
-	//		{
-	//			board[{line, column}] = Region::Regions::SimpleRegionPlayerOne;
-	//			score1 += 100;
-	//		}
-	//		else
-	//		{
-	//			board[{line, column}] = Region::Regions::SimpleRegionPlayerTwo;
-	//			score2 += 100;
-	//		}
-	//		roomUsers.pop();
-	//	//roomUsers.pop();
-	//}
 	roomUsers.empty();
 }
